@@ -1,13 +1,8 @@
 import React from "react";
-import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text } from "react-native";
 
 const Button = ({ variant, children }) => {
-  let [fontLoaded] = useFonts({
-    "Nunito-Medium": require("../../assets/fonts/Nunito-Medium.ttf"),
-  });
-
   if (variant === "primary") {
     return (
       <View style={styles.primaryButton}>
