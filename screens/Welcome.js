@@ -1,10 +1,15 @@
 import React from "react";
+import { useFonts } from "expo-font";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text, Image, ImageBackground } from "react-native";
 import Video from "../components/cards/Video";
 import Button from "../components/buttons/Button";
 
 const Welcome = () => {
+  let [fontLoaded] = useFonts({
+    "Nunito-Medium": require("../assets/fonts/Nunito-Medium.ttf"),
+  });
+
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
       <Image
@@ -61,6 +66,7 @@ const styles = StyleSheet.create({
     maxWidth: 250,
     textAlign: "center",
     marginTop: 16,
+    fontFamily: "Nunito-Medium",
   },
   bottom: {
     flex: 1,
