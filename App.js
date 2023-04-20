@@ -7,7 +7,6 @@ export default function App() {
   return (
     <View className="flex-1 bg-slate-200 justify-center items-center">
       <Welcome />
-      <StatusBar style="auto" />
     </View>
   );
 }

@@ -7,6 +7,16 @@ import Button from "../components/buttons/Button";
 const Welcome = () => {
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
+      <Image
+        source={require("../assets/images/background.png")}
+        resizeMode="cover"
+        resizeMethod="resize"
+        style={{
+          position: "absolute",
+          bottom: 0,
+          width: "100%",
+        }}
+      />
       <View style={styles.top}>
         <Image
           source={require("../assets/images/logo.png")}
@@ -33,12 +43,12 @@ const Welcome = () => {
 
 const styles = StyleSheet.create({
   bgGradient: {
+    position: "relative",
     flex: 1,
     justifyContent: "space-between",
     alignItems: "center",
     height: "100%",
     gap: 64,
-    padding: 16,
   },
   top: {
     flex: 2,
@@ -54,7 +64,7 @@ const styles = StyleSheet.create({
   },
   bottom: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     gap: 8,
   },
@@ -63,6 +73,7 @@ const styles = StyleSheet.create({
     gap: 16,
     overflow: "scroll",
     marginTop: 16,
+    paddingLeft: 16,
   },
 });
 
