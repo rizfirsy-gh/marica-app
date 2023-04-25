@@ -11,6 +11,7 @@ const Video = () => {
         style={{
           width: 225,
           height: 145,
+          borderRadius: 16,
         }}
       />
     </View>

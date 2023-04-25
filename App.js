@@ -1,7 +1,10 @@
 import { useFonts } from "expo-font";
-import AppLoading from "expo-app-loading";
+import { NavigationContainer } from "@react-navigation/native";
 import { Text, View } from "react-native";
 import Welcome from "./screens/Welcome";
+import { StatusBar } from "expo-status-bar";
+
+//TODO: use splashcreen better after slicing the homepage
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -14,12 +17,17 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />;
+    return null;
   }
 
   return (
-    <View className="flex-1 bg-slate-200 justify-center items-center">
-      <Welcome />
-    </View>
+    <>
+      <StatusBar style="auto" />
+      <View className="flex-1 bg-slate-200 justify-center items-center">
+        <NavigationContainer>
+          <Welcome />
+        </NavigationContainer>
+      </View>
+    </>
   );
 }
