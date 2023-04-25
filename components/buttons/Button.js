@@ -1,14 +1,16 @@
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Pressable } from "react-native";
 
-const Button = ({ variant, children }) => {
+const Button = ({ variant, onPress, children }) => {
   if (variant === "primary") {
     return (
-      <View style={styles.primaryButton}>
-        <LinearGradient colors={["#0891B2", "#22D3EE"]}>
-          <Text style={styles.buttonText}>{children}</Text>
-        </LinearGradient>
+      <View style={styles.primaryButton} onPress={onPress}>
+        <Pressable onPress={onPress}>
+          <LinearGradient colors={["#0891B2", "#22D3EE"]}>
+            <Text style={styles.buttonText}>{children}</Text>
+          </LinearGradient>
+        </Pressable>
       </View>
     );
   }

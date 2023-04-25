@@ -1,10 +1,33 @@
+import "react-native-gesture-handler";
+
 import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
-import { Text, View } from "react-native";
+import { Text, View, Button, Animated } from "react-native";
 import Welcome from "./screens/Welcome";
+import Signup from "./screens/Signup";
 import { StatusBar } from "expo-status-bar";
+import { createStackNavigator } from "@react-navigation/stack";
 
 //TODO: use splashcreen better after slicing the homepage
+
+const forFade = ({ current, next }) => {
+  const opacity = Animated.add(
+    current.progress,
+    next ? next.progress : 0
+  ).interpolate({
+    inputRange: [0, 1, 2],
+    outputRange: [0, 1, 0],
+  });
+
+  return {
+    leftButtonStyle: { opacity },
+    rightButtonStyle: { opacity },
+    titleStyle: { opacity },
+    backgroundStyle: { opacity },
+  };
+};
+
+const Stack = createStackNavigator();
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -21,13 +44,16 @@ export default function App() {
   }
 
   return (
-    <>
-      <StatusBar style="auto" />
-      <View className="flex-1 bg-slate-200 justify-center items-center">
-        <NavigationContainer>
-          <Welcome />
-        </NavigationContainer>
-      </View>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        {/* //TODO: do custom headers for each screen */}
+        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen
+          name="Signup"
+          component={Signup}
+          options={{ headerStyleInterpolator: forFade }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

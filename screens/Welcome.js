@@ -1,10 +1,17 @@
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, View, Text, Image, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ImageBackground,
+  Button as NativeButton,
+} from "react-native";
 import Video from "../components/cards/Video";
 import Button from "../components/buttons/Button";
 
-const Welcome = () => {
+const Welcome = ({ navigation }) => {
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
       <Image
@@ -34,7 +41,12 @@ const Welcome = () => {
         </View>
       </View>
       <View style={styles.bottom}>
-        <Button variant={"primary"}>Buat akun baru</Button>
+        <Button
+          variant={"primary"}
+          onPress={() => navigation.navigate("Signup")}
+        >
+          Buat akun baru
+        </Button>
         <Button variant={"tertiary"}>Sudah punya akun</Button>
       </View>
     </LinearGradient>
