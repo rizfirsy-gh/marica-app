@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Video from "../components/cards/Video";
 import Button from "../components/buttons/Button";
+import WelcomeCarousel from "../components/carousels/WelcomeCarousel";
 
 const Welcome = ({ navigation }) => {
   return (
@@ -35,10 +36,7 @@ const Welcome = ({ navigation }) => {
         <Text style={styles.text}>
           Media belajar sambil bermain yang relevan untuk anak-anak.
         </Text>
-        <View style={styles.slideImage}>
-          <Video />
-          <Video />
-        </View>
+        <WelcomeCarousel />
       </View>
       <View style={styles.bottom}>
         <Button
@@ -73,6 +71,7 @@ const styles = StyleSheet.create({
     maxWidth: 250,
     textAlign: "center",
     marginTop: 16,
+    marginBottom: 16,
     fontFamily: "Nunito-Medium",
   },
   bottom: {
@@ -80,13 +79,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     gap: 8,
-  },
-  slideImage: {
-    flexDirection: "row",
-    gap: 16,
-    overflow: "scroll",
-    marginTop: 16,
-    paddingLeft: 16,
   },
 });
 
