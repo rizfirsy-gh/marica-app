@@ -45,7 +45,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{ headerMode: "screen", headerTitle: "" }}
+      >
         {/* //TODO: do custom headers for each screen */}
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen
