@@ -45,15 +45,21 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{ headerMode: "screen", headerTitle: "" }}
-      >
+      <Stack.Navigator screenOptions={{ headerMode: "screen" }}>
         {/* //TODO: do custom headers for each screen */}
-        <Stack.Screen name="Welcome" component={Welcome} />
+        <Stack.Screen
+          name="Welcome"
+          component={Welcome}
+          options={{ headerLeft: () => null, headerTitle: () => null }}
+        />
         <Stack.Screen
           name="Signup"
           component={Signup}
-          options={{ headerStyleInterpolator: forFade }}
+          options={{
+            headerStyleInterpolator: forFade,
+            headerLeft: () => null,
+            headerTitle: () => null,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>
