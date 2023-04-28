@@ -2,6 +2,7 @@ import React from "react";
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text } from "react-native";
+import RegisterForm from "../components/forms/RegisterForm";
 
 const Signup = () => {
   return (
@@ -28,7 +29,9 @@ const Signup = () => {
           Media belajar sambil bermain yang relevan untuk anak-anak.
         </Text>
       </View>
-      {/* TODO: create register form */}
+      <View style={styles.formContainer}>
+        <RegisterForm />
+      </View>
     </LinearGradient>
   );
 };
@@ -55,6 +58,11 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginBottom: 16,
     fontFamily: "Nunito-Medium",
+  },
+  formContainer: {
+    flex: 2,
+    width: "100%",
+    padding: 16,
   },
 });
 
