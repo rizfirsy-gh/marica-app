@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text } from "react-native";
 import RegisterForm from "../components/forms/RegisterForm";
 
-const Signup = () => {
+const Signup = ({ navigation }) => {
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
       <Image

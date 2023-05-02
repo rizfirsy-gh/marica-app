@@ -5,7 +5,7 @@ import { StyleSheet, View, Text, Pressable } from "react-native";
 const Button = ({ variant, onPress, children }) => {
   if (variant === "primary") {
     return (
-      <View style={styles.primaryButton} onPress={onPress}>
+      <View style={styles.primaryButton}>
         <Pressable onPress={onPress}>
           <LinearGradient colors={["#0891B2", "#22D3EE"]}>
             <Text style={styles.buttonText}>{children}</Text>
