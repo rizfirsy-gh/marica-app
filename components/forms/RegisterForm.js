@@ -3,7 +3,7 @@ import axios from "axios";
 import { View, TextInput, StyleSheet } from "react-native";
 import Button from "../buttons/Button";
 
-const RegisterForm = () => {
+const RegisterForm = ({ onAuthenticate }) => {
   //TODO: make the form working correctly
   const [userInputs, setUserInputs] = React.useState({
     email: "",
@@ -20,14 +20,10 @@ const RegisterForm = () => {
   }
 
   function buttonHandler() {
-    console.log(userInputs.email);
-    console.log(userInputs.password);
-    axios
-      .post("marica-backend.vercel.app/api/v1/user", userInputs)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch((error) => console.log("error", error));
+    onAuthenticate({
+      email: userInputs.email,
+      password: userInputs.password,
+    });
   }
 
   return (

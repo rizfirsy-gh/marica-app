@@ -1,10 +1,19 @@
 import React from "react";
+import { userRegistration } from "../utils/auth";
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text } from "react-native";
 import RegisterForm from "../components/forms/RegisterForm";
 
 const Signup = ({ navigation }) => {
+  const [isAuthenticating, setIsAuthenticating] = React.useState(false);
+  const registrationHandler = async ({ email, password }) => {
+    console.log("email", email);
+    setIsAuthenticating(true);
+    await userRegistration();
+    setIsAuthenticating(false);
+  };
+
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
       <Image
@@ -29,9 +38,13 @@ const Signup = ({ navigation }) => {
           Media belajar sambil bermain yang relevan untuk anak-anak.
         </Text>
       </View>
-      <View style={styles.formContainer}>
-        <RegisterForm />
-      </View>
+      {isAuthenticating ? (
+        <Text>Akun sedang dibuat...</Text>
+      ) : (
+        <View style={styles.formContainer}>
+          <RegisterForm onAuthenticate={registrationHandler} />
+        </View>
+      )}
     </LinearGradient>
   );
 };
