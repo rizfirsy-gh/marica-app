@@ -1,9 +1,8 @@
 import axios from "axios";
-
-const API_ENDPOINT =
-  "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAXOnrgHjLa3DNh1RTs1AQg2ejmQE4h9ws";
-
 export async function userRegistration(email, password) {
+  const API_ENDPOINT =
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAXOnrgHjLa3DNh1RTs1AQg2ejmQE4h9ws";
+
   // docs: https://firebase.google.com/docs/reference/rest/auth#section-create-email-password
   await axios
     .post(API_ENDPOINT, {

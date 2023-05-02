@@ -36,6 +36,7 @@ const Welcome = ({ navigation }) => {
         <Text style={styles.text}>
           Media belajar sambil bermain yang relevan untuk anak-anak.
         </Text>
+        {/* this carousel is affecting a ViewPropTypes error */}
         <WelcomeCarousel />
       </View>
       <View style={styles.bottom}>
