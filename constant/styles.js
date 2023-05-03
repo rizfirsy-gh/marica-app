@@ -22,5 +22,5 @@ export const Colors = {
   slate700: "#334155",
   slate800: "#1E293B",
   slate900: "#0F172A",
-  slate950: "#020617",
+  slate950: "#083344",
 };

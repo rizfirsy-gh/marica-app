@@ -114,14 +114,14 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 2,
-    borderColor: "#94A3B8",
+    borderColor: Colors.slate400,
     paddingVertical: 12,
     paddingHorizontal: 24,
     backgroundColor: "#fff",
     borderRadius: 16,
   },
   heading: {
-    color: "#64748B",
+    color: Colors.slate500,
     maxWidth: 250,
     textAlign: "center",
     marginTop: 16,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   text: {
-    color: "#64748B",
+    color: Colors.slate500,
     maxWidth: 250,
     textAlign: "center",
     marginBottom: 16,

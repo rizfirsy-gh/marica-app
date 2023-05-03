@@ -63,7 +63,7 @@ const RegisterForm = ({ onAuthenticate }) => {
 const styles = {
   input: {
     borderWidth: 2,
-    borderColor: "#94A3B8",
+    borderColor: Colors.slate400,
     paddingVertical: 12,
     paddingHorizontal: 24,
     backgroundColor: "#fff",

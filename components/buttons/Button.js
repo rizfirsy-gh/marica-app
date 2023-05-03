@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   tertiaryButton: {
     fontFamily: "Nunito-Medium",
-    color: "#64748B",
+    color: Colors.slate500,
   },
 });
 

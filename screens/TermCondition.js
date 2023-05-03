@@ -1,4 +1,5 @@
 import React from "react";
+import { Colors } from "../constant/styles";
 import Button from "../components/buttons/Button";
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -65,12 +66,12 @@ const styles = StyleSheet.create({
   termConditionText: {
     padding: 16,
     borderWidth: 2,
-    borderColor: "#CBD5E1",
+    borderColor: Colors.slate300,
     borderRadius: 16,
     backgroundColor: "#fff",
   },
   text: {
-    color: "#64748B",
+    color: Colors.slate500,
     fontFamily: "Nunito-Medium",
   },
 });

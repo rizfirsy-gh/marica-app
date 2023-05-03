@@ -1,4 +1,5 @@
 import React from "react";
+import { Colors } from "../constant/styles";
 import { userRegistration } from "../utils/auth";
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   text: {
-    color: "#64748B",
+    color: Colors.slate500,
     maxWidth: 250,
     textAlign: "center",
     marginTop: 16,
