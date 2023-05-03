@@ -17,7 +17,7 @@ const Button = ({ variant, onPress, children }) => {
   if (variant === "secondary") {
     return (
       <View style={styles.secondaryButton}>
-        <Text style={styles.buttonText}>{children}</Text>
+        <Text style={styles.secondaryButtonText}>{children}</Text>
       </View>
     );
   }
@@ -51,6 +51,14 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     paddingHorizontal: 24,
     color: "#fff",
+    textAlign: "center",
+  },
+  secondaryButtonText: {
+    fontFamily: "Nunito-Medium",
+    width: "100%",
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    color: "#22D3EE",
     textAlign: "center",
   },
   tertiaryButton: {
