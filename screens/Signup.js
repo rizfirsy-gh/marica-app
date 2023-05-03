@@ -38,13 +38,13 @@ const Signup = ({ navigation }) => {
           Media belajar sambil bermain yang relevan untuk anak-anak.
         </Text>
       </View>
-      {isAuthenticating ? (
-        <Text>Akun sedang dibuat...</Text>
-      ) : (
-        <View style={styles.formContainer}>
+      <View style={styles.formContainer}>
+        {isAuthenticating ? (
+          <Text>Tunggu sebentar...</Text>
+        ) : (
           <RegisterForm onAuthenticate={registrationHandler} />
-        </View>
-      )}
+        )}
+      </View>
     </LinearGradient>
   );
 };

@@ -1,9 +1,9 @@
 import React from "react";
-import axios from "axios";
-import { View, TextInput, StyleSheet } from "react-native";
+import { View, TextInput, StyleSheet, Text } from "react-native";
 import Button from "../buttons/Button";
 
 const RegisterForm = ({ onAuthenticate }) => {
+  const [isLogin, setIsLogin] = React.useState(false);
   //TODO: make the form working correctly
   const [userInputs, setUserInputs] = React.useState({
     email: "",
@@ -19,11 +19,15 @@ const RegisterForm = ({ onAuthenticate }) => {
     });
   }
 
-  function buttonHandler() {
+  function createUserHandler() {
     onAuthenticate({
       email: userInputs.email,
       password: userInputs.password,
     });
+  }
+
+  function loginUserHandler() {
+    setIsLogin(!isLogin);
   }
 
   return (
@@ -36,14 +40,22 @@ const RegisterForm = ({ onAuthenticate }) => {
         onChangeText={inputChangedHandler.bind(this, "email")}
       />
       <TextInput
-        placeholder="Buat password baru"
+        placeholder={isLogin ? "Masukkan password" : "Buat password baru"}
         style={styles.input}
         onChangeText={inputChangedHandler.bind(this, "password")}
       />
-      <TextInput placeholder="Ketik ulang password" style={styles.input} />
-      <Button variant="primary" onPress={buttonHandler}>
-        Buat akun
+      {!isLogin && (
+        <TextInput placeholder="Ketik ulang password" style={styles.input} />
+      )}
+      <Button variant="primary" onPress={createUserHandler}>
+        {isLogin ? "Masuk" : "Buat akun"}
       </Button>
+      <View style={styles.loginButton}>
+        <Text>{isLogin ? "Sudah punya akun?" : "Belum punya akun?"}</Text>
+        <Button variant={"tertiary"} onPress={loginUserHandler}>
+          {isLogin ? "Buat akun" : "Masuk"}
+        </Button>
+      </View>
     </View>
   );
 };
@@ -56,6 +68,11 @@ const styles = {
     paddingHorizontal: 24,
     backgroundColor: "#fff",
     borderRadius: 16,
+  },
+  loginButton: {
+    flexDirection: "row",
+    gap: 4,
+    justifyContent: "center",
   },
 };
 export default RegisterForm;
