@@ -7,6 +7,8 @@ import Welcome from "./screens/Welcome";
 import Signup from "./screens/Signup";
 import { StatusBar } from "expo-status-bar";
 import { createStackNavigator } from "@react-navigation/stack";
+import TermCondition from "./screens/TermCondition";
+import BuatAkunAnak from "./screens/BuatAkunAnak";
 
 //TODO: use splashcreen better after slicing the homepage
 
@@ -47,7 +49,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerMode: "screen" }}>
         {/* //TODO: do custom headers for each screen */}
-        <Stack.Screen
+        {/* <Stack.Screen
           name="Welcome"
           component={Welcome}
           options={{ headerLeft: () => null, headerTitle: () => null }}
@@ -59,6 +61,23 @@ export default function App() {
             headerStyleInterpolator: forFade,
             headerLeft: () => null,
             headerTitle: () => null,
+          }}
+        /> */}
+        <Stack.Screen
+          name="TermCondition"
+          component={TermCondition}
+          options={{
+            headerStyleInterpolator: forFade,
+            headerLeft: () => null,
+            headerTitle: () => null,
+          }}
+        />
+        <Stack.Screen
+          name="Buat akun anak"
+          component={BuatAkunAnak}
+          options={{
+            header: () => null,
+            headerStyleInterpolator: forFade,
           }}
         />
       </Stack.Navigator>
