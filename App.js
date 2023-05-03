@@ -5,12 +5,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Text, View, Button, Animated } from "react-native";
 import Welcome from "./screens/Welcome";
 import Signup from "./screens/Signup";
+import Home from "./screens/Home";
 import { StatusBar } from "expo-status-bar";
 import { createStackNavigator } from "@react-navigation/stack";
 import TermCondition from "./screens/TermCondition";
 import BuatAkunAnak from "./screens/BuatAkunAnak";
-
-//TODO: use splashcreen better after slicing the homepage
 
 const forFade = ({ current, next }) => {
   const opacity = Animated.add(
@@ -75,6 +74,14 @@ export default function App() {
         <Stack.Screen
           name="Buat akun anak"
           component={BuatAkunAnak}
+          options={{
+            header: () => null,
+            headerStyleInterpolator: forFade,
+          }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
           options={{
             header: () => null,
             headerStyleInterpolator: forFade,

@@ -49,20 +49,28 @@ const Signup = ({ navigation }) => {
         </Text>
         <Text style={styles.text}>
           {chooseAge
-            ? `Pilhlah kategori usia agar mendapatkan konten yang relevan dengan ${anak.nama}`
+            ? `Silahkan pilih kategori usia agar kami dapat menyarankan konten yang relevan dengan ${anak.nama}.`
             : `Untuk memulai, mari buat satu profil anak terlebih dahulu.!`}
         </Text>
       </View>
       {chooseAge ? (
         <View style={styles.form}>
+          //TODO finish the age option
           <TextInput
             style={styles.input}
-            placeholder="Berapa usia anakmu?"
+            placeholder={`Berapa usia ${
+              anak.nama !== "" ? anak.nama.toLowerCase() : "anakmu"
+            }?`}
             onChangeText={inputAnakHandler.bind(null, "usia")}
+            inputMode="numeric"
+            maxLength={1}
           />
           <Button
             variant="primary"
-            onPress={() => console.log("selesai!", anak.nama, anak.usia)}
+            onPress={() => {
+              console.log("selesai!", anak.nama, anak.usia);
+              navigation.navigate("Home");
+            }}
           >
             Selesai!
           </Button>
