@@ -17,7 +17,9 @@ const Button = ({ variant, onPress, children }) => {
   if (variant === "secondary") {
     return (
       <View style={styles.secondaryButton}>
-        <Text style={styles.secondaryButtonText}>{children}</Text>
+        <Pressable onPress={onPress}>
+          <Text style={styles.secondaryButtonText}>{children}</Text>
+        </Pressable>
       </View>
     );
   }

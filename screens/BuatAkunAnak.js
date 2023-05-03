@@ -5,6 +5,25 @@ import { StyleSheet, View, Text } from "react-native";
 import Button from "../components/buttons/Button";
 
 const Signup = ({ navigation }) => {
+  const [anak, setAnak] = React.useState({
+    nama: "",
+    usia: undefined,
+  });
+  const [chooseAge, setChooseAge] = React.useState(false);
+  function goToAgeOptions() {
+    setChooseAge(true);
+    console.log("choose age");
+  }
+
+  function inputAnakHandler(identifier, userInput) {
+    setAnak((prev) => {
+      return {
+        ...prev,
+        [identifier]: userInput,
+      };
+    });
+  }
+
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
       <Image
@@ -25,15 +44,41 @@ const Signup = ({ navigation }) => {
             height: 76,
           }}
         />
-        <Text style={styles.heading}>Tambahkan profil anak!</Text>
+        <Text style={styles.heading}>
+          {chooseAge ? "Pilih rentang usia" : "Tambahkan profil anak!"}
+        </Text>
         <Text style={styles.text}>
-          Untuk memulai, mari buat satu profil anak terlebih dahulu.
+          {chooseAge
+            ? `Pilhlah kategori usia agar mendapatkan konten yang relevan dengan ${anak.nama}`
+            : `Untuk memulai, mari buat satu profil anak terlebih dahulu.!`}
         </Text>
       </View>
-      <View style={styles.form}>
-        <TextInput style={styles.input} placeholder="Nama anak" />
-        <Button variant="secondary">Lanjut</Button>
-      </View>
+      {chooseAge ? (
+        <View style={styles.form}>
+          <TextInput
+            style={styles.input}
+            placeholder="Berapa usia anakmu?"
+            onChangeText={inputAnakHandler.bind(null, "usia")}
+          />
+          <Button
+            variant="primary"
+            onPress={() => console.log("selesai!", anak.nama, anak.usia)}
+          >
+            Selesai!
+          </Button>
+        </View>
+      ) : (
+        <View style={styles.form}>
+          <TextInput
+            style={styles.input}
+            placeholder="Nama anak"
+            onChangeText={inputAnakHandler.bind(null, "nama")}
+          />
+          <Button variant="secondary" onPress={goToAgeOptions}>
+            Lanjut
+          </Button>
+        </View>
+      )}
     </LinearGradient>
   );
 };
