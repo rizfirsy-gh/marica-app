@@ -4,7 +4,7 @@ import { Image, Pressable, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text } from "react-native";
 import Button from "../components/buttons/Button";
-import ChooseAge from "../components/chooseAge/chooseAge";
+import AgeCategories from "../components/forms/AgeCategories";
 
 const Signup = ({ navigation }) => {
   const [anak, setAnak] = React.useState({
@@ -58,7 +58,7 @@ const Signup = ({ navigation }) => {
       {chooseAge ? (
         <View style={styles.form}>
           {/* TODO finish the age option */}
-          <ChooseAge />
+          <AgeCategories />
           <Button
             variant="primary"
             onPress={() => {

@@ -48,7 +48,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerMode: "screen" }}>
         {/* //TODO: do custom headers for each screen */}
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Welcome"
           component={Welcome}
           options={{ headerLeft: () => null, headerTitle: () => null }}
@@ -61,7 +61,7 @@ export default function App() {
             headerLeft: () => null,
             headerTitle: () => null,
           }}
-        /> */}
+        />
         <Stack.Screen
           name="TermCondition"
           component={TermCondition}

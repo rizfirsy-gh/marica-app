@@ -12,6 +12,7 @@ const Signup = ({ navigation }) => {
     console.log("email", email);
     setIsAuthenticating(true);
     await userRegistration();
+    navigation.navigate("TermCondition");
     setIsAuthenticating(false);
   };
 
