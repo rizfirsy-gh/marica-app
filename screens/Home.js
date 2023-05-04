@@ -1,8 +1,19 @@
-import React from "react";
-import { Text } from "react-native";
+import * as React from "react";
+import { Pressable, Text, View } from "react-native";
+import { Colors } from "../constant/styles";
+import { ScrollView } from "react-native-gesture-handler";
+import Button from "../components/buttons/Button";
 
-const Home = () => {
-  return <Text>Home</Text>;
-};
-
-export default Home;
+export default function Home({ navigation }) {
+  return (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text>s</Text>
+    </View>
+  );
+}

@@ -4,31 +4,50 @@ import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { Text, View, Button, Animated } from "react-native";
 import Welcome from "./screens/Welcome";
-import Signup from "./screens/Signup";
 import Home from "./screens/Home";
+import Signup from "./screens/Signup";
+import Musik from "./screens/Musik";
+import Aktifitas from "./screens/Aktifitas";
+import Cerita from "./screens/Cerita";
 import { StatusBar } from "expo-status-bar";
 import { createStackNavigator } from "@react-navigation/stack";
 import TermCondition from "./screens/TermCondition";
 import BuatAkunAnak from "./screens/BuatAkunAnak";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-const forFade = ({ current, next }) => {
-  const opacity = Animated.add(
-    current.progress,
-    next ? next.progress : 0
-  ).interpolate({
-    inputRange: [0, 1, 2],
-    outputRange: [0, 1, 0],
-  });
+// const forFade = ({ current, next }) => {
+//   const opacity = Animated.add(
+//     current.progress,
+//     next ? next.progress : 0
+//   ).interpolate({
+//     inputRange: [0, 1, 2],
+//     outputRange: [0, 1, 0],
+//   });
 
-  return {
-    leftButtonStyle: { opacity },
-    rightButtonStyle: { opacity },
-    titleStyle: { opacity },
-    backgroundStyle: { opacity },
-  };
-};
+//   return {
+//     leftButtonStyle: { opacity },
+//     rightButtonStyle: { opacity },
+//     titleStyle: { opacity },
+//     backgroundStyle: { opacity },
+//   };
+// };
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
+
+export function HomeScreen() {
+  return (
+    <Tab.Navigator
+      initialRouteName="HomeScreen"
+      screenOptions={{ header: () => null }}
+    >
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Cerita" component={Cerita} />
+      <Tab.Screen name="Musik" component={Musik} />
+      <Tab.Screen name="Aktifitas" component={Aktifitas} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -57,7 +76,7 @@ export default function App() {
           name="Signup"
           component={Signup}
           options={{
-            headerStyleInterpolator: forFade,
+            // headerStyleInterpolator: forFade,
             headerLeft: () => null,
             headerTitle: () => null,
           }}
@@ -66,7 +85,7 @@ export default function App() {
           name="TermCondition"
           component={TermCondition}
           options={{
-            headerStyleInterpolator: forFade,
+            // headerStyleInterpolator: forFade,
             headerLeft: () => null,
             headerTitle: () => null,
           }}
@@ -76,15 +95,15 @@ export default function App() {
           component={BuatAkunAnak}
           options={{
             header: () => null,
-            headerStyleInterpolator: forFade,
+            // headerStyleInterpolator: forFade,
           }}
         />
         <Stack.Screen
-          name="Home"
-          component={Home}
+          name="HomeScreen"
+          component={HomeScreen}
           options={{
             header: () => null,
-            headerStyleInterpolator: forFade,
+            // headerStyleInterpolator: forFade,
           }}
         />
       </Stack.Navigator>

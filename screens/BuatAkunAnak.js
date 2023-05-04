@@ -63,7 +63,7 @@ const Signup = ({ navigation }) => {
             variant="primary"
             onPress={() => {
               console.log("selesai!", anak.nama, anak.usia);
-              navigation.navigate("Home");
+              navigation.navigate("HomeScreen");
             }}
           >
             Selesai!

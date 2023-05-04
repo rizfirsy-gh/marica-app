@@ -11,7 +11,7 @@ const Signup = ({ navigation }) => {
   const registrationHandler = async ({ email, password }) => {
     console.log("email", email);
     setIsAuthenticating(true);
-    await userRegistration();
+    // await userRegistration();
     navigation.navigate("TermCondition");
     setIsAuthenticating(false);
   };
