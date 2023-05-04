@@ -1,8 +1,10 @@
 import React from "react";
-import { Image, TextInput } from "react-native";
+import { Colors } from "../constant/styles";
+import { Image, Pressable, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text } from "react-native";
 import Button from "../components/buttons/Button";
+import ChooseAge from "../components/chooseAge/chooseAge";
 
 const Signup = ({ navigation }) => {
   const [anak, setAnak] = React.useState({
@@ -12,7 +14,7 @@ const Signup = ({ navigation }) => {
   const [chooseAge, setChooseAge] = React.useState(false);
   function goToAgeOptions() {
     setChooseAge(true);
-    console.log("choose age");
+    console.log(anak);
   }
 
   function inputAnakHandler(identifier, userInput) {
@@ -55,16 +57,8 @@ const Signup = ({ navigation }) => {
       </View>
       {chooseAge ? (
         <View style={styles.form}>
-          //TODO finish the age option
-          <TextInput
-            style={styles.input}
-            placeholder={`Berapa usia ${
-              anak.nama !== "" ? anak.nama.toLowerCase() : "anakmu"
-            }?`}
-            onChangeText={inputAnakHandler.bind(null, "usia")}
-            inputMode="numeric"
-            maxLength={1}
-          />
+          {/* TODO finish the age option */}
+          <ChooseAge />
           <Button
             variant="primary"
             onPress={() => {
@@ -114,6 +108,8 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 2,
+    fontFamily: "Nunito-Medium",
+    color: Colors.slate500,
     borderColor: Colors.slate400,
     paddingVertical: 12,
     paddingHorizontal: 24,

@@ -1,4 +1,5 @@
 import React from "react";
+import { Colors } from "../../constant/styles";
 import { View, TextInput, StyleSheet, Text } from "react-native";
 import Button from "../buttons/Button";
 
