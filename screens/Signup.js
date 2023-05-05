@@ -1,4 +1,5 @@
 import React from "react";
+import FormikForm from "../components/forms/FormikForm";
 import { Colors } from "../constant/styles";
 import { userRegistration } from "../utils/auth";
 import { Image } from "react-native";
@@ -44,7 +45,9 @@ const Signup = ({ navigation }) => {
         {isAuthenticating ? (
           <Text>Tunggu sebentar...</Text>
         ) : (
-          <RegisterForm onAuthenticate={registrationHandler} />
+          // <RegisterForm onAuthenticate={registrationHandler} />
+
+          <FormikForm />
         )}
       </View>
     </LinearGradient>
