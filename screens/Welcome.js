@@ -9,9 +9,7 @@ import {
   ImageBackground,
   Button as NativeButton,
 } from "react-native";
-import Video from "../components/cards/Video";
 import Button from "../components/buttons/Button";
-import WelcomeCarousel from "../components/carousels/WelcomeCarousel";
 
 const Welcome = ({ navigation }) => {
   return (
@@ -37,9 +35,17 @@ const Welcome = ({ navigation }) => {
         <Text style={styles.text}>
           Media belajar sambil bermain yang relevan untuk anak-anak.
         </Text>
-        {/* this carousel is affecting a ViewPropTypes error */}
-        <WelcomeCarousel />
       </View>
+      <Image
+        source={require("../assets/images/bubu.png")}
+        resizeMode="cover"
+        resizeMethod="resize"
+        style={{
+          width: 350,
+          height: 200,
+          borderRadius: 16,
+        }}
+      />
       <View style={styles.bottom}>
         <Button
           variant={"primary"}
@@ -57,13 +63,12 @@ const styles = StyleSheet.create({
   bgGradient: {
     position: "relative",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     height: "100%",
-    gap: 64,
+    gap: 24,
   },
   top: {
-    flex: 2,
     justifyContent: "flex-end",
     alignItems: "center",
     gap: 8,
@@ -77,7 +82,6 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito-Medium",
   },
   bottom: {
-    flex: 1,
     justifyContent: "flex-start",
     alignItems: "center",
     gap: 8,

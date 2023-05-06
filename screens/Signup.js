@@ -1,11 +1,9 @@
 import React from "react";
 import FormikForm from "../components/forms/FormikForm";
 import { Colors } from "../constant/styles";
-import { userRegistration } from "../utils/auth";
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text } from "react-native";
-import RegisterForm from "../components/forms/RegisterForm";
 
 const Signup = ({ navigation }) => {
   const [isAuthenticating, setIsAuthenticating] = React.useState(false);
@@ -42,13 +40,7 @@ const Signup = ({ navigation }) => {
         </Text>
       </View>
       <View style={styles.formContainer}>
-        {isAuthenticating ? (
-          <Text>Tunggu sebentar...</Text>
-        ) : (
-          // <RegisterForm onAuthenticate={registrationHandler} />
-
-          <FormikForm />
-        )}
+        {isAuthenticating ? <Text>Tunggu sebentar...</Text> : <FormikForm />}
       </View>
     </LinearGradient>
   );
@@ -58,14 +50,14 @@ const styles = StyleSheet.create({
   bgGradient: {
     position: "relative",
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     height: "100%",
-    gap: 64,
+    gap: 24,
   },
   top: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-end",
     alignItems: "center",
     gap: 8,
   },

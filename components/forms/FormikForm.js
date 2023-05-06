@@ -45,7 +45,7 @@ const FormikForm = (props) => (
       >
         <TextInput
           style={styles.input}
-          placeholder="📧 Masukkan nama kamu"
+          placeholder="🧕🏻 Masukkan nama kamu"
           onChangeText={handleChange("nama")}
           onBlur={handleBlur("nama")}
           value={values.nama}
@@ -55,7 +55,7 @@ const FormikForm = (props) => (
         )}
         <TextInput
           style={styles.input}
-          placeholder="📧 Masukkan email u"
+          placeholder="📧 Masukkan email kamu"
           onChangeText={handleChange("email")}
           onBlur={handleBlur("email")}
           value={values.email}
