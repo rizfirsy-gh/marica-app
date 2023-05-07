@@ -3,22 +3,30 @@ import { Colors } from "../constant/styles";
 import Button from "../components/buttons/Button";
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 const TermCondition = ({ navigation }) => {
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
-      <Image
-        source={require("../assets/images/background.png")}
-        resizeMode="cover"
-        resizeMethod="resize"
+      <View
         style={{
           position: "absolute",
           bottom: 0,
-          width: "100%",
+          flex: 1,
         }}
-      />
+      >
+        <Image
+          source={require("../assets/images/background.png")}
+          resizeMode="stretch"
+          style={{
+            width: windowWidth,
+            height: 300,
+          }}
+        />
+      </View>
       <View style={styles.termConditionContainer}>
         <ScrollView style={styles.termConditionText}>
           <Text style={styles.text}>
@@ -62,6 +70,7 @@ const styles = StyleSheet.create({
     padding: 16,
     flex: 1,
     gap: 16,
+    marginTop: 72,
   },
   termConditionText: {
     padding: 16,

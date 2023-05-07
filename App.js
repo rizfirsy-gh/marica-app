@@ -71,7 +71,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ header: () => null }}>
         {/* //TODO: do custom headers for each screen */}
-        {/* <Stack.Screen
+        <Stack.Screen
           name="Welcome"
           component={Welcome}
           options={{ headerLeft: () => null, headerTitle: () => null }}
@@ -101,13 +101,12 @@ export default function App() {
             header: () => null,
             // headerStyleInterpolator: forFade,
           }}
-        /> */}
+        />
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={{
             header: () => null,
-            // headerStyleInterpolator: forFade,
           }}
         />
       </Stack.Navigator>

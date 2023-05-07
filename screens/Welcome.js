@@ -8,22 +8,31 @@ import {
   Image,
   ImageBackground,
   Button as NativeButton,
+  Dimensions,
 } from "react-native";
 import Button from "../components/buttons/Button";
 
 const Welcome = ({ navigation }) => {
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
-      <Image
-        source={require("../assets/images/background.png")}
-        resizeMode="cover"
-        resizeMethod="resize"
+      <View
         style={{
           position: "absolute",
           bottom: 0,
-          width: "100%",
+          flex: 1,
         }}
-      />
+      >
+        <Image
+          source={require("../assets/images/background.png")}
+          resizeMode="stretch"
+          style={{
+            width: windowWidth,
+            height: 300,
+          }}
+        />
+      </View>
       <View style={styles.top}>
         <Image
           source={require("../assets/images/logo.png")}
@@ -85,6 +94,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     gap: 8,
+    paddingHorizontal: 16,
   },
 });
 

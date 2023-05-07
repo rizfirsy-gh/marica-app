@@ -22,8 +22,8 @@ const HeaderProfile = () => {
         <Image
           source={require("../../assets/images/profile.png")}
           style={{
-            width: 50,
-            height: 50,
+            width: 24,
+            height: 24,
           }}
         />
         <Text

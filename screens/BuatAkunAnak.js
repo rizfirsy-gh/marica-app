@@ -2,7 +2,7 @@ import React from "react";
 import { Colors } from "../constant/styles";
 import { Image, Pressable, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Dimensions } from "react-native";
 import Button from "../components/buttons/Button";
 import AgeCategories from "../components/forms/AgeCategories";
 
@@ -26,18 +26,27 @@ const Signup = ({ navigation }) => {
     });
   }
 
+  const windowWidth = Dimensions.get("window").width;
+  const windowHeight = Dimensions.get("window").height;
+
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
-      <Image
-        source={require("../assets/images/background.png")}
-        resizeMode="cover"
-        resizeMethod="resize"
+      <View
         style={{
           position: "absolute",
           bottom: 0,
-          width: "100%",
+          flex: 1,
         }}
-      />
+      >
+        <Image
+          source={require("../assets/images/background.png")}
+          resizeMode="stretch"
+          style={{
+            width: windowWidth,
+            height: 300,
+          }}
+        />
+      </View>
       <View style={styles.top}>
         <Image
           source={require("../assets/images/logo.png")}
