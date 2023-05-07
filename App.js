@@ -1,5 +1,4 @@
 import "react-native-gesture-handler";
-
 import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { Text, View, Button, Animated } from "react-native";
@@ -14,7 +13,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import TermCondition from "./screens/TermCondition";
 import BuatAkunAnak from "./screens/BuatAkunAnak";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
+import FormikForm from "./components/forms/FormikForm";
+import TabNavigation from "./components/widgets/TabNavigation";
+import HeaderProfile from "./components/widgets/HeaderProfile";
 // const forFade = ({ current, next }) => {
 //   const opacity = Animated.add(
 //     current.progress,
@@ -37,11 +38,14 @@ const Tab = createBottomTabNavigator();
 
 export function HomeScreen() {
   return (
-    <Tab.Navigator
-      initialRouteName="HomeScreen"
-      screenOptions={{ header: () => null }}
-    >
-      <Tab.Screen name="Home" component={Home} />
+    <Tab.Navigator initialRouteName="HomeScreen" tabBar={TabNavigation}>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          header: HeaderProfile,
+        }}
+      />
       <Tab.Screen name="Cerita" component={Cerita} />
       <Tab.Screen name="Musik" component={Musik} />
       <Tab.Screen name="Aktifitas" component={Aktifitas} />
