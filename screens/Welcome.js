@@ -11,6 +11,7 @@ import {
   Dimensions,
 } from "react-native";
 import Button from "../components/buttons/Button";
+import { SuccessModalAlert } from "../components/cards/ModalAlert";
 
 const Welcome = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
@@ -44,6 +45,7 @@ const Welcome = ({ navigation }) => {
         <Text style={styles.text}>
           Media belajar sambil bermain yang relevan untuk anak-anak.
         </Text>
+        <SuccessModalAlert message="Berhasil buat akun!"a />
       </View>
       <Image
         source={require("../assets/images/bubu.png")}
