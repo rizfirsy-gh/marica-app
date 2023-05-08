@@ -18,19 +18,20 @@ const SignupSchema = yup.object().shape({
     .required("Password perlu dibuat."),
 });
 
-const FormikForm = ({ onSubmit }) => (
+const FormikForm = ({ signupHandler }) => (
   <Formik
     initialValues={{ nama: "", email: "", password: "" }}
     validationSchema={SignupSchema}
     onSubmit={async (values) => {
       try {
-        onSubmit();
         const response = await axios.post(
           "https://api.marica.id/api/v1/user",
           values
         );
         console.log(response.data);
+
         // Add your success logic here
+        signupHandler();
       } catch (error) {
         console.error(error.message);
         // Add your error handling logic here

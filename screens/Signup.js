@@ -18,7 +18,7 @@ const Signup = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
 
-  const submitHandler = () => {
+  const signupHandler = () => {
     navigation.navigate("TermCondition");
   };
 
@@ -56,7 +56,7 @@ const Signup = ({ navigation }) => {
         {isAuthenticating ? (
           <Text>Tunggu sebentar...</Text>
         ) : (
-          <FormikForm onSubmit={submitHandler} />
+          <FormikForm signupHandler={signupHandler} />
         )}
       </View>
     </LinearGradient>

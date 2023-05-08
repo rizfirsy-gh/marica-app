@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 import { Colors } from "../../constant/styles";
 
-const TabNavigation = () => {
+const TabNavigation = ({ navigation }) => {
   return (
     <View
       style={{
@@ -31,20 +31,22 @@ const TabNavigation = () => {
           padding: 16,
         }}
       >
-        <Image
-          source={require("../../assets/icons/home.png")}
-          style={{
-            width: 32,
-            height: 32,
-          }}
-        />
-        <Text
-          style={{
-            color: Colors.cyan800,
-          }}
-        >
-          Home
-        </Text>
+        <Pressable onPress={() => navigation.navigate("Home")}>
+          <Image
+            source={require("../../assets/icons/home.png")}
+            style={{
+              width: 32,
+              height: 32,
+            }}
+          />
+          <Text
+            style={{
+              color: Colors.cyan800,
+            }}
+          >
+            Home
+          </Text>
+        </Pressable>
       </View>
       <View
         style={{
@@ -52,20 +54,22 @@ const TabNavigation = () => {
           alignItems: "center",
         }}
       >
-        <Image
-          source={require("../../assets/icons/cerita.png")}
-          style={{
-            width: 36,
-            height: 36,
-          }}
-        />
-        <Text
-          style={{
-            color: Colors.slate400,
-          }}
-        >
-          Cerita
-        </Text>
+        <Pressable onPress={() => navigation.navigate("Cerita")}>
+          <Image
+            source={require("../../assets/icons/cerita.png")}
+            style={{
+              width: 36,
+              height: 36,
+            }}
+          />
+          <Text
+            style={{
+              color: Colors.slate400,
+            }}
+          >
+            Cerita
+          </Text>
+        </Pressable>
       </View>
       <View
         style={{
@@ -73,20 +77,22 @@ const TabNavigation = () => {
           alignItems: "center",
         }}
       >
-        <Image
-          source={require("../../assets/icons/musik.png")}
-          style={{
-            width: 30,
-            height: 30,
-          }}
-        />
-        <Text
-          style={{
-            color: Colors.slate400,
-          }}
-        >
-          Musik
-        </Text>
+        <Pressable onPress={() => navigation.navigate("Musik")}>
+          <Image
+            source={require("../../assets/icons/musik.png")}
+            style={{
+              width: 30,
+              height: 30,
+            }}
+          />
+          <Text
+            style={{
+              color: Colors.slate400,
+            }}
+          >
+            Musik
+          </Text>
+        </Pressable>
       </View>
       <View
         style={{
@@ -94,20 +100,22 @@ const TabNavigation = () => {
           alignItems: "center",
         }}
       >
-        <Image
-          source={require("../../assets/icons/aktifitas.png")}
-          style={{
-            width: 28,
-            height: 28,
-          }}
-        />
-        <Text
-          style={{
-            color: Colors.slate400,
-          }}
-        >
-          Aktifitas
-        </Text>
+        <Pressable onPress={() => navigation.navigate("Aktifitas")}>
+          <Image
+            source={require("../../assets/icons/aktifitas.png")}
+            style={{
+              width: 28,
+              height: 28,
+            }}
+          />
+          <Text
+            style={{
+              color: Colors.slate400,
+            }}
+          >
+            Aktifitas
+          </Text>
+        </Pressable>
       </View>
     </View>
   );

@@ -36,9 +36,12 @@ import HeaderProfile from "./components/widgets/HeaderProfile";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-export function HomeScreen() {
+export function HomeScreen({ navigation }) {
   return (
-    <Tab.Navigator initialRouteName="HomeScreen" tabBar={TabNavigation}>
+    <Tab.Navigator
+      initialRouteName="HomeScreen"
+      tabBar={TabNavigation.bind(navigation)}
+    >
       <Tab.Screen
         name="Home"
         component={Home}
@@ -46,9 +49,27 @@ export function HomeScreen() {
           header: HeaderProfile,
         }}
       />
-      <Tab.Screen name="Cerita" component={Cerita} />
-      <Tab.Screen name="Musik" component={Musik} />
-      <Tab.Screen name="Aktifitas" component={Aktifitas} />
+      <Tab.Screen
+        name="Cerita"
+        component={Cerita}
+        options={{
+          header: HeaderProfile,
+        }}
+      />
+      <Tab.Screen
+        name="Musik"
+        component={Musik}
+        options={{
+          header: HeaderProfile,
+        }}
+      />
+      <Tab.Screen
+        name="Aktifitas"
+        component={Aktifitas}
+        options={{
+          header: HeaderProfile,
+        }}
+      />
     </Tab.Navigator>
   );
 }
