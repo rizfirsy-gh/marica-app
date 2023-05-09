@@ -27,7 +27,7 @@ const FormikForm = ({ signupHandler }) => {
     <Formik
       initialValues={{ nama: "", email: "", password: "" }}
       validationSchema={SignupSchema}
-      onSubmit={(values) => dispatch(signup)}
+      onSubmit={(values) => dispatch(signup(values))}
     >
       {({
         handleChange,
