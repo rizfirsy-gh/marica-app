@@ -1,6 +1,7 @@
 import React from "react";
+import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { signup } from "../redux/slices/user";
+import { setAuth, setLoading, setUserInfo } from "../redux/slices/user";
 import FormikForm from "../components/forms/FormikForm";
 import { Colors } from "../constant/styles";
 import { Image } from "react-native";
@@ -16,9 +17,22 @@ const Signup = ({ navigation }) => {
     (state) => state.user
   );
 
-  const signupHandler = () => {
-    dispatch(signup);
-    console.log("authentication", authentication);
+  const signupHandler = async (values) => {
+    dispatch(setLoading(true));
+    await axios
+      .post("https://api.marica.id/api/v1/user", values)
+      .then((res) => {
+        dispatch(setUserInfo(res.data.data));
+        navigation.navigate("TermCondition");
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+
+    // if success
+    // dispatch(setAuth({ status: data.status }));
+    dispatch(setLoading(false));
+    // dispatch(setUserInfo(data.data));
   };
 
   return (

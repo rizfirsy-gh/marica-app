@@ -1,13 +1,9 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { signup } from "../../redux/actions/user-action";
-
 import { Colors } from "../../constant/styles";
 import { TextInput, View, Text } from "react-native";
 import Button from "../buttons/Button";
 import { Formik } from "formik";
 import * as yup from "yup";
-import axios from "axios";
 
 const SignupSchema = yup.object().shape({
   nama: yup.string().required("Nama perlu dimasukkan"),
@@ -22,12 +18,11 @@ const SignupSchema = yup.object().shape({
 });
 
 const FormikForm = ({ signupHandler }) => {
-  const dispatch = useDispatch();
   return (
     <Formik
       initialValues={{ nama: "", email: "", password: "" }}
       validationSchema={SignupSchema}
-      onSubmit={(values) => dispatch(signup(values))}
+      onSubmit={async (values) => signupHandler(values)}
     >
       {({
         handleChange,
