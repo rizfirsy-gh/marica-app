@@ -5,8 +5,7 @@ import Button from "../buttons/Button";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-const SignupSchema = yup.object().shape({
-  nama: yup.string().required("Nama perlu dimasukkan"),
+const LoginSchema = yup.object().shape({
   email: yup
     .string()
     .email("Email kurang valid")
@@ -17,12 +16,12 @@ const SignupSchema = yup.object().shape({
     .required("Password perlu dibuat."),
 });
 
-const FormikForm = ({ signupHandler }) => {
+const LoginForm = ({ loginHandler, switchForm }) => {
   return (
     <Formik
-      initialValues={{ nama: "", email: "", password: "" }}
-      validationSchema={SignupSchema}
-      onSubmit={async (values) => signupHandler(values)}
+      initialValues={{ email: "", password: "" }}
+      validationSchema={LoginSchema}
+      onSubmit={async (values) => loginHandler(values)}
     >
       {({
         handleChange,
@@ -40,17 +39,7 @@ const FormikForm = ({ signupHandler }) => {
         >
           <TextInput
             style={styles.input}
-            placeholder="🧕🏻 Masukkan nama kamu"
-            onChangeText={handleChange("nama")}
-            onBlur={handleBlur("nama")}
-            value={values.nama}
-          />
-          {errors.nama && touched.nama && (
-            <Text style={styles.error}>{errors.nama}</Text>
-          )}
-          <TextInput
-            style={styles.input}
-            placeholder="📧 Masukkan email kamu"
+            placeholder="📧 Masukkan email"
             onChangeText={handleChange("email")}
             onBlur={handleBlur("email")}
             value={values.email}
@@ -60,7 +49,8 @@ const FormikForm = ({ signupHandler }) => {
           )}
           <TextInput
             style={styles.input}
-            placeholder="🔑 Buat password"
+            textContentType="password"
+            placeholder="🔑 Masukkan password"
             onChangeText={handleChange("password")}
             onBlur={handleBlur("password")}
             value={values.password}
@@ -69,6 +59,9 @@ const FormikForm = ({ signupHandler }) => {
             <Text style={styles.error}>{errors.password}</Text>
           )}
           <Button onPress={handleSubmit} variant="primary">
+            Masuk
+          </Button>
+          <Button onPress={() => switchForm()} variant="secondary">
             Buat akun
           </Button>
         </View>
@@ -96,4 +89,4 @@ const styles = {
   },
 };
 
-export default FormikForm;
+export default LoginForm;

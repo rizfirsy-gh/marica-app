@@ -2,13 +2,15 @@ import React from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setAuth, setLoading, setUserInfo } from "../redux/slices/user";
-import FormikForm from "../components/forms/FormikForm";
+import SignupForm from "../components/forms/SignupForm";
 import { Colors } from "../constant/styles";
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text, Dimensions } from "react-native";
+import LoginForm from "../components/forms/LoginForm";
 
 const Signup = ({ navigation }) => {
+  const [login, setLogin] = React.useState(false);
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
 
@@ -16,6 +18,24 @@ const Signup = ({ navigation }) => {
   const { isLoading, userInfo, authentication } = useSelector(
     (state) => state.user
   );
+
+  const loginHandler = async (values) => {
+    dispatch(setLoading(true));
+    await axios
+      .post("https://api.marica.id/api/v1/user", values)
+      .then((res) => {
+        dispatch(setUserInfo(res.data.data));
+        navigation.navigate("TermCondition");
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
+
+    // if success
+    // dispatch(setAuth({ status: data.status }));
+    dispatch(setLoading(false));
+    // dispatch(setUserInfo(data.data));
+  };
 
   const signupHandler = async (values) => {
     dispatch(setLoading(true));
@@ -66,11 +86,25 @@ const Signup = ({ navigation }) => {
         </Text>
       </View>
       <View style={styles.formContainer}>
-        {isLoading ? (
+        {login ? (
+          <LoginForm
+            loginHandler={loginHandler}
+            switchForm={() => setLogin(false)}
+          />
+        ) : (
+          <SignupForm
+            signupHandler={signupHandler}
+            switchForm={() => setLogin(true)}
+          />
+        )}
+        {/* {isLoading ? (
           <Text>Tunggu sebentar...</Text>
         ) : (
-          <FormikForm signupHandler={signupHandler} />
-        )}
+          <SignupForm
+            signupHandler={signupHandler}
+            switchForm={() => setLogin(true)}
+          />
+        )} */}
       </View>
     </LinearGradient>
   );
