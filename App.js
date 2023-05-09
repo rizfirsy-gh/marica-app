@@ -1,7 +1,8 @@
 import "react-native-gesture-handler";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
-import { Text, View, Button, Animated } from "react-native";
 import Welcome from "./screens/Welcome";
 import Home from "./screens/Home";
 import Signup from "./screens/Signup";
@@ -13,7 +14,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import TermCondition from "./screens/TermCondition";
 import BuatAkunAnak from "./screens/BuatAkunAnak";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import FormikForm from "./components/forms/FormikForm";
 import TabNavigation from "./components/widgets/TabNavigation";
 import HeaderProfile from "./components/widgets/HeaderProfile";
 // const forFade = ({ current, next }) => {
@@ -89,48 +89,53 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ header: () => null }}>
-        {/* //TODO: do custom headers for each screen */}
-        <Stack.Screen
-          name="Welcome"
-          component={Welcome}
-          options={{ headerLeft: () => null, headerTitle: () => null }}
-        />
-        <Stack.Screen
-          name="Signup"
-          component={Signup}
-          options={{
-            // headerStyleInterpolator: forFade,
-            headerLeft: () => null,
-            headerTitle: () => null,
-          }}
-        />
-        <Stack.Screen
-          name="TermCondition"
-          component={TermCondition}
-          options={{
-            // headerStyleInterpolator: forFade,
-            headerLeft: () => null,
-            headerTitle: () => null,
-          }}
-        />
-        <Stack.Screen
-          name="Buat akun anak"
-          component={BuatAkunAnak}
-          options={{
-            header: () => null,
-            // headerStyleInterpolator: forFade,
-          }}
-        />
-        <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{
-            header: () => null,
-          }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <StatusBar style="auto" />
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{ header: () => null }}>
+            {/* //TODO: do custom headers for each screen */}
+            <Stack.Screen
+              name="Welcome"
+              component={Welcome}
+              options={{ headerLeft: () => null, headerTitle: () => null }}
+            />
+            <Stack.Screen
+              name="Signup"
+              component={Signup}
+              options={{
+                // headerStyleInterpolator: forFade,
+                headerLeft: () => null,
+                headerTitle: () => null,
+              }}
+            />
+            <Stack.Screen
+              name="TermCondition"
+              component={TermCondition}
+              options={{
+                // headerStyleInterpolator: forFade,
+                headerLeft: () => null,
+                headerTitle: () => null,
+              }}
+            />
+            <Stack.Screen
+              name="Buat akun anak"
+              component={BuatAkunAnak}
+              options={{
+                header: () => null,
+                // headerStyleInterpolator: forFade,
+              }}
+            />
+            <Stack.Screen
+              name="HomeScreen"
+              component={HomeScreen}
+              options={{
+                header: () => null,
+              }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Provider>
+    </>
   );
 }

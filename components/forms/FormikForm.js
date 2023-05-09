@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { signup } from "../../redux/actions/user-action";
+
 import { Colors } from "../../constant/styles";
 import { TextInput, View, Text } from "react-native";
 import Button from "../buttons/Button";
@@ -18,70 +21,66 @@ const SignupSchema = yup.object().shape({
     .required("Password perlu dibuat."),
 });
 
-const FormikForm = ({ signupHandler }) => (
-  <Formik
-    initialValues={{ nama: "", email: "", password: "" }}
-    validationSchema={SignupSchema}
-    onSubmit={async (values) => {
-      try {
-        const response = await axios.post(
-          "https://api.marica.id/api/v1/user",
-          values
-        );
-        console.log(response.data);
-
-        // Add your success logic here
-        signupHandler();
-      } catch (error) {
-        console.error(error.message);
-        // Add your error handling logic here
-      }
-    }}
-  >
-    {({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => (
-      <View
-        style={{
-          flex: 1,
-          gap: 8,
-        }}
-      >
-        <TextInput
-          style={styles.input}
-          placeholder="🧕🏻 Masukkan nama kamu"
-          onChangeText={handleChange("nama")}
-          onBlur={handleBlur("nama")}
-          value={values.nama}
-        />
-        {errors.nama && touched.nama && (
-          <Text style={styles.error}>{errors.nama}</Text>
-        )}
-        <TextInput
-          style={styles.input}
-          placeholder="📧 Masukkan email kamu"
-          onChangeText={handleChange("email")}
-          onBlur={handleBlur("email")}
-          value={values.email}
-        />
-        {errors.email && touched.email && (
-          <Text style={styles.error}>{errors.email}</Text>
-        )}
-        <TextInput
-          style={styles.input}
-          placeholder="🔑 Buat password"
-          onChangeText={handleChange("password")}
-          onBlur={handleBlur("password")}
-          value={values.password}
-        />
-        {errors.password && touched.password && (
-          <Text style={styles.error}>{errors.password}</Text>
-        )}
-        <Button onPress={handleSubmit} variant="primary">
-          Buat akun
-        </Button>
-      </View>
-    )}
-  </Formik>
-);
+const FormikForm = ({ signupHandler }) => {
+  const dispatch = useDispatch();
+  return (
+    <Formik
+      initialValues={{ nama: "", email: "", password: "" }}
+      validationSchema={SignupSchema}
+      onSubmit={(values) => dispatch(signup)}
+    >
+      {({
+        handleChange,
+        handleBlur,
+        handleSubmit,
+        values,
+        touched,
+        errors,
+      }) => (
+        <View
+          style={{
+            flex: 1,
+            gap: 8,
+          }}
+        >
+          <TextInput
+            style={styles.input}
+            placeholder="🧕🏻 Masukkan nama kamu"
+            onChangeText={handleChange("nama")}
+            onBlur={handleBlur("nama")}
+            value={values.nama}
+          />
+          {errors.nama && touched.nama && (
+            <Text style={styles.error}>{errors.nama}</Text>
+          )}
+          <TextInput
+            style={styles.input}
+            placeholder="📧 Masukkan email kamu"
+            onChangeText={handleChange("email")}
+            onBlur={handleBlur("email")}
+            value={values.email}
+          />
+          {errors.email && touched.email && (
+            <Text style={styles.error}>{errors.email}</Text>
+          )}
+          <TextInput
+            style={styles.input}
+            placeholder="🔑 Buat password"
+            onChangeText={handleChange("password")}
+            onBlur={handleBlur("password")}
+            value={values.password}
+          />
+          {errors.password && touched.password && (
+            <Text style={styles.error}>{errors.password}</Text>
+          )}
+          <Button onPress={handleSubmit} variant="primary">
+            Buat akun
+          </Button>
+        </View>
+      )}
+    </Formik>
+  );
+};
 
 const styles = {
   input: {

@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { signup } from "../redux/slices/user";
 import FormikForm from "../components/forms/FormikForm";
 import { Colors } from "../constant/styles";
 import { Image } from "react-native";
@@ -6,20 +8,17 @@ import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text, Dimensions } from "react-native";
 
 const Signup = ({ navigation }) => {
-  const [isAuthenticating, setIsAuthenticating] = React.useState(false);
-  const registrationHandler = async ({ email, password }) => {
-    console.log("email", email);
-    setIsAuthenticating(true);
-    // await userRegistration();
-    navigation.navigate("TermCondition");
-    setIsAuthenticating(false);
-  };
-
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
 
+  const dispatch = useDispatch();
+  const { isLoading, userInfo, authentication } = useSelector(
+    (state) => state.user
+  );
+
   const signupHandler = () => {
-    navigation.navigate("TermCondition");
+    dispatch(signup);
+    console.log("authentication", authentication);
   };
 
   return (
@@ -53,7 +52,7 @@ const Signup = ({ navigation }) => {
         </Text>
       </View>
       <View style={styles.formContainer}>
-        {isAuthenticating ? (
+        {isLoading ? (
           <Text>Tunggu sebentar...</Text>
         ) : (
           <FormikForm signupHandler={signupHandler} />
