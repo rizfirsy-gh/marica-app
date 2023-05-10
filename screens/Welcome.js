@@ -45,7 +45,6 @@ const Welcome = ({ navigation }) => {
         <Text style={styles.text}>
           Media belajar sambil bermain yang relevan untuk anak-anak.
         </Text>
-        <SuccessModalAlert message="Berhasil buat akun!"a />
       </View>
       <Image
         source={require("../assets/images/bubu.png")}
@@ -64,7 +63,12 @@ const Welcome = ({ navigation }) => {
         >
           Buat akun baru
         </Button>
-        <Button variant={"tertiary"}>Sudah punya akun</Button>
+        <Button
+          variant={"secondary"}
+          onPress={() => navigation.navigate("Signup")}
+        >
+          Sudah punya akun, masuk
+        </Button>
       </View>
     </LinearGradient>
   );

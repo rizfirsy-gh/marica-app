@@ -20,21 +20,19 @@ const Signup = ({ navigation }) => {
   );
 
   const loginHandler = async (values) => {
+    console.log("login body:", values);
     dispatch(setLoading(true));
     await axios
-      .post("https://api.marica.id/api/v1/user", values)
+      .post("https://api.marica.id/api/v1/user/login", values)
       .then((res) => {
         dispatch(setUserInfo(res.data.data));
-        navigation.navigate("TermCondition");
+        navigation.navigate("Home");
       })
       .catch((err) => {
         console.log(err.response.data);
       });
 
-    // if success
-    // dispatch(setAuth({ status: data.status }));
     dispatch(setLoading(false));
-    // dispatch(setUserInfo(data.data));
   };
 
   const signupHandler = async (values) => {
@@ -49,10 +47,7 @@ const Signup = ({ navigation }) => {
         console.log(err.response.data);
       });
 
-    // if success
-    // dispatch(setAuth({ status: data.status }));
     dispatch(setLoading(false));
-    // dispatch(setUserInfo(data.data));
   };
 
   return (
@@ -97,14 +92,6 @@ const Signup = ({ navigation }) => {
             switchForm={() => setLogin(true)}
           />
         )}
-        {/* {isLoading ? (
-          <Text>Tunggu sebentar...</Text>
-        ) : (
-          <SignupForm
-            signupHandler={signupHandler}
-            switchForm={() => setLogin(true)}
-          />
-        )} */}
       </View>
     </LinearGradient>
   );

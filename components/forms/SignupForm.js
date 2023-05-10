@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Colors } from "../../constant/styles";
 import { TextInput, View, Text } from "react-native";
 import Button from "../buttons/Button";
@@ -18,6 +19,7 @@ const SignupSchema = yup.object().shape({
 });
 
 const SignupForm = ({ signupHandler, switchForm }) => {
+  const { isLoading } = useSelector((state) => state.user);
   return (
     <Formik
       initialValues={{ nama: "", email: "", password: "" }}
@@ -68,9 +70,24 @@ const SignupForm = ({ signupHandler, switchForm }) => {
           {errors.password && touched.password && (
             <Text style={styles.error}>{errors.password}</Text>
           )}
-          <Button onPress={handleSubmit} variant="primary">
-            Buat akun
-          </Button>
+          {isLoading ? (
+            <Text
+              style={{
+                color: Colors.slate600,
+                textAlign: "center",
+                padding: 16,
+                backgroundColor: Colors.cyan300,
+                borderRadius: 16,
+                marginVertical: 10,
+              }}
+            >
+              Tunggu sebentar...
+            </Text>
+          ) : (
+            <Button onPress={handleSubmit} variant="primary">
+              Buat akun
+            </Button>
+          )}
           <Button onPress={() => switchForm()} variant="secondary">
             Masuk
           </Button>
