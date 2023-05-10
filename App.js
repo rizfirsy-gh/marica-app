@@ -16,6 +16,8 @@ import BuatAkunAnak from "./screens/BuatAkunAnak";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabNavigation from "./components/widgets/TabNavigation";
 import HeaderProfile from "./components/widgets/HeaderProfile";
+import Profile from "./screens/Profile";
+import HeaderBack from "./components/widgets/HeaderBack";
 // const forFade = ({ current, next }) => {
 //   const opacity = Animated.add(
 //     current.progress,
@@ -41,35 +43,14 @@ export function HomeScreen({ navigation }) {
     <Tab.Navigator
       initialRouteName="HomeScreen"
       tabBar={TabNavigation.bind(navigation)}
+      screenOptions={{
+        header: HeaderProfile.bind(navigation),
+      }}
     >
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          header: HeaderProfile,
-        }}
-      />
-      <Tab.Screen
-        name="Cerita"
-        component={Cerita}
-        options={{
-          header: HeaderProfile,
-        }}
-      />
-      <Tab.Screen
-        name="Musik"
-        component={Musik}
-        options={{
-          header: HeaderProfile,
-        }}
-      />
-      <Tab.Screen
-        name="Aktifitas"
-        component={Aktifitas}
-        options={{
-          header: HeaderProfile,
-        }}
-      />
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Cerita" component={Cerita} />
+      <Tab.Screen name="Musik" component={Musik} />
+      <Tab.Screen name="Aktifitas" component={Aktifitas} />
     </Tab.Navigator>
   );
 }
@@ -93,9 +74,9 @@ export default function App() {
       <StatusBar style="auto" />
       <Provider store={store}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ header: () => null }}>
+          <Stack.Navigator>
             {/* //TODO: do custom headers for each screen */}
-            <Stack.Screen
+            {/*<Stack.Screen
               name="Welcome"
               component={Welcome}
               options={{ headerLeft: () => null, headerTitle: () => null }}
@@ -125,12 +106,19 @@ export default function App() {
                 header: () => null,
                 // headerStyleInterpolator: forFade,
               }}
-            />
+            /> */}
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
               options={{
                 header: () => null,
+              }}
+            />
+            <Stack.Screen
+              name="Profile"
+              component={Profile}
+              options={{
+                headerBackTitle: "kembali",
               }}
             />
           </Stack.Navigator>

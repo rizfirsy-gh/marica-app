@@ -2,7 +2,7 @@ import React from "react";
 import { Colors } from "../../constant/styles";
 import { View, Text, Image, Pressable } from "react-native";
 
-const HeaderProfile = ({ navigation }) => {
+const HeaderBack = ({ navigation }) => {
   return (
     <View
       style={{
@@ -41,4 +41,4 @@ const HeaderProfile = ({ navigation }) => {
   );
 };
 
-export default HeaderProfile;
+export default HeaderBack;

@@ -15,7 +15,6 @@ import { SuccessModalAlert } from "../components/cards/ModalAlert";
 
 const Welcome = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
-  const windowHeight = Dimensions.get("window").height;
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
       <View
