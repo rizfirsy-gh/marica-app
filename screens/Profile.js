@@ -1,27 +1,25 @@
 import React from "react";
+import { Formik } from "formik";
 import { LinearGradient } from "expo-linear-gradient";
-import { View, Text, Image, Dimensions } from "react-native";
+import { View, Text, Image, Dimensions, TextInput } from "react-native";
 import { Colors } from "../constant/styles";
-import { TextInput } from "react-native";
 import Button from "../components/buttons/Button";
 
 function randomInteger() {
   return Math.floor(Math.random() * 10);
 }
 
-const number1 = randomInteger();
-const number2 = randomInteger();
-const result = number1 * number2;
-console.log("result", result);
-
 const Profile = () => {
   const [userResult, setUserResult] = React.useState(0);
   const [validate, setValidate] = React.useState(false);
   const windowWidth = Dimensions.get("window").width;
 
-  React.useEffect(() => {}, [userResult]);
+  const number1 = randomInteger();
+  const number2 = randomInteger();
+  const result = number1 * number2;
+  console.log("result", result);
 
-  const submitNumberHandler = () => {
+  const submitNumberHandler = (enteredValue) => {
     userResult === result ? setValidate(true) : setValidate(false);
     console.log(validate);
   };
@@ -78,49 +76,58 @@ const Profile = () => {
               marginVertical: 16,
             }}
           >
-            <Text
+            <View
               style={{
-                fontSize: 24,
-                color: Colors.cyan600,
-                fontFamily: "Nunito-Bold",
+                flexDirection: "row",
+                flex: 1,
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
             >
-              {number1}
-            </Text>
-            <Text
-              style={{
-                fontSize: 24,
-                color: Colors.cyan600,
-                fontFamily: "Nunito-Bold",
-              }}
-            >
-              x
-            </Text>
-            <Text
-              style={{
-                fontSize: 24,
-                color: Colors.cyan600,
-                fontFamily: "Nunito-Bold",
-              }}
-            >
-              {number2}
-            </Text>
-            <Text
-              style={{
-                fontSize: 24,
-                color: Colors.cyan600,
-                fontFamily: "Nunito-Bold",
-              }}
-            >
-              =
-            </Text>
-            <TextInput
+              <Text
+                style={{
+                  fontSize: 24,
+                  color: Colors.cyan600,
+                  fontFamily: "Nunito-Bold",
+                }}
+              >
+                {number1}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 24,
+                  color: Colors.cyan600,
+                  fontFamily: "Nunito-Bold",
+                }}
+              >
+                x
+              </Text>
+              <Text
+                style={{
+                  fontSize: 24,
+                  color: Colors.cyan600,
+                  fontFamily: "Nunito-Bold",
+                }}
+              >
+                {number2}
+              </Text>
+              <Text
+                style={{
+                  fontSize: 24,
+                  color: Colors.cyan600,
+                  fontFamily: "Nunito-Bold",
+                }}
+              >
+                =
+              </Text>
+            </View>
+
+            {/* <TextInput
               placeholder="_  _"
               onChangeText={(input) => {
                 console.log("input", input);
-                setUserResult(input);
+                setUserResult((prev) => (prev = input));
               }}
-              value={userResult}
               style={{
                 borderWidth: 2,
                 borderColor: Colors.slate300,
@@ -132,11 +139,44 @@ const Profile = () => {
                 fontSize: 24,
                 color: Colors.cyan600,
               }}
-            />
+            /> */}
+            <View>
+              <Formik
+                initialValues={{ number: "" }}
+                onSubmit={(values) => console.log(values)}
+              >
+                {({ handleChange, handleBlur, handleSubmit, values }) => (
+                  <View
+                    style={{
+                      flex: 1,
+                    }}
+                  >
+                    <TextInput
+                      placeholder="_ _"
+                      onChangeText={handleChange("number")}
+                      onBlur={handleBlur("number")}
+                      value={values.number}
+                      style={{
+                        borderWidth: 2,
+                        borderColor: Colors.slate300,
+                        borderRadius: 16,
+                        paddingVertical: 16,
+                        paddingHorizontal: 24,
+                        width: 250,
+                        fontFamily: "Nunito-Bold",
+                        fontSize: 24,
+                        color: Colors.cyan600,
+                      }}
+                    />
+                    <Button onPress={handleSubmit} title="Submit" />
+                  </View>
+                )}
+              </Formik>
+            </View>
           </View>
-          <Button variant="primary" onPress={submitNumberHandler}>
+          {/* <Button variant="primary" onPress={submitNumberHandler}>
             Submit
-          </Button>
+          </Button> */}
         </View>
       </View>
     </LinearGradient>
