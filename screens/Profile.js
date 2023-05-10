@@ -1,7 +1,14 @@
 import React from "react";
 import { Formik } from "formik";
 import { LinearGradient } from "expo-linear-gradient";
-import { View, Text, Image, Dimensions, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  TextInput,
+  Pressable,
+} from "react-native";
 import { Colors } from "../constant/styles";
 import Button from "../components/buttons/Button";
 
@@ -9,20 +16,15 @@ function randomInteger() {
   return Math.floor(Math.random() * 10);
 }
 
+const number1 = randomInteger();
+const number2 = randomInteger();
+const result = number1 * number2;
+console.log("result", result);
+
 const Profile = () => {
   const [userResult, setUserResult] = React.useState(0);
   const [validate, setValidate] = React.useState(false);
   const windowWidth = Dimensions.get("window").width;
-
-  const number1 = randomInteger();
-  const number2 = randomInteger();
-  const result = number1 * number2;
-  console.log("result", result);
-
-  const submitNumberHandler = (enteredValue) => {
-    userResult === result ? setValidate(true) : setValidate(false);
-    console.log(validate);
-  };
 
   return (
     <LinearGradient
@@ -56,17 +58,18 @@ const Profile = () => {
           }}
         />
       </View>
-      <View>
-        <Text
-          style={{
-            fontFamily: "Nunito-Medium",
-            color: Colors.slate500,
-          }}
-        >
-          Profil adalah zona khusus orang tua. Berapakah hasil perkalian
-          berikut?
-        </Text>
+
+      {userResult !== result.toString() && (
         <View>
+          <Text
+            style={{
+              fontFamily: "Nunito-Medium",
+              color: Colors.slate500,
+            }}
+          >
+            Profil adalah zona khusus orang tua. Berapakah hasil perkalian
+            berikut?
+          </Text>
           <View
             style={{
               flexDirection: "row",
@@ -79,7 +82,6 @@ const Profile = () => {
             <View
               style={{
                 flexDirection: "row",
-                flex: 1,
                 justifyContent: "space-between",
                 alignItems: "center",
               }}
@@ -121,64 +123,58 @@ const Profile = () => {
                 =
               </Text>
             </View>
-
-            {/* <TextInput
-              placeholder="_  _"
-              onChangeText={(input) => {
-                console.log("input", input);
-                setUserResult((prev) => (prev = input));
+            <Formik
+              initialValues={{ number: "" }}
+              onSubmit={(values) => {
+                setUserResult(values.number);
               }}
-              style={{
-                borderWidth: 2,
-                borderColor: Colors.slate300,
-                borderRadius: 16,
-                width: "70%",
-                paddingVertical: 16,
-                paddingHorizontal: 24,
-                fontFamily: "Nunito-Bold",
-                fontSize: 24,
-                color: Colors.cyan600,
-              }}
-            /> */}
-            <View>
-              <Formik
-                initialValues={{ number: "" }}
-                onSubmit={(values) => console.log(values)}
-              >
-                {({ handleChange, handleBlur, handleSubmit, values }) => (
+            >
+              {({ handleChange, handleBlur, handleSubmit, values }) => (
+                <View style={{ gap: 8 }}>
+                  <TextInput
+                    placeholder="_ _"
+                    onChangeText={handleChange("number")}
+                    onBlur={handleBlur("number")}
+                    value={values.number}
+                    style={{
+                      paddingHorizontal: 24,
+                      paddingVertical: 16,
+                      backgroundColor: "#fff",
+                      width: 250,
+                      borderWidth: 2,
+                      borderColor: Colors.slate300,
+                      borderRadius: 16,
+                    }}
+                  />
                   <View
                     style={{
-                      flex: 1,
+                      borderRadius: 16,
+                      overflow: "hidden",
                     }}
                   >
-                    <TextInput
-                      placeholder="_ _"
-                      onChangeText={handleChange("number")}
-                      onBlur={handleBlur("number")}
-                      value={values.number}
-                      style={{
-                        borderWidth: 2,
-                        borderColor: Colors.slate300,
-                        borderRadius: 16,
-                        paddingVertical: 16,
-                        paddingHorizontal: 24,
-                        width: 250,
-                        fontFamily: "Nunito-Bold",
-                        fontSize: 24,
-                        color: Colors.cyan600,
-                      }}
-                    />
-                    <Button onPress={handleSubmit} title="Submit" />
+                    <Pressable onPress={handleSubmit}>
+                      <LinearGradient colors={["#0891B2", "#22D3EE"]}>
+                        <Text
+                          style={{
+                            fontFamily: "Nunito-Medium",
+                            width: "100%",
+                            paddingVertical: 16,
+                            paddingHorizontal: 24,
+                            color: "#fff",
+                            textAlign: "center",
+                          }}
+                        >
+                          Submit
+                        </Text>
+                      </LinearGradient>
+                    </Pressable>
                   </View>
-                )}
-              </Formik>
-            </View>
+                </View>
+              )}
+            </Formik>
           </View>
-          {/* <Button variant="primary" onPress={submitNumberHandler}>
-            Submit
-          </Button> */}
         </View>
-      </View>
+      )}
     </LinearGradient>
   );
 };
