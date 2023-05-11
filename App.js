@@ -106,21 +106,15 @@ export default function App() {
                 header: () => null,
                 // headerStyleInterpolator: forFade,
               }}
-            />
+            /> */}
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
               options={{
                 header: () => null,
               }}
-            /> */}
-            <Stack.Screen
-              name="Profile"
-              component={Profile}
-              options={{
-                headerBackTitle: "kembali",
-              }}
             />
+            <Stack.Screen name="Profile" component={Profile} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
