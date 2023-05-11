@@ -20,16 +20,18 @@ const Signup = ({ navigation }) => {
   );
 
   const loginHandler = async (values) => {
-    console.log("login body:", values);
     dispatch(setLoading(true));
     await axios
-      .post("https://api.marica.id/api/v1/user/login", values)
+      .post("https://api.marica.id/api/v1/user/login", {
+        identifier: values.email,
+        password: values.password,
+      })
       .then((res) => {
         dispatch(setUserInfo(res.data.data));
-        navigation.navigate("Home");
+        navigation.navigate("HomeScreen");
       })
       .catch((err) => {
-        console.log(err.response.data);
+        console.log(err.response.status);
       });
 
     dispatch(setLoading(false));
