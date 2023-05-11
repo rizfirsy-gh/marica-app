@@ -1,16 +1,8 @@
 import React from "react";
 import { Formik } from "formik";
 import { LinearGradient } from "expo-linear-gradient";
-import {
-  View,
-  Text,
-  Image,
-  Dimensions,
-  TextInput,
-  Pressable,
-} from "react-native";
+import { View, Text, Image, Dimensions, Pressable } from "react-native";
 import { Colors } from "../constant/styles";
-import Button from "../components/buttons/Button";
 
 function randomInteger() {
   return Math.floor(Math.random() * 10);
@@ -58,8 +50,173 @@ const Profile = () => {
           }}
         />
       </View>
-
-      {userResult !== result.toString() && (
+      <View
+        style={{
+          flex: 1,
+          gap: 8,
+        }}
+      >
+        <View
+          style={{
+            width: 350,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: Colors.slate200,
+            borderWidth: 2,
+            borderColor: "#fff",
+            padding: 16,
+            borderRadius: 16,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 16,
+              justifyContent: "flex-start",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              source={require("../assets/images/profile.png")}
+              style={{
+                width: 42,
+                height: 42,
+                backgroundColor: Colors.slate400,
+                borderRadius: 100,
+              }}
+            />
+            <Text
+              style={{
+                fontFamily: "Nunito-Medium",
+                fontSize: 24,
+                color: Colors.slate600,
+              }}
+            >
+              Shinta
+            </Text>
+          </View>
+          <Image
+            source={require("../assets/icons/right-arrow.png")}
+            style={{
+              width: 6,
+              height: 12,
+            }}
+          />
+        </View>
+        <View
+          style={{
+            width: 350,
+            backgroundColor: Colors.slate200,
+            borderWidth: 2,
+            borderColor: "#fff",
+            padding: 16,
+            borderRadius: 16,
+          }}
+        >
+          <Pressable
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 8,
+              paddingVertical: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/icons/invoice.png")}
+              style={{
+                width: 14,
+                height: 18,
+              }}
+            />
+            <Text
+              style={{
+                fontFamily: "Nunito-Medium",
+                color: Colors.slate500,
+                fontSize: 16,
+              }}
+            >
+              Transaksi
+            </Text>
+          </Pressable>
+          <Pressable
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 8,
+              paddingVertical: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/icons/building.png")}
+              style={{
+                width: 14,
+                height: 18,
+              }}
+            />
+            <Text
+              style={{
+                fontFamily: "Nunito-Medium",
+                color: Colors.slate500,
+                fontSize: 16,
+              }}
+            >
+              Tentang kami
+            </Text>
+          </Pressable>
+          <Pressable
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 8,
+              paddingVertical: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/icons/comments.png")}
+              style={{
+                width: 17,
+                height: 14,
+              }}
+            />
+            <Text
+              style={{
+                fontFamily: "Nunito-Medium",
+                color: Colors.slate500,
+                fontSize: 16,
+              }}
+            >
+              Beri kami masukan
+            </Text>
+          </Pressable>
+          <Pressable
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 8,
+              paddingVertical: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/icons/logout.png")}
+              style={{
+                width: 14,
+                height: 14,
+              }}
+            />
+            <Text
+              style={{
+                fontFamily: "Nunito-Medium",
+                color: Colors.slate500,
+                fontSize: 16,
+              }}
+            >
+              Logout
+            </Text>
+          </Pressable>
+        </View>
+      </View>
+      {/* {userResult !== result.toString() && (
         <View>
           <Text
             style={{
@@ -75,7 +232,7 @@ const Profile = () => {
               flexDirection: "row",
               gap: 8,
               justifyContent: "space-between",
-              alignItems: "center",
+              alignItems: "flex-start",
               marginVertical: 16,
             }}
           >
@@ -84,6 +241,7 @@ const Profile = () => {
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
+                marginTop: 16,
               }}
             >
               <Text
@@ -174,7 +332,7 @@ const Profile = () => {
             </Formik>
           </View>
         </View>
-      )}
+      )} */}
     </LinearGradient>
   );
 };

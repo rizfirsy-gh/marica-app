@@ -24,7 +24,6 @@ export const SuccessModalAlert = ({ image, message }) => {
   return (
     <ModalAlert>
       <Image
-        source={require("../../assets/icons/close.svg")}
         style={{
           position: "absolute",
           top: 16,
