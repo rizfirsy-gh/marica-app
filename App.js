@@ -18,6 +18,7 @@ import TabNavigation from "./components/widgets/TabNavigation";
 import HeaderProfile from "./components/widgets/HeaderProfile";
 import Profile from "./screens/Profile";
 import HeaderBack from "./components/widgets/HeaderBack";
+import VideoDetails from "./screens/VideoDetails";
 // const forFade = ({ current, next }) => {
 //   const opacity = Animated.add(
 //     current.progress,
@@ -76,36 +77,25 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             {/* //TODO: do custom headers for each screen */}
-            <Stack.Screen
+            {/* <Stack.Screen
               name="Welcome"
               component={Welcome}
-              options={{ headerLeft: () => null, headerTitle: () => null }}
+              options={{ header: () => null }}
             />
             <Stack.Screen
               name="Signup"
               component={Signup}
-              options={{
-                // headerStyleInterpolator: forFade,
-                headerLeft: () => null,
-                headerTitle: () => null,
-              }}
+              options={{ header: () => null }}
             />
             <Stack.Screen
               name="TermCondition"
               component={TermCondition}
-              options={{
-                // headerStyleInterpolator: forFade,
-                headerLeft: () => null,
-                headerTitle: () => null,
-              }}
+              options={{ header: () => null }}
             />
             <Stack.Screen
               name="Buat akun anak"
               component={BuatAkunAnak}
-              options={{
-                header: () => null,
-                // headerStyleInterpolator: forFade,
-              }}
+              options={{ header: () => null }}
             />
             <Stack.Screen
               name="HomeScreen"
@@ -114,7 +104,8 @@ export default function App() {
                 header: () => null,
               }}
             />
-            <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="Profile" component={Profile} /> */}
+            <Stack.Screen name="Video" component={VideoDetails} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
