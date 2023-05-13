@@ -77,7 +77,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             {/* //TODO: do custom headers for each screen */}
-            {/* <Stack.Screen
+            <Stack.Screen
               name="Welcome"
               component={Welcome}
               options={{ header: () => null }}
@@ -104,7 +104,7 @@ export default function App() {
                 header: () => null,
               }}
             />
-            <Stack.Screen name="Profile" component={Profile} /> */}
+            <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="Video" component={VideoDetails} />
           </Stack.Navigator>
         </NavigationContainer>

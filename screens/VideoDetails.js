@@ -54,11 +54,232 @@ const VideoDetails = () => {
         >
           Episode
         </Text>
-        <ScrollView>
+        <ScrollView
+          style={{
+            paddingVertical: 16,
+          }}
+        >
           <View
             style={{
               flexDirection: "row",
               gap: 8,
+              marginBottom: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/images/bubu.png")}
+              style={{
+                width: 144,
+                height: 100,
+                borderRadius: 16,
+              }}
+            />
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Nunito-Bold",
+                  color: Colors.slate600,
+                }}
+              >
+                Episode pertama ini seru loh
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontFamily: "Nunito-Medium",
+                  color: Colors.slate400,
+                }}
+              >
+                10:22
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 8,
+              marginBottom: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/images/bubu.png")}
+              style={{
+                width: 144,
+                height: 100,
+                borderRadius: 16,
+              }}
+            />
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Nunito-Bold",
+                  color: Colors.slate600,
+                }}
+              >
+                Episode pertama ini seru loh
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontFamily: "Nunito-Medium",
+                  color: Colors.slate400,
+                }}
+              >
+                10:22
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 8,
+              marginBottom: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/images/bubu.png")}
+              style={{
+                width: 144,
+                height: 100,
+                borderRadius: 16,
+              }}
+            />
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Nunito-Bold",
+                  color: Colors.slate600,
+                }}
+              >
+                Episode pertama ini seru loh
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontFamily: "Nunito-Medium",
+                  color: Colors.slate400,
+                }}
+              >
+                10:22
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 8,
+              marginBottom: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/images/bubu.png")}
+              style={{
+                width: 144,
+                height: 100,
+                borderRadius: 16,
+              }}
+            />
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Nunito-Bold",
+                  color: Colors.slate600,
+                }}
+              >
+                Episode pertama ini seru loh
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontFamily: "Nunito-Medium",
+                  color: Colors.slate400,
+                }}
+              >
+                10:22
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 8,
+              marginBottom: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/images/bubu.png")}
+              style={{
+                width: 144,
+                height: 100,
+                borderRadius: 16,
+              }}
+            />
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Nunito-Bold",
+                  color: Colors.slate600,
+                }}
+              >
+                Episode pertama ini seru loh
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontFamily: "Nunito-Medium",
+                  color: Colors.slate400,
+                }}
+              >
+                10:22
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 8,
+              marginBottom: 16,
+            }}
+          >
+            <Image
+              source={require("../assets/images/bubu.png")}
+              style={{
+                width: 144,
+                height: 100,
+                borderRadius: 16,
+              }}
+            />
+            <View>
+              <Text
+                style={{
+                  fontSize: 16,
+                  fontFamily: "Nunito-Bold",
+                  color: Colors.slate600,
+                }}
+              >
+                Episode pertama ini seru loh
+              </Text>
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontFamily: "Nunito-Medium",
+                  color: Colors.slate400,
+                }}
+              >
+                10:22
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 8,
+              marginBottom: 16,
             }}
           >
             <Image

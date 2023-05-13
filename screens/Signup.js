@@ -28,10 +28,11 @@ const Signup = ({ navigation }) => {
       })
       .then((res) => {
         dispatch(setUserInfo(res.data.data));
+        console.log("userInfo", res.data.data);
         navigation.navigate("HomeScreen");
       })
       .catch((err) => {
-        console.log(err.response.status);
+        console.log(err.response.data.message);
       });
 
     dispatch(setLoading(false));

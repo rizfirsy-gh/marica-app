@@ -1,8 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Colors } from "../../constant/styles";
 import { View, Text, Image, Pressable } from "react-native";
 
 const HeaderProfile = ({ navigation }) => {
+  const { isLoading, userInfo } = useSelector((state) => state.user);
   return (
     <View
       style={{
@@ -34,7 +36,7 @@ const HeaderProfile = ({ navigation }) => {
             color: Colors.slate700,
           }}
         >
-          Shinta
+          {userInfo.nama}
         </Text>
       </Pressable>
     </View>

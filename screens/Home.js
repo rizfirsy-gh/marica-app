@@ -1,8 +1,12 @@
 import * as React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Image, View, ScrollView, Text } from "react-native";
 import { Colors } from "../constant/styles";
 
 export default function Home({ navigation }) {
+  const { isLoading, userInfo } = useSelector((state) => state.user);
+  console.log("isLoading", isLoading);
+  console.log("userInfo", userInfo);
   return (
     <View
       style={{

@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import { LinearGradient } from "expo-linear-gradient";
 import {
@@ -10,6 +11,7 @@ import {
   TextInput,
 } from "react-native";
 import { Colors } from "../constant/styles";
+import { setUserInfo } from "../redux/slices/user";
 
 function randomInteger() {
   return Math.floor(Math.random() * 10);
@@ -24,6 +26,11 @@ const Profile = () => {
   const [userResult, setUserResult] = React.useState(0);
   const [validate, setValidate] = React.useState(false);
   const windowWidth = Dimensions.get("window").width;
+
+  const { userInfo } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const namaDepan = userInfo.nama.split(" ")[0];
 
   return (
     <LinearGradient
@@ -230,7 +237,7 @@ const Profile = () => {
                   color: Colors.slate600,
                 }}
               >
-                Shinta
+                {namaDepan}
               </Text>
             </View>
             <Image
@@ -333,6 +340,7 @@ const Profile = () => {
                 gap: 8,
                 paddingVertical: 16,
               }}
+              onPress={() => dispatch(setUserInfo(null))}
             >
               <Image
                 source={require("../assets/icons/logout.png")}
