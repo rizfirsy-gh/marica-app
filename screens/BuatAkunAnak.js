@@ -1,10 +1,13 @@
 import React from "react";
+import axios from "axios";
 import { Colors } from "../constant/styles";
 import { Image, Pressable, TextInput } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text, Dimensions } from "react-native";
 import Button from "../components/buttons/Button";
 import AgeCategories from "../components/forms/AgeCategories";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading } from "../redux/slices/user";
 
 const Signup = ({ navigation }) => {
   const [anak, setAnak] = React.useState({
@@ -16,6 +19,9 @@ const Signup = ({ navigation }) => {
     setChooseAge(true);
     console.log(anak);
   }
+
+  const { isLoading } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   function inputAnakHandler(identifier, userInput) {
     setAnak((prev) => {
@@ -70,12 +76,25 @@ const Signup = ({ navigation }) => {
           <AgeCategories />
           <Button
             variant="primary"
-            onPress={() => {
-              console.log("selesai!", anak.nama, anak.usia);
-              navigation.navigate("HomeScreen");
+            onPress={async (values) => {
+              dispatch(setLoading(true));
+              await axios
+                .post("https://api.marica.id/api/v1/user/anak", {
+                  nama: anak.nama,
+                  usia: anak.usia,
+                })
+                .then((res) => {
+                  // dispatch(setUserInfo(res.data.data));
+                  console.log("anak info: ", res.data.data);
+                  dispatch(setLoading(false));
+                  navigation.navigate("HomeScreen");
+                })
+                .catch((err) => {
+                  console.log(err.response.data.message);
+                });
             }}
           >
-            Selesai!
+            {isLoading ? "Tunggu sebentar..." : "Selesai!"}
           </Button>
         </View>
       ) : (
