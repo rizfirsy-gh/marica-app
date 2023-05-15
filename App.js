@@ -64,6 +64,9 @@ export function HomeScreen({ navigation }) {
           headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
+          headerStyle: {
+            height: 80,
+          },
         }}
       />
       <Tab.Screen
@@ -73,6 +76,9 @@ export function HomeScreen({ navigation }) {
           headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
+          headerStyle: {
+            height: 80,
+          },
         }}
       />
       <Tab.Screen
@@ -82,6 +88,9 @@ export function HomeScreen({ navigation }) {
           headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
+          headerStyle: {
+            height: 80,
+          },
         }}
       />
     </Tab.Navigator>
@@ -109,7 +118,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             {/* //TODO: do custom headers for each screen */}
-            {/* <Stack.Screen
+            <Stack.Screen
               name="Welcome"
               component={Welcome}
               options={{ header: () => null }}
@@ -128,7 +137,7 @@ export default function App() {
               name="Buat akun anak"
               component={BuatAkunAnak}
               options={{ header: () => null }}
-            /> */}
+            />
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
