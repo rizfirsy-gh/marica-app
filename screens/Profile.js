@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import { LinearGradient } from "expo-linear-gradient";
@@ -27,10 +28,12 @@ const Profile = () => {
   const [validate, setValidate] = React.useState(false);
   const windowWidth = Dimensions.get("window").width;
 
+  const navigation = useNavigation();
+
   const { userInfo } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const namaDepan = userInfo.nama.split(" ")[0];
+  const namaDepan = userInfo?.nama.split(" ")[0];
 
   return (
     <LinearGradient
@@ -340,7 +343,10 @@ const Profile = () => {
                 gap: 8,
                 paddingVertical: 16,
               }}
-              onPress={() => dispatch(setUserInfo(null))}
+              onPress={() => {
+                dispatch(setUserInfo(null));
+                navigation.navigate("Welcome");
+              }}
             >
               <Image
                 source={require("../assets/icons/logout.png")}
