@@ -44,9 +44,6 @@ export function HomeScreen({ navigation }) {
     <Tab.Navigator
       initialRouteName="HomeScreen"
       tabBar={TabNavigation.bind(navigation)}
-      screenOptions={{
-        header: HeaderProfile.bind(navigation),
-      }}
     >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Cerita" component={Cerita} />
