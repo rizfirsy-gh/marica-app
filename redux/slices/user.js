@@ -4,6 +4,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     userInfo: null,
+    anak: null,
     isLoading: false,
     auth: {
       status: "",
@@ -18,6 +19,7 @@ const userSlice = createSlice({
     setUserInfo: (state, action) => {
       state.userInfo = action.payload;
     },
+    setAnak: (state, action) => (state.anak = action.payload),
     setAuth: (state, action) => {},
   },
 });

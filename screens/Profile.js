@@ -30,7 +30,7 @@ const Profile = () => {
 
   const navigation = useNavigation();
 
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo, anak } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const namaDepan = userInfo?.nama.split(" ")[0];

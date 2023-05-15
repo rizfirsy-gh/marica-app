@@ -84,8 +84,7 @@ const Signup = ({ navigation }) => {
                   usia: anak.usia,
                 })
                 .then((res) => {
-                  // dispatch(setUserInfo(res.data.data));
-                  console.log("anak info: ", res.data.data);
+                  dispatch(setAnak(res.data.data));
                   dispatch(setLoading(false));
                   navigation.navigate("HomeScreen");
                 })
