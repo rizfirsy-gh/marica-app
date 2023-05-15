@@ -20,7 +20,13 @@ export default function Home() {
         style={styles.scrollContainer}
         contentContainerStyle={{ alignItems: "center" }}
       >
-        <Pressable onPress={() => navigation.navigate("VideoDetails")}>
+        <Pressable
+          onPress={() =>
+            navigation.navigate("VideoDetails", {
+              videoId: "N_oiwAuCpVQ",
+            })
+          }
+        >
           <Image
             source={require("../assets/images/bubu.png")}
             resizeMode="cover"
@@ -53,7 +59,13 @@ export default function Home() {
               marginTop: 8,
             }}
           >
-            <Pressable onPress={() => navigation.navigate("VideoDetails")}>
+            <Pressable
+              onPress={() =>
+                navigation.navigate("VideoDetails", {
+                  videoId: "N_oiwAuCpVQ",
+                })
+              }
+            >
               <Image
                 source={require("../assets/images/bubu.png")}
                 resizeMode="cover"
@@ -65,7 +77,14 @@ export default function Home() {
                 }}
               />
             </Pressable>
-            <Pressable onPress={() => navigation.navigate("VideoDetails")}>
+
+            <Pressable
+              onPress={() =>
+                navigation.navigate("VideoDetails", {
+                  videoId: "N_oiwAuCpVQ",
+                })
+              }
+            >
               <Image
                 source={require("../assets/images/bubu.png")}
                 resizeMode="cover"
@@ -104,7 +123,11 @@ export default function Home() {
             {[1, 2, 3, 4].map((index) => (
               <Pressable
                 key={index}
-                onPress={() => navigation.navigate("VideoDetails")}
+                onPress={() =>
+                  navigation.navigate("VideoDetails", {
+                    videoId: "N_oiwAuCpVQ",
+                  })
+                }
               >
                 <Image
                   source={require("../assets/images/bubu.png")}

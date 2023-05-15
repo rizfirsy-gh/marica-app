@@ -8,7 +8,9 @@ import { ScrollView } from "react-native";
 
 const source = require("../assets/videos/testVideo.mp4");
 
-const VideoDetails = () => {
+const VideoDetails = ({ route, navigation }) => {
+  const { vidId } = route.params;
+
   return (
     <View
       style={{
@@ -18,7 +20,7 @@ const VideoDetails = () => {
       }}
     >
       <View>
-        <YoutubePlayer height={210} videoId={"N_oiwAuCpVQ"} />
+        <YoutubePlayer height={210} videoId={vidId} />
       </View>
       <Text
         style={{
