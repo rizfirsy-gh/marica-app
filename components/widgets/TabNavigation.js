@@ -25,14 +25,6 @@ const TabNavigation = ({ navigation }) => {
         style={{
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: Colors.cyan200,
-          borderColor: Colors.cyan400,
-          borderLeftWidth: 2,
-          borderRightWidth: 2,
-          borderBottomWidth: 2,
-          borderBottomLeftRadius: 50,
-          borderBottomRightRadius: 50,
-          padding: 16,
         }}
       >
         <Pressable onPress={() => navigation.navigate("Home")}>

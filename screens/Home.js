@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Image, View, ScrollView, Text } from "react-native";
+import { Image, View, ScrollView, Text, Pressable } from "react-native";
 import { Colors } from "../constant/styles";
+import { useNavigation } from "@react-navigation/core";
 
-export default function Home({ navigation }) {
+export default function Home() {
   const { isLoading, userInfo } = useSelector((state) => state.user);
-  console.log("isLoading", isLoading);
-  console.log("userInfo", userInfo);
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -20,16 +20,18 @@ export default function Home({ navigation }) {
         style={styles.scrollContainer}
         contentContainerStyle={{ alignItems: "center" }}
       >
-        <Image
-          source={require("../assets/images/bubu.png")}
-          resizeMode="cover"
-          resizeMethod="resize"
-          style={{
-            width: 350,
-            height: 200,
-            borderRadius: 16,
-          }}
-        />
+        <Pressable onPress={() => navigation.navigate("VideoDetails")}>
+          <Image
+            source={require("../assets/images/bubu.png")}
+            resizeMode="cover"
+            resizeMethod="resize"
+            style={{
+              width: 350,
+              height: 200,
+              borderRadius: 16,
+            }}
+          />
+        </Pressable>
         <View
           style={{
             paddingTop: 24,
@@ -51,26 +53,30 @@ export default function Home({ navigation }) {
               marginTop: 8,
             }}
           >
-            <Image
-              source={require("../assets/images/bubu.png")}
-              resizeMode="cover"
-              resizeMethod="resize"
-              style={{
-                width: 334 / 2,
-                height: 334 / 2,
-                borderRadius: 16,
-              }}
-            />
-            <Image
-              source={require("../assets/images/bubu.png")}
-              resizeMode="cover"
-              resizeMethod="resize"
-              style={{
-                width: 334 / 2,
-                height: 334 / 2,
-                borderRadius: 16,
-              }}
-            />
+            <Pressable onPress={() => navigation.navigate("VideoDetails")}>
+              <Image
+                source={require("../assets/images/bubu.png")}
+                resizeMode="cover"
+                resizeMethod="resize"
+                style={{
+                  width: 334 / 2,
+                  height: 334 / 2,
+                  borderRadius: 16,
+                }}
+              />
+            </Pressable>
+            <Pressable onPress={() => navigation.navigate("VideoDetails")}>
+              <Image
+                source={require("../assets/images/bubu.png")}
+                resizeMode="cover"
+                resizeMethod="resize"
+                style={{
+                  width: 334 / 2,
+                  height: 334 / 2,
+                  borderRadius: 16,
+                }}
+              />
+            </Pressable>
           </View>
         </View>
         <View
@@ -96,17 +102,21 @@ export default function Home({ navigation }) {
             }}
           >
             {[1, 2, 3, 4].map((index) => (
-              <Image
+              <Pressable
                 key={index}
-                source={require("../assets/images/bubu.png")}
-                resizeMode="cover"
-                resizeMethod="resize"
-                style={{
-                  width: 334 / 2,
-                  height: 334 / 2,
-                  borderRadius: 16,
-                }}
-              />
+                onPress={() => navigation.navigate("VideoDetails")}
+              >
+                <Image
+                  source={require("../assets/images/bubu.png")}
+                  resizeMode="cover"
+                  resizeMethod="resize"
+                  style={{
+                    width: 334 / 2,
+                    height: 334 / 2,
+                    borderRadius: 16,
+                  }}
+                />
+              </Pressable>
             ))}
           </View>
         </View>

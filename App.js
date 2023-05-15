@@ -45,10 +45,45 @@ export function HomeScreen({ navigation }) {
       initialRouteName="HomeScreen"
       tabBar={TabNavigation.bind(navigation)}
     >
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Cerita" component={Cerita} />
-      <Tab.Screen name="Musik" component={Musik} />
-      <Tab.Screen name="Aktifitas" component={Aktifitas} />
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerLeft: HeaderProfile,
+          headerTitle: () => null,
+          headerRight: () => null,
+          headerStyle: {
+            height: 80,
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Cerita"
+        component={Cerita}
+        options={{
+          headerLeft: HeaderProfile,
+          headerTitle: () => null,
+          headerRight: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Musik"
+        component={Musik}
+        options={{
+          headerLeft: HeaderProfile,
+          headerTitle: () => null,
+          headerRight: () => null,
+        }}
+      />
+      <Tab.Screen
+        name="Aktifitas"
+        component={Aktifitas}
+        options={{
+          headerLeft: HeaderProfile,
+          headerTitle: () => null,
+          headerRight: () => null,
+        }}
+      />
     </Tab.Navigator>
   );
 }
@@ -74,7 +109,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             {/* //TODO: do custom headers for each screen */}
-            <Stack.Screen
+            {/* <Stack.Screen
               name="Welcome"
               component={Welcome}
               options={{ header: () => null }}
@@ -93,7 +128,7 @@ export default function App() {
               name="Buat akun anak"
               component={BuatAkunAnak}
               options={{ header: () => null }}
-            />
+            /> */}
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
@@ -102,7 +137,15 @@ export default function App() {
               }}
             />
             <Stack.Screen name="Profile" component={Profile} />
-            <Stack.Screen name="Video" component={VideoDetails} />
+            <Stack.Screen
+              name="VideoDetails"
+              component={VideoDetails}
+              options={({ route, navigation }) => {
+                return {
+                  title: "Details",
+                };
+              }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
