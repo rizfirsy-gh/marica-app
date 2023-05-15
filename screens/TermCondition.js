@@ -29,22 +29,81 @@ const TermCondition = ({ navigation }) => {
       </View>
       <View style={styles.termConditionContainer}>
         <ScrollView style={styles.termConditionText}>
-          <Text style={styles.text}>
-            Lorem ipsum dolor sit amet consectetur. Enim lectus posuere
-            pellentesque risus feugiat nunc. Sed mauris lacus maecenas nunc
-            ornare elementum. Leo sodales dictum ut lectus tristique purus
-            aliquam aliquam at. Feugiat turpis sed scelerisque et sed porttitor
-            arcu. Felis quam eu facilisis parturient non tristique sed lacinia.
-            Ut sit enim cursus elementum arcu. Id suspendisse vel massa cursus
-            ut sem purus. Tristique gravida neque ipsum turpis ornare enim
-            sagittis aliquam. Id ultricies tellus volutpat nunc congue bibendum
-            gravida. Pulvinar amet malesuada sapien sit varius commodo ac.
-            Placerat sit tortor lorem tellus volutpat faucibus eget in. Feugiat
-            purus augue posuere fermentum cursus mauris. Auctor aliquam iaculis
-            viverra neque id sed convallis posuere felis. Vestibulum ut eget at
-            faucibus. Sit faucibus integer in eget cursus facilisis ac sit.
-            Auctor interdum tempor morbi id duis.
+          <Text
+            style={{
+              fontFamily: "Nunito-Bold",
+              color: Colors.slate800,
+              fontSize: 24,
+              marginBottom: 16,
+            }}
+          >
+            Kebijakan Privasi
           </Text>
+          <Text style={styles.text}>
+            Kami, PT Sebangku Jaya Abadi, sangat peduli terhadap privasi
+            pengguna aplikasi kami. Dalam kebijakan privasi ini, kami
+            menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi
+            informasi pribadi Anda saat Anda menggunakan aplikasi kami. Dengan
+            menggunakan aplikasi kami, Anda menyetujui kebijakan privasi ini dan
+            pengumpulan serta penggunaan informasi Anda sesuai dengan kebijakan
+            ini.
+          </Text>
+          <Text style={styles.heading}>
+            1. Jenis informasi yang kami kumpulkan
+          </Text>
+          <Text style={styles.text}>
+            Kami dapat mengumpulkan informasi pribadi seperti nama, alamat
+            email, nomor telepon, dan informasi pembayaran ketika Anda mendaftar
+            dan menggunakan aplikasi kami. Kami juga dapat mengumpulkan
+            informasi anonim seperti penggunaan aplikasi, jenis perangkat yang
+            digunakan, informasi geografis, dan data lainnya yang tidak dapat
+            diidentifikasi secara pribadi.
+          </Text>
+          <Text style={styles.heading}>
+            2. Cara kami menggunakan informasi Anda
+          </Text>
+          <Text style={styles.text}>
+            Kami menggunakan informasi pribadi Anda untuk memberikan layanan
+            kami, memproses pembayaran, memperbaiki aplikasi kami, mengirimkan
+            informasi penting tentang aplikasi kami, dan memberikan dukungan
+            pelanggan. Kami juga menggunakan informasi anonim untuk analisis,
+            mengembangkan dan meningkatkan aplikasi kami.
+          </Text>
+          <Text style={styles.heading}>
+            3. Bagaimana kami melindungi informasi Anda
+          </Text>
+          <Text style={styles.text}>
+            Kami mengambil tindakan yang tepat untuk melindungi informasi Anda
+            dari akses yang tidak sah, perubahan, pengungkapan, atau
+            penghapusan. Kami juga menggunakan standar keamanan seperti enkripsi
+            SSL untuk melindungi informasi pribadi Anda saat dipindahkan.
+          </Text>
+          <Text style={styles.heading}>4. Berbagi informasi Anda</Text>
+          <Text style={styles.text}>
+            Kami tidak akan membagikan informasi pribadi Anda dengan pihak
+            ketiga tanpa persetujuan Anda, kecuali jika diperlukan oleh hukum
+            atau dalam situasi darurat yang memerlukan tindakan cepat.
+          </Text>
+          <Text style={styles.heading}>
+            5. Perubahan pada kebijakan privasi
+          </Text>
+          <Text style={styles.text}>
+            Kami dapat memperbarui kebijakan privasi ini dari waktu ke waktu.
+            Kami akan memberi tahu Anda tentang perubahan melalui aplikasi kami
+            atau melalui email yang kami kirimkan ke Anda.
+          </Text>
+          <Text style={styles.heading}>6. Kontak</Text>
+          <Text style={styles.text}>
+            Jika Anda memiliki pertanyaan atau masalah tentang kebijakan privasi
+            ini, silakan hubungi kami melalui email sebangkugames@gmail.com.
+          </Text>
+          <Text style={styles.text}>
+            Dengan menggunakan aplikasi kami, Anda menyetujui kebijakan privasi
+            ini dan pengumpulan serta penggunaan informasi Anda sesuai
+            dengan kebijakan ini.
+          </Text>
+          <Text style={styles.text}> </Text>
+          <Text style={styles.text}> </Text>
         </ScrollView>
         <Button
           variant="primary"
@@ -82,6 +141,13 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.slate500,
     fontFamily: "Nunito-Medium",
+  },
+  heading: {
+    fontSize: 16,
+    color: Colors.cyan600,
+    fontFamily: "Nunito-Bold",
+    marginTop: 16,
+    marginBottom: 8,
   },
 });
 
