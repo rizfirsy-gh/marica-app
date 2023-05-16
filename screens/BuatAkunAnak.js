@@ -9,10 +9,13 @@ import AgeCategories from "../components/forms/AgeCategories";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../redux/slices/user";
 
+const blurhash =
+  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
+
 const Signup = ({ navigation }) => {
   const [anak, setAnak] = React.useState({
     nama: "",
-    usia: undefined,
+    usia: "",
   });
   const [chooseAge, setChooseAge] = React.useState(false);
   function goToAgeOptions() {
@@ -40,17 +43,18 @@ const Signup = ({ navigation }) => {
       <View
         style={{
           position: "absolute",
-          bottom: 0,
+          bottom: -24,
           flex: 1,
         }}
       >
         <Image
           source={require("../assets/images/background.png")}
-          resizeMode="stretch"
+          contentFit="contain"
           style={{
             width: windowWidth,
-            height: 300,
+            height: windowWidth / 1.5,
           }}
+          placeholder={blurhash}
         />
       </View>
       <View style={styles.top}>
@@ -72,25 +76,25 @@ const Signup = ({ navigation }) => {
       </View>
       {chooseAge ? (
         <View style={styles.form}>
-          {/* TODO finish the age option */}
           <AgeCategories />
           <Button
             variant="primary"
             onPress={async (values) => {
-              dispatch(setLoading(true));
-              await axios
-                .post("https://api.marica.id/api/v1/user/anak", {
-                  nama: anak.nama,
-                  usia: anak.usia,
-                })
-                .then((res) => {
-                  dispatch(setAnak(res.data.data));
-                  dispatch(setLoading(false));
-                  navigation.navigate("HomeScreen");
-                })
-                .catch((err) => {
-                  console.log(err.response.data.message);
-                });
+              navigation.navigate("HomeScreen");
+              // dispatch(setLoading(true));
+              // await axios
+              //   .post("https://api.marica.id/api/v1/user/anak", {
+              //     nama: anak.nama,
+              //     usia: anak.usia,
+              //   })
+              //   .then((res) => {
+              //     dispatch(setAnak(res.data.data));
+              //     dispatch(setLoading(false));
+              //     navigation.navigate("HomeScreen");
+              //   })
+              //   .catch((err) => {
+              //     console.log(err.response.data.message);
+              //   });
             }}
           >
             {isLoading ? "Tunggu sebentar..." : "Selesai!"}

@@ -9,6 +9,9 @@ import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text, Dimensions } from "react-native";
 import LoginForm from "../components/forms/LoginForm";
 
+const blurhash =
+  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
+
 const Signup = ({ navigation }) => {
   const [login, setLogin] = React.useState(false);
   const windowWidth = Dimensions.get("window").width;
@@ -58,17 +61,18 @@ const Signup = ({ navigation }) => {
       <View
         style={{
           position: "absolute",
-          bottom: 0,
+          bottom: -24,
           flex: 1,
         }}
       >
         <Image
           source={require("../assets/images/background.png")}
-          resizeMode="stretch"
+          contentFit="contain"
           style={{
             width: windowWidth,
-            height: 300,
+            height: windowWidth / 1.5,
           }}
+          placeholder={blurhash}
         />
       </View>
       <View style={styles.top}>

@@ -5,13 +5,14 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
-  ImageBackground,
   Button as NativeButton,
   Dimensions,
+  Image,
 } from "react-native";
 import Button from "../components/buttons/Button";
-import { SuccessModalAlert } from "../components/cards/ModalAlert";
+
+const blurhash =
+  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const Welcome = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
@@ -20,17 +21,18 @@ const Welcome = ({ navigation }) => {
       <View
         style={{
           position: "absolute",
-          bottom: 0,
+          bottom: -24,
           flex: 1,
         }}
       >
         <Image
           source={require("../assets/images/background.png")}
-          resizeMode="stretch"
+          contentFit="cover"
           style={{
             width: windowWidth,
-            height: 300,
+            height: windowWidth / 1.5,
           }}
+          placeholder={blurhash}
         />
       </View>
       <View style={styles.top}>

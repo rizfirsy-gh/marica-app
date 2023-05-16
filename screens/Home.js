@@ -1,11 +1,12 @@
 import * as React from "react";
+import { videos } from "../assets/videos/videos";
 import { useSelector, useDispatch } from "react-redux";
 import { Image, View, ScrollView, Text, Pressable } from "react-native";
 import { Colors } from "../constant/styles";
 import { useNavigation } from "@react-navigation/core";
 
 export default function Home() {
-  const { isLoading, userInfo } = useSelector((state) => state.user);
+  // const { isLoading, userInfo } = useSelector((state) => state.user);
   const navigation = useNavigation();
   return (
     <View
@@ -120,27 +121,29 @@ export default function Home() {
               marginTop: 8,
             }}
           >
-            {[1, 2, 3, 4].map((index) => (
-              <Pressable
-                key={index}
-                onPress={() =>
-                  navigation.navigate("VideoDetails", {
-                    videoId: "N_oiwAuCpVQ",
-                  })
-                }
-              >
-                <Image
-                  source={require("../assets/images/bubu.png")}
-                  resizeMode="cover"
-                  resizeMethod="resize"
-                  style={{
-                    width: 334 / 2,
-                    height: 334 / 2,
-                    borderRadius: 16,
-                  }}
-                />
-              </Pressable>
-            ))}
+            {videos.map((video) => {
+              return (
+                <Pressable
+                  key={video.id}
+                  onPress={() =>
+                    navigation.navigate("VideoDetails", {
+                      videoId: video.id,
+                    })
+                  }
+                >
+                  <Image
+                    source={require(`../assets/images/thumbnail-data.jpg`)}
+                    resizeMode="cover"
+                    resizeMethod="resize"
+                    style={{
+                      width: 334 / 2,
+                      height: 334 / 2,
+                      borderRadius: 16,
+                    }}
+                  />
+                </Pressable>
+              );
+            })}
           </View>
         </View>
       </ScrollView>
