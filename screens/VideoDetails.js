@@ -6,8 +6,8 @@ import { Colors } from "../constant/styles";
 import { ScrollView } from "react-native";
 
 const VideoDetails = ({ route, navigation }) => {
-  const { vidId } = route;
-  console.log("video", vidId);
+  const { videoId } = route.params;
+  console.log("video", videoId);
 
   return (
     <View
@@ -18,7 +18,7 @@ const VideoDetails = ({ route, navigation }) => {
       }}
     >
       <View>
-        <YoutubePlayer height={210} videoId={vidId} />
+        <YoutubePlayer height={210} videoId={videoId} />
       </View>
       <Text
         style={{

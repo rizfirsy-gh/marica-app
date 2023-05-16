@@ -7,41 +7,133 @@ export default function Cerita({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Cerita</Text>
-      <ScrollView>
-        <View
-          style={{
-            flexDirection: "row",
-            gap: 8,
-            marginBottom: 16,
-          }}
+      <ScrollView
+        style={styles.scrollContainer}
+        contentContainerStyle={{ alignItems: "center" }}
+      >
+        <Pressable
+          onPress={() =>
+            navigation.navigate("VideoDetails", {
+              videoId: "N_oiwAuCpVQ",
+            })
+          }
         >
           <Image
             source={require("../assets/images/bubu.png")}
+            resizeMode="cover"
+            resizeMethod="resize"
             style={{
-              width: 144,
-              height: 100,
+              width: 350,
+              height: 200,
               borderRadius: 16,
             }}
           />
-          <View>
-            <Text
-              style={{
-                fontSize: 16,
-                fontFamily: "Nunito-Bold",
-                color: Colors.slate600,
-              }}
+        </Pressable>
+        <View
+          style={{
+            paddingTop: 24,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "Nunito-SemiBold",
+              color: Colors.slate700,
+            }}
+          >
+            Cerita baru
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 16,
+              marginTop: 8,
+            }}
+          >
+            <Pressable
+              onPress={() =>
+                navigation.navigate("VideoDetails", {
+                  videoId: "N_oiwAuCpVQ",
+                })
+              }
             >
-              Episode pertama ini seru loh
-            </Text>
-            <Text
-              style={{
-                fontSize: 12,
-                fontFamily: "Nunito-Medium",
-                color: Colors.slate400,
-              }}
+              <Image
+                source={require("../assets/images/bubu.png")}
+                resizeMode="cover"
+                resizeMethod="resize"
+                style={{
+                  width: 334 / 2,
+                  height: 334 / 2,
+                  borderRadius: 16,
+                }}
+              />
+            </Pressable>
+
+            <Pressable
+              onPress={() =>
+                navigation.navigate("VideoDetails", {
+                  videoId: "N_oiwAuCpVQ",
+                })
+              }
             >
-              10:22
-            </Text>
+              <Image
+                source={require("../assets/images/bubu.png")}
+                resizeMode="cover"
+                resizeMethod="resize"
+                style={{
+                  width: 334 / 2,
+                  height: 334 / 2,
+                  borderRadius: 16,
+                }}
+              />
+            </Pressable>
+          </View>
+        </View>
+        <View
+          style={{
+            paddingTop: 24,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "Nunito-SemiBold",
+              color: Colors.slate700,
+            }}
+          >
+            Direkomendasikan
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              flexWrap: "wrap",
+              gap: 16,
+              marginTop: 8,
+            }}
+          >
+            {videos.map((video) => {
+              return (
+                <Pressable
+                  key={video.id}
+                  onPress={() =>
+                    navigation.navigate("VideoDetails", {
+                      videoId: video.id,
+                    })
+                  }
+                >
+                  <Image
+                    source={require(`../assets/images/thumbnail-data.jpg`)}
+                    resizeMode="cover"
+                    resizeMethod="resize"
+                    style={{
+                      width: 334 / 2,
+                      height: 334 / 2,
+                      borderRadius: 16,
+                    }}
+                  />
+                </Pressable>
+              );
+            })}
           </View>
         </View>
       </ScrollView>
