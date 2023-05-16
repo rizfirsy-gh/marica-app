@@ -9,7 +9,7 @@ const TabNavigation = ({ navigation }) => {
         flexDirection: "row",
         justifyContent: "space-between",
         paddingHorizontal: 16,
-        paddingBottom: 16,
+        paddingVertical: 16,
         borderTopColor: Colors.cyan400,
         borderLeftColor: Colors.cyan400,
         borderRightColor: Colors.cyan400,

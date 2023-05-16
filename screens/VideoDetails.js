@@ -1,15 +1,13 @@
 import React from "react";
 import Video from "react-native-video";
 import YoutubePlayer from "react-native-youtube-iframe";
-import video from "../assets/videos/testVideo.mp4";
 import { View, Text, Pressable, Image, FlatList } from "react-native";
 import { Colors } from "../constant/styles";
 import { ScrollView } from "react-native";
 
-const source = require("../assets/videos/testVideo.mp4");
-
 const VideoDetails = ({ route, navigation }) => {
-  const { vidId } = route.params;
+  const { vidId } = route;
+  console.log("video", vidId);
 
   return (
     <View
