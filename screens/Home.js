@@ -64,6 +64,7 @@ export default function Home() {
               onPress={() =>
                 navigation.navigate("VideoDetails", {
                   videoId: "N_oiwAuCpVQ",
+                  videoTitle: "Demo Video",
                 })
               }
             >
@@ -128,6 +129,7 @@ export default function Home() {
                   onPress={() =>
                     navigation.navigate("VideoDetails", {
                       videoId: video.id,
+                      videoTitle: video.title,
                     })
                   }
                 >

@@ -1,34 +1,36 @@
 import * as React from "react";
-import { Button, Text, View, Image } from "react-native";
+import { videos } from "../assets/videos/videos";
+import { Button, Text, View, Image, Pressable } from "react-native";
 import { Colors } from "../constant/styles";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView, TextInput } from "react-native-gesture-handler";
 
 export default function Cerita({ navigation }) {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Cerita</Text>
-      <ScrollView
-        style={styles.scrollContainer}
-        contentContainerStyle={{ alignItems: "center" }}
-      >
-        <Pressable
-          onPress={() =>
-            navigation.navigate("VideoDetails", {
-              videoId: "N_oiwAuCpVQ",
-            })
-          }
+    <View style={{ flex: 1, paddingHorizontal: 16, backgroundColor: "#fff" }}>
+      <View style={{ marginBottom: 16 }}>
+        <Text
+          style={{
+            color: Colors.slate400,
+            fontFamily: "Nunito-Medium",
+            fontSize: 16,
+            marginTop: 16,
+            marginBottom: 8,
+          }}
         >
-          <Image
-            source={require("../assets/images/bubu.png")}
-            resizeMode="cover"
-            resizeMethod="resize"
-            style={{
-              width: 350,
-              height: 200,
-              borderRadius: 16,
-            }}
-          />
-        </Pressable>
+          Marica punya banyak cerita seru untuk kamu.
+        </Text>
+        <TextInput
+          placeholder="Cari cerita..."
+          style={{
+            paddingHorizontal: 24,
+            paddingVertical: 16,
+            borderWidth: 2,
+            borderColor: Colors.slate400,
+            borderRadius: 16,
+          }}
+        />
+      </View>
+      <ScrollView contentContainerStyle={{ alignItems: "center" }}>
         <View
           style={{
             paddingTop: 24,
@@ -101,7 +103,7 @@ export default function Cerita({ navigation }) {
               color: Colors.slate700,
             }}
           >
-            Direkomendasikan
+            Naik daun
           </Text>
           <View
             style={{
@@ -118,6 +120,7 @@ export default function Cerita({ navigation }) {
                   onPress={() =>
                     navigation.navigate("VideoDetails", {
                       videoId: video.id,
+                      videoTitle: video.title,
                     })
                   }
                 >
