@@ -118,7 +118,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             {/* //TODO: do custom headers for each screen */}
-            <Stack.Screen
+            {/* <Stack.Screen
               name="Welcome"
               component={Welcome}
               options={{ header: () => null }}
@@ -137,7 +137,7 @@ export default function App() {
               name="Buat akun anak"
               component={BuatAkunAnak}
               options={{ header: () => null }}
-            />
+            /> */}
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
@@ -151,7 +151,7 @@ export default function App() {
               component={VideoDetails}
               options={({ route, navigation }) => {
                 return {
-                  title: "Details",
+                  title: "kembali",
                 };
               }}
             />
