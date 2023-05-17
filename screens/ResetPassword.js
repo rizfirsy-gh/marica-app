@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Colors } from "../constant/styles";
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -21,6 +22,8 @@ const LoginSchema = yup.object().shape({
 const ResetPassword = () => {
   const windowWidth = Dimensions.get("window").width;
   const { isLoading } = useSelector((state) => state.user);
+
+  const navigation = useNavigation();
 
   return (
     <LinearGradient

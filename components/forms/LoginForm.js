@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { Colors } from "../../constant/styles";
 import { TextInput, View, Text } from "react-native";
@@ -19,6 +20,8 @@ const LoginSchema = yup.object().shape({
 
 const LoginForm = ({ loginHandler, switchForm }) => {
   const { isLoading } = useSelector((state) => state.user);
+  const navigation = useNavigation();
+
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -60,6 +63,20 @@ const LoginForm = ({ loginHandler, switchForm }) => {
           {errors.password && touched.password && (
             <Text style={styles.error}>{errors.password}</Text>
           )}
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              paddingBottom: 8,
+            }}
+          >
+            <Button
+              onPress={() => navigation.navigate("ResetPassword")}
+              variant="tertiary"
+            >
+              Lupa password?
+            </Button>
+          </View>
           {isLoading ? (
             <Text
               style={{
