@@ -1,50 +1,47 @@
 import React from "react";
 import Video from "react-native-video";
 import YoutubePlayer from "react-native-youtube-iframe";
-import { View, Text, Pressable, Image, FlatList } from "react-native";
+import { View, Text } from "react-native";
+import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
 import { ScrollView } from "react-native";
 
 const VideoDetails = ({ route, navigation }) => {
-  const { videoId } = route.params;
-  console.log("video", videoId);
+  const { videoId, videoTitle } = route.params;
+  console.log("title", videoTitle);
 
   return (
     <View
       style={{
-        flex: 1,
-        padding: 16,
         backgroundColor: "#fff",
       }}
     >
       <View>
-        <YoutubePlayer height={210} videoId={videoId} />
+        <YoutubePlayer height={220} videoId={videoId} />
       </View>
-      <Text
-        style={{
-          fontFamily: "Nunito-Bold",
-          color: Colors.slate700,
-          fontSize: 24,
-        }}
-      >
-        Judul video
-      </Text>
-      <Text
-        style={{
-          fontFamily: "Nunito-Medium",
-          color: Colors.slate400,
-          fontSize: 14,
-        }}
-      >
-        Lorem ipsum dolor sit amet consectetur. Morbi pharetra adipiscing at
-        metus pretium sagittis semper eu. Praesent auctor tellus velit risus
-        proin convallis. Tincidunt amet...
-      </Text>
-      <View
-        style={{
-          marginVertical: 16,
-        }}
-      >
+      <View style={{ padding: 16 }}>
+        <Text
+          style={{
+            fontFamily: "Nunito-Bold",
+            color: Colors.slate700,
+            fontSize: 24,
+          }}
+        >
+          {videoTitle}
+        </Text>
+        <Text
+          style={{
+            fontFamily: "Nunito-Medium",
+            color: Colors.slate400,
+            fontSize: 14,
+          }}
+        >
+          Lorem ipsum dolor sit amet consectetur. Morbi pharetra adipiscing at
+          metus pretium sagittis semper eu. Praesent auctor tellus velit risus
+          proin convallis. Tincidunt amet...
+        </Text>
+      </View>
+      <View style={{ padding: 16 }}>
         <Text
           style={{
             color: Colors.cyan600,
@@ -59,11 +56,11 @@ const VideoDetails = ({ route, navigation }) => {
             paddingVertical: 16,
           }}
         >
-          <View
+          {/* <View
             style={{
               flexDirection: "row",
               gap: 8,
-              marginBottom: 16,
+              margi nBottom: 16,
             }}
           >
             <Image
@@ -310,6 +307,34 @@ const VideoDetails = ({ route, navigation }) => {
                 10:22
               </Text>
             </View>
+          </View> */}
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "#fff",
+              gap: 24,
+              padding: 24,
+            }}
+          >
+            <Image
+              source={require("../assets/images/empty.png")}
+              objectFit="cover"
+              style={{
+                width: 100,
+                height: 138,
+              }}
+            />
+            <Text
+              style={{
+                fontFamily: "Nunito-Bold",
+                fontSize: 20,
+                color: Colors.slate500,
+              }}
+            >
+              Belum ada episode {":("}
+            </Text>
           </View>
         </ScrollView>
       </View>
