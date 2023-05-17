@@ -22,6 +22,7 @@ import VideoDetails from "./screens/VideoDetails";
 import Transaksi from "./screens/Transaksi";
 import TentangKami from "./screens/TentangKami";
 import Feedback from "./screens/Feedback";
+import ResetPassword from "./screens/ResetPassword";
 // const forFade = ({ current, next }) => {
 //   const opacity = Animated.add(
 //     current.progress,
@@ -55,9 +56,6 @@ export function HomeScreen({ navigation }) {
           headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
-          headerStyle: {
-            height: 80,
-          },
         }}
       />
       <Tab.Screen
@@ -67,9 +65,6 @@ export function HomeScreen({ navigation }) {
           headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
-          headerStyle: {
-            height: 80,
-          },
         }}
       />
       <Tab.Screen
@@ -79,9 +74,6 @@ export function HomeScreen({ navigation }) {
           headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
-          headerStyle: {
-            height: 80,
-          },
         }}
       />
       <Tab.Screen
@@ -91,9 +83,6 @@ export function HomeScreen({ navigation }) {
           headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
-          headerStyle: {
-            height: 80,
-          },
         }}
       />
     </Tab.Navigator>
@@ -140,7 +129,7 @@ export default function App() {
               name="Buat akun anak"
               component={BuatAkunAnak}
               options={{ header: () => null }}
-            /> */}
+            /> 
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
@@ -183,6 +172,13 @@ export default function App() {
                 return {
                   title: "kembali",
                 };
+              }}
+            />*/}
+            <Stack.Screen
+              name="ResetPassword"
+              component={ResetPassword}
+              options={{
+                header: () => null,
               }}
             />
           </Stack.Navigator>

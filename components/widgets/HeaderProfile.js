@@ -39,7 +39,7 @@ const HeaderProfile = () => {
             color: Colors.slate700,
           }}
         >
-          {userInfo?.nama}
+          {userInfo ? nama : "Teman Rica"}
         </Text>
       </Pressable>
     </View>
