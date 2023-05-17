@@ -19,6 +19,9 @@ import HeaderProfile from "./components/widgets/HeaderProfile";
 import Profile from "./screens/Profile";
 import HeaderBack from "./components/widgets/HeaderBack";
 import VideoDetails from "./screens/VideoDetails";
+import Transaksi from "./screens/Transaksi";
+import TentangKami from "./screens/TentangKami";
+import Feedback from "./screens/Feedback";
 // const forFade = ({ current, next }) => {
 //   const opacity = Animated.add(
 //     current.progress,
@@ -149,6 +152,33 @@ export default function App() {
             <Stack.Screen
               name="VideoDetails"
               component={VideoDetails}
+              options={({ route, navigation }) => {
+                return {
+                  title: "kembali",
+                };
+              }}
+            />
+            <Stack.Screen
+              name="Transaksi"
+              component={Transaksi}
+              options={({ route, navigation }) => {
+                return {
+                  title: "kembali",
+                };
+              }}
+            />
+            <Stack.Screen
+              name="TentangKami"
+              component={TentangKami}
+              options={({ route, navigation }) => {
+                return {
+                  title: "kembali",
+                };
+              }}
+            />
+            <Stack.Screen
+              name="Feedback"
+              component={Feedback}
               options={({ route, navigation }) => {
                 return {
                   title: "kembali",

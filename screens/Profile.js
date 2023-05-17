@@ -3,14 +3,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
 import { LinearGradient } from "expo-linear-gradient";
-import {
-  View,
-  Text,
-  Image,
-  Dimensions,
-  Pressable,
-  TextInput,
-} from "react-native";
+import { View, Text, Dimensions, Pressable, TextInput } from "react-native";
+import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
 import { setUserInfo } from "../redux/slices/user";
 
@@ -21,7 +15,6 @@ function randomInteger() {
 const number1 = randomInteger();
 const number2 = randomInteger();
 const result = number1 * number2;
-console.log("result", result);
 
 const Profile = () => {
   const [userResult, setUserResult] = React.useState(0);
@@ -54,20 +47,19 @@ const Profile = () => {
       <View
         style={{
           position: "absolute",
-          bottom: 0,
+          bottom: -24,
           flex: 1,
         }}
       >
         <Image
           source={require("../assets/images/background.png")}
-          resizeMode="stretch"
+          contentFit="cover"
           style={{
             width: windowWidth,
-            height: 300,
+            height: windowWidth / 1.5,
           }}
         />
       </View>
-
       {userResult !== result.toString() ? (
         <View>
           <Text
@@ -268,6 +260,7 @@ const Profile = () => {
                 gap: 8,
                 paddingVertical: 16,
               }}
+              onPress={() => navigation.navigate("Transaksi")}
             >
               <Image
                 source={require("../assets/icons/invoice.png")}
@@ -293,6 +286,7 @@ const Profile = () => {
                 gap: 8,
                 paddingVertical: 16,
               }}
+              onPress={() => navigation.navigate("TentangKami")}
             >
               <Image
                 source={require("../assets/icons/building.png")}
@@ -318,6 +312,7 @@ const Profile = () => {
                 gap: 8,
                 paddingVertical: 16,
               }}
+              onPress={() => navigation.navigate("Feedback")}
             >
               <Image
                 source={require("../assets/icons/comments.png")}
