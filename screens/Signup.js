@@ -31,7 +31,6 @@ const Signup = ({ navigation }) => {
       })
       .then((res) => {
         dispatch(setUserInfo(res.data.data));
-        console.log("userInfo", res.data.data);
         navigation.navigate("HomeScreen");
       })
       .catch((err) => {

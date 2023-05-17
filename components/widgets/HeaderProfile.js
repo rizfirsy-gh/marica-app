@@ -7,6 +7,7 @@ import { useNavigation } from "@react-navigation/core";
 const HeaderProfile = () => {
   const { isLoading, userInfo } = useSelector((state) => state.user);
   const navigation = useNavigation();
+
   return (
     <View
       style={{
@@ -22,6 +23,7 @@ const HeaderProfile = () => {
           justifyContent: "flex-start",
           alignItems: "center",
           gap: 4,
+          height: 40,
         }}
         onPress={() => navigation.navigate("Profile")}
       >
@@ -39,7 +41,7 @@ const HeaderProfile = () => {
             color: Colors.slate700,
           }}
         >
-          {userInfo ? nama : "Teman Rica"}
+          {userInfo ? userInfo.essentials.username : "Teman Rica"}
         </Text>
       </Pressable>
     </View>

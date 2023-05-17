@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import { store } from "./redux/store";
 import { useFonts } from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
@@ -44,6 +44,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export function HomeScreen({ navigation }) {
+  const { userInfo } = useSelector((state) => state.user);
   return (
     <Tab.Navigator
       initialRouteName="HomeScreen"
@@ -53,16 +54,13 @@ export function HomeScreen({ navigation }) {
         name="Home"
         component={Home}
         options={{
-          headerLeft: HeaderProfile,
-          headerTitle: () => null,
-          headerRight: () => null,
+          header: HeaderProfile,
         }}
       />
       <Tab.Screen
         name="Cerita"
         component={Cerita}
         options={{
-          headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
         }}
@@ -71,7 +69,6 @@ export function HomeScreen({ navigation }) {
         name="Musik"
         component={Musik}
         options={{
-          headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
         }}
@@ -80,7 +77,6 @@ export function HomeScreen({ navigation }) {
         name="Aktifitas"
         component={Aktifitas}
         options={{
-          headerLeft: HeaderProfile,
           headerTitle: () => null,
           headerRight: () => null,
         }}

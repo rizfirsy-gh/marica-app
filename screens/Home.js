@@ -6,7 +6,7 @@ import { Colors } from "../constant/styles";
 import { useNavigation } from "@react-navigation/core";
 
 export default function Home() {
-  // const { isLoading, userInfo } = useSelector((state) => state.user);
+  const { isLoading, userInfo } = useSelector((state) => state.user);
   const navigation = useNavigation();
   return (
     <View
