@@ -1,4 +1,5 @@
 import "react-native-gesture-handler";
+import { Colors } from "./constant/styles";
 import { Provider, useSelector } from "react-redux";
 import { store } from "./redux/store";
 import { useFonts } from "expo-font";
@@ -17,12 +18,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabNavigation from "./components/widgets/TabNavigation";
 import HeaderProfile from "./components/widgets/HeaderProfile";
 import Profile from "./screens/Profile";
-import HeaderBack from "./components/widgets/HeaderBack";
 import VideoDetails from "./screens/VideoDetails";
 import Transaksi from "./screens/Transaksi";
 import TentangKami from "./screens/TentangKami";
 import Feedback from "./screens/Feedback";
 import ResetPassword from "./screens/ResetPassword";
+import { Text, View, Pressable } from "react-native";
+import { Image } from "expo-image";
 // const forFade = ({ current, next }) => {
 //   const opacity = Animated.add(
 //     current.progress,
@@ -49,38 +51,51 @@ export function HomeScreen({ navigation }) {
     <Tab.Navigator
       initialRouteName="HomeScreen"
       tabBar={TabNavigation.bind(navigation)}
+      screenOptions={{
+        header: () => (
+          <View
+            style={{
+              padding: 16,
+              paddingTop: 40,
+              paddingBottom: 0,
+              backgroundColor: "#fff",
+            }}
+          >
+            <Pressable
+              style={{
+                flexDirection: "row",
+                justifyContent: "flex-start",
+                alignItems: "center",
+                gap: 4,
+                height: 40,
+              }}
+              onPress={() => navigation.navigate("Profile")}
+            >
+              <Image
+                source={require("./assets/images/profile.png")}
+                style={{
+                  width: 24,
+                  height: 24,
+                }}
+              />
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontFamily: "Nunito-SemiBold",
+                  color: Colors.slate700,
+                }}
+              >
+                {userInfo ? userInfo.essentials.username : "Teman Rica"}
+              </Text>
+            </Pressable>
+          </View>
+        ),
+      }}
     >
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          header: HeaderProfile,
-        }}
-      />
-      <Tab.Screen
-        name="Cerita"
-        component={Cerita}
-        options={{
-          headerTitle: () => null,
-          headerRight: () => null,
-        }}
-      />
-      <Tab.Screen
-        name="Musik"
-        component={Musik}
-        options={{
-          headerTitle: () => null,
-          headerRight: () => null,
-        }}
-      />
-      <Tab.Screen
-        name="Aktifitas"
-        component={Aktifitas}
-        options={{
-          headerTitle: () => null,
-          headerRight: () => null,
-        }}
-      />
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Cerita" component={Cerita} />
+      <Tab.Screen name="Musik" component={Musik} />
+      <Tab.Screen name="Aktifitas" component={Aktifitas} />
     </Tab.Navigator>
   );
 }

@@ -12,9 +12,7 @@ const HeaderProfile = () => {
     <View
       style={{
         padding: 16,
-        paddingTop: 32,
         backgroundColor: "#fff",
-        flex: 1,
       }}
     >
       <Pressable
