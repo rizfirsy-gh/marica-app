@@ -16,7 +16,6 @@ import TermCondition from "./screens/TermCondition";
 import BuatAkunAnak from "./screens/BuatAkunAnak";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabNavigation from "./components/widgets/TabNavigation";
-import HeaderProfile from "./components/widgets/HeaderProfile";
 import Profile from "./screens/Profile";
 import VideoDetails from "./screens/VideoDetails";
 import Transaksi from "./screens/Transaksi";
@@ -25,28 +24,13 @@ import Feedback from "./screens/Feedback";
 import ResetPassword from "./screens/ResetPassword";
 import { Text, View, Pressable } from "react-native";
 import { Image } from "expo-image";
-// const forFade = ({ current, next }) => {
-//   const opacity = Animated.add(
-//     current.progress,
-//     next ? next.progress : 0
-//   ).interpolate({
-//     inputRange: [0, 1, 2],
-//     outputRange: [0, 1, 0],
-//   });
-
-//   return {
-//     leftButtonStyle: { opacity },
-//     rightButtonStyle: { opacity },
-//     titleStyle: { opacity },
-//     backgroundStyle: { opacity },
-//   };
-// };
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export function HomeScreen({ navigation }) {
   const { userInfo } = useSelector((state) => state.user);
+
   return (
     <Tab.Navigator
       initialRouteName="HomeScreen"
@@ -85,7 +69,9 @@ export function HomeScreen({ navigation }) {
                   color: Colors.slate700,
                 }}
               >
-                {userInfo ? userInfo.essentials.username : "Teman Rica"}
+                {userInfo && userInfo.essentials.username
+                  ? userInfo.essentials.username
+                  : "Teman Rica"}
               </Text>
             </Pressable>
           </View>

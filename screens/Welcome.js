@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Colors } from "../constant/styles";
 import { LinearGradient } from "expo-linear-gradient";
 import {
@@ -10,12 +10,31 @@ import {
   Image,
 } from "react-native";
 import Button from "../components/buttons/Button";
+import { getUserData } from "../redux/actions/user-action";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "../redux/slices/user";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const Welcome = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getUserData()
+      .then((res) => {
+        console.log("res", res);
+        if (res === null || res === undefined) {
+          navigation.navigate("Welcome");
+        } else {
+          dispatch(setUserInfo(res));
+          navigation.navigate("HomeScreen");
+        }
+      })
+      .catch((err) => console.log("err", err));
+  });
+
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
       <View

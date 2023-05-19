@@ -8,6 +8,7 @@ import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, View, Text, Dimensions } from "react-native";
 import LoginForm from "../components/forms/LoginForm";
+import { storeUserData } from "../redux/actions/user-action";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
@@ -30,6 +31,7 @@ const Signup = ({ navigation }) => {
         password: values.password,
       })
       .then((res) => {
+        storeUserData(res.data.data);
         dispatch(setUserInfo(res.data.data));
         navigation.navigate("HomeScreen");
       })
@@ -45,6 +47,7 @@ const Signup = ({ navigation }) => {
     await axios
       .post("https://api.marica.id/api/v1/user", values)
       .then((res) => {
+        storeUserData(res.data.data);
         dispatch(setUserInfo(res.data.data));
         navigation.navigate("TermCondition");
       })

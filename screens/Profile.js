@@ -6,7 +6,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import { View, Text, Dimensions, Pressable, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
-import { setUserInfo } from "../redux/slices/user";
+import { setUserInfo, setUserLogout } from "../redux/slices/user";
+import { deleteUserData } from "../redux/actions/user-action";
 
 function randomInteger() {
   return Math.floor(Math.random() * 10);
@@ -339,7 +340,8 @@ const Profile = () => {
                 paddingVertical: 16,
               }}
               onPress={() => {
-                dispatch(setUserInfo(null));
+                dispatch(setUserLogout());
+                deleteUserData();
                 navigation.navigate("Welcome");
               }}
             >

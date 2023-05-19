@@ -1,37 +1,27 @@
-import axios from "axios";
-import { setLoading, setUserInfo } from "../slices/user";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const signup =
-  ({ nama, email, password }) =>
-  async (dispatch) => {
-    dispatch(setLoading(true));
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
+export const storeUserData = async (value) => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem("user_info", jsonValue);
+  } catch (e) {
+    console.log("asyncStorage: ", e);
+  }
+};
 
-      console.log("nama", nama);
-      console.log("email", email);
-      console.log("password", password);
+export const getUserData = async () => {
+  try {
+    const value = await AsyncStorage.getItem("user_info");
+    return value != null ? JSON.parse(value) : null;
+  } catch (e) {
+    console.log("asyncStorage: ", e);
+  }
+};
 
-      const data = await axios.post(
-        "https://api.marica.id/api/v1/user",
-        { nama, password, email },
-        config
-      );
-
-      console.log("data", data);
-
-      // if success
-      dispatch(setUserInfo(data));
-      dispatch(setLoading(false));
-    } catch (error) {
-      console.error(error.message);
-      // Add your error handling logic here
-      //   state.authentication.status = error.status;
-      //   state.authentication.message = error.message;
-      //   state.isLoading = false;
-    }
-  };
+export const deleteUserData = async () => {
+  try {
+    await AsyncStorage.clear();
+  } catch (error) {
+    console.log("error:", error);
+  }
+};
