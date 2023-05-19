@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Text, View, Image } from "react-native";
+import { Text, View } from "react-native";
+import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
 
 export default function TentangKami({ navigation }) {
@@ -11,17 +12,35 @@ export default function TentangKami({ navigation }) {
         alignItems: "center",
         backgroundColor: "#fff",
         gap: 24,
+        padding: 16,
       }}
     >
-      <Image source={require("../assets/images/empty.png")} />
+      <View
+        style={{
+          width: 300,
+          height: 200,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Image
+          source={require("../assets/images/under-construction.png")}
+          objectFit="cover"
+          style={{
+            width: 280,
+            height: 176,
+          }}
+        />
+      </View>
       <Text
         style={{
           fontFamily: "Nunito-Bold",
-          fontSize: 20,
+          fontSize: 16,
           color: Colors.slate500,
+          textAlign: "center",
         }}
       >
-        Belum ada transaksi {":("}
+        Eh sebentar ya halaman Tentang Kami masih dikembangkan {":)"}
       </Text>
     </View>
   );
