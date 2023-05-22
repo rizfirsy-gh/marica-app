@@ -24,6 +24,7 @@ import Feedback from "./screens/Feedback";
 import ResetPassword from "./screens/ResetPassword";
 import { Text, View, Pressable } from "react-native";
 import { Image } from "expo-image";
+import UserInformation from "./screens/UserInformation";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -176,6 +177,13 @@ export default function App() {
               component={ResetPassword}
               options={{
                 header: () => null,
+              }}
+            />
+            <Stack.Screen
+              name="UserInformation"
+              component={UserInformation}
+              options={{
+                title: "User Information",
               }}
             />
           </Stack.Navigator>

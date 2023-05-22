@@ -196,54 +196,56 @@ const Profile = () => {
             gap: 8,
           }}
         >
-          <View
-            style={{
-              width: 350,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              alignItems: "center",
-              backgroundColor: Colors.slate200,
-              borderWidth: 2,
-              borderColor: "#fff",
-              padding: 16,
-              borderRadius: 16,
-            }}
-          >
+          <Pressable onPress={() => navigation.navigate("UserInformation")}>
             <View
               style={{
+                width: 350,
                 flexDirection: "row",
-                gap: 16,
-                justifyContent: "flex-start",
+                justifyContent: "space-between",
                 alignItems: "center",
+                backgroundColor: Colors.slate200,
+                borderWidth: 2,
+                borderColor: "#fff",
+                padding: 16,
+                borderRadius: 16,
               }}
             >
-              <Image
-                source={require("../assets/images/profile.png")}
+              <View
                 style={{
-                  width: 42,
-                  height: 42,
-                  backgroundColor: Colors.slate400,
-                  borderRadius: 100,
-                }}
-              />
-              <Text
-                style={{
-                  fontFamily: "Nunito-Medium",
-                  fontSize: 24,
-                  color: Colors.slate600,
+                  flexDirection: "row",
+                  gap: 16,
+                  justifyContent: "flex-start",
+                  alignItems: "center",
                 }}
               >
-                {namaDepan}
-              </Text>
+                <Image
+                  source={require("../assets/images/profile.png")}
+                  style={{
+                    width: 42,
+                    height: 42,
+                    backgroundColor: Colors.slate400,
+                    borderRadius: 100,
+                  }}
+                />
+                <Text
+                  style={{
+                    fontFamily: "Nunito-Medium",
+                    fontSize: 24,
+                    color: Colors.slate600,
+                  }}
+                >
+                  {namaDepan}
+                </Text>
+              </View>
+              <Image
+                source={require("../assets/icons/right-arrow.png")}
+                style={{
+                  width: 6,
+                  height: 12,
+                }}
+              />
             </View>
-            <Image
-              source={require("../assets/icons/right-arrow.png")}
-              style={{
-                width: 6,
-                height: 12,
-              }}
-            />
-          </View>
+          </Pressable>
           <View
             style={{
               width: 350,
