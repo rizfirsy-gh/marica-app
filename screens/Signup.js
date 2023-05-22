@@ -16,7 +16,6 @@ const blurhash =
 const Signup = ({ navigation }) => {
   const [login, setLogin] = React.useState(false);
   const windowWidth = Dimensions.get("window").width;
-  const windowHeight = Dimensions.get("window").height;
 
   const dispatch = useDispatch();
   const { isLoading, userInfo, authentication } = useSelector(

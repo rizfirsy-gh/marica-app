@@ -1,245 +1,286 @@
 import React from "react";
-import { View, Text, ScrollView, Dimensions, Pressable } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import {
+  View,
+  Text,
+  ScrollView,
+  Dimensions,
+  Pressable,
+  StyleSheet,
+} from "react-native";
 import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
 import { useSelector } from "react-redux";
 import Button from "../components/buttons/Button";
 
+const blurhash =
+  "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
+
 const UserInformation = () => {
   const [tab, setTab] = React.useState(false);
   const { userInfo } = useSelector((state) => state.user);
-  console.log("tab", tab);
+
+  const windowWidth = Dimensions.get("window").width;
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "center",
-        backgroundColor: "#fff",
-        paddingHorizontal: 16,
-        paddingBottom: 16,
-      }}
-    >
+    <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
       <View
         style={{
-          gap: 16,
+          flex: 1,
           justifyContent: "flex-start",
           alignItems: "center",
+          paddingHorizontal: 16,
+          paddingBottom: 16,
+          position: "relative",
         }}
       >
-        <Image
-          source={require("../assets/images/profile.png")}
+        <View
           style={{
-            width: 150,
-            height: 150,
-            backgroundColor: Colors.cyan600,
-            borderRadius: 100,
-          }}
-        />
-        <Text
-          style={{
-            fontFamily: "Nunito-Medium",
-            fontSize: 24,
-            color: Colors.slate600,
+            position: "absolute",
+            bottom: -24,
+            flex: 1,
           }}
         >
-          {userInfo?.nama}
-        </Text>
-      </View>
-      <ScrollView
-        style={{
-          width: "100%",
-        }}
-      >
-        <View style={{ flexDirection: "row" }}>
-          <Pressable
+          <Image
+            source={require("../assets/images/background.png")}
+            contentFit="cover"
             style={{
-              backgroundColor: `${tab ? Colors.cyan400 : null}`,
-              borderTopLeftRadius: 16,
-              borderTopRightRadius: 16,
+              width: windowWidth,
+              height: windowWidth / 1.5,
             }}
-            onPress={() => setTab(false)}
-          >
-            <Text
-              style={{
-                padding: 16,
-                color: "#fff",
-              }}
-            >
-              Informasi Pengguna
-            </Text>
-          </Pressable>
-          <Pressable
-            style={{
-              borderTopLeftRadius: 16,
-              borderTopRightRadius: 16,
-              borderWidth: 2,
-              borderColor: Colors.cyan400,
-            }}
-            onPress={() => setTab(true)}
-          >
-            <Text
-              style={{
-                padding: 16,
-                color: Colors.cyan400,
-              }}
-            >
-              Data anak
-            </Text>
-          </Pressable>
+          />
         </View>
-        {!tab ? (
-          <View
+        <View
+          style={{
+            gap: 16,
+            justifyContent: "flex-start",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            source={require("../assets/images/profile.png")}
             style={{
-              gap: 16,
-              backgroundColor: Colors.slate50,
-              padding: 16,
-              borderWidth: 2,
-              borderColor: Colors.cyan400,
-              borderTopRightRadius: 16,
-              borderBottomRightRadius: 16,
-              borderBottomLeftRadius: 16,
-              flex: 1,
+              width: 150,
+              height: 150,
+              backgroundColor: Colors.cyan600,
+              borderRadius: 100,
+            }}
+          />
+          <Text
+            style={{
+              fontFamily: "Nunito-Medium",
+              fontSize: 24,
+              color: Colors.slate600,
             }}
           >
-            <View>
+            {userInfo?.nama}
+          </Text>
+        </View>
+        <ScrollView
+          style={{
+            width: "100%",
+          }}
+        >
+          <View style={{ flexDirection: "row" }}>
+            <Pressable
+              style={{
+                backgroundColor: `${tab ? Colors.cyan400 : null}`,
+                borderTopLeftRadius: 16,
+                borderTopRightRadius: 16,
+              }}
+              onPress={() => setTab(false)}
+            >
               <Text
                 style={{
-                  fontFamily: "Nunito-Bold",
-                  fontSize: 16,
-                  color: Colors.slate700,
+                  padding: 16,
+                  color: "#fff",
                 }}
               >
-                Kode Unik
+                Informasi Pengguna
               </Text>
+            </Pressable>
+            <Pressable
+              style={{
+                borderTopLeftRadius: 16,
+                borderTopRightRadius: 16,
+                borderWidth: 2,
+                borderColor: Colors.cyan400,
+              }}
+              onPress={() => setTab(true)}
+            >
               <Text
                 style={{
-                  fontFamily: "Nunito-Medium",
-                  fontSize: 16,
-                  color: Colors.slate400,
+                  padding: 16,
+                  color: Colors.cyan400,
                 }}
               >
-                {userInfo._id}
+                Data anak
               </Text>
-            </View>
-            <View>
-              <Text
-                style={{
-                  fontFamily: "Nunito-Bold",
-                  fontSize: 16,
-                  color: Colors.slate700,
-                }}
-              >
-                Username
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Nunito-Medium",
-                  fontSize: 16,
-                  color: Colors.slate400,
-                }}
-              >
-                {userInfo.essentials.username}
-              </Text>
-            </View>
-            <View>
-              <Text
-                style={{
-                  fontFamily: "Nunito-Bold",
-                  fontSize: 16,
-                  color: Colors.slate700,
-                }}
-              >
-                Nama
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Nunito-Medium",
-                  fontSize: 16,
-                  color: Colors.slate400,
-                }}
-              >
-                {userInfo.nama}
-              </Text>
-            </View>
-            <View>
-              <Text
-                style={{
-                  fontFamily: "Nunito-Bold",
-                  fontSize: 16,
-                  color: Colors.slate700,
-                }}
-              >
-                Email
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Nunito-Medium",
-                  fontSize: 16,
-                  color: Colors.slate400,
-                }}
-              >
-                {userInfo.email}
-              </Text>
-            </View>
+            </Pressable>
           </View>
-        ) : (
-          <View
-            style={{
-              minHeight: 300,
-              gap: 16,
-              backgroundColor: Colors.slate50,
-              padding: 16,
-              borderWidth: 2,
-              borderColor: Colors.cyan400,
-              borderTopRightRadius: 16,
-              borderBottomRightRadius: 16,
-              borderBottomLeftRadius: 16,
-              flex: 1,
-            }}
-          >
-            <View>
-              {userInfo.essentials.kidsAnalytics.length <= 0 ? (
-                <View
+          {!tab ? (
+            <View
+              style={{
+                gap: 16,
+                backgroundColor: Colors.slate50,
+                padding: 16,
+                borderWidth: 2,
+                borderColor: Colors.cyan400,
+                borderTopRightRadius: 16,
+                borderBottomRightRadius: 16,
+                borderBottomLeftRadius: 16,
+                flex: 1,
+              }}
+            >
+              <View>
+                <Text
                   style={{
-                    flex: 1,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#fff",
-                    gap: 16,
+                    fontFamily: "Nunito-Bold",
+                    fontSize: 16,
+                    color: Colors.slate700,
                   }}
                 >
-                  <Image
-                    source={require("../assets/images/empty.png")}
+                  Kode Unik
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "Nunito-Medium",
+                    fontSize: 16,
+                    color: Colors.slate400,
+                  }}
+                >
+                  {userInfo._id}
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    fontFamily: "Nunito-Bold",
+                    fontSize: 16,
+                    color: Colors.slate700,
+                  }}
+                >
+                  Username
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "Nunito-Medium",
+                    fontSize: 16,
+                    color: Colors.slate400,
+                  }}
+                >
+                  {userInfo.essentials.username}
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    fontFamily: "Nunito-Bold",
+                    fontSize: 16,
+                    color: Colors.slate700,
+                  }}
+                >
+                  Nama
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "Nunito-Medium",
+                    fontSize: 16,
+                    color: Colors.slate400,
+                  }}
+                >
+                  {userInfo.nama}
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    fontFamily: "Nunito-Bold",
+                    fontSize: 16,
+                    color: Colors.slate700,
+                  }}
+                >
+                  Email
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "Nunito-Medium",
+                    fontSize: 16,
+                    color: Colors.slate400,
+                  }}
+                >
+                  {userInfo.email}
+                </Text>
+              </View>
+            </View>
+          ) : (
+            <View
+              style={{
+                minHeight: 300,
+                gap: 16,
+                backgroundColor: Colors.slate50,
+                padding: 16,
+                borderWidth: 2,
+                borderColor: Colors.cyan400,
+                borderTopRightRadius: 16,
+                borderBottomRightRadius: 16,
+                borderBottomLeftRadius: 16,
+                flex: 1,
+              }}
+            >
+              <View>
+                {userInfo.essentials.kidsAnalytics.length <= 0 ? (
+                  <View
                     style={{
-                      width: 140,
-                      height: 210,
-                    }}
-                  />
-                  <Text
-                    style={{
-                      fontFamily: "Nunito-Bold",
-                      fontSize: 20,
-                      color: Colors.slate500,
+                      flex: 1,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      backgroundColor: "#fff",
+                      gap: 16,
                     }}
                   >
-                    Belum ada cerita {":("}
-                  </Text>
-                </View>
-              ) : (
-                userInfo.essentials.kidsAnalytics
-              )}
+                    <Image
+                      source={require("../assets/images/empty.png")}
+                      style={{
+                        width: 140,
+                        height: 210,
+                      }}
+                    />
+                    <Text
+                      style={{
+                        fontFamily: "Nunito-Bold",
+                        fontSize: 20,
+                        color: Colors.slate500,
+                      }}
+                    >
+                      Belum ada cerita {":("}
+                    </Text>
+                  </View>
+                ) : (
+                  userInfo.essentials.kidsAnalytics
+                )}
+              </View>
             </View>
-          </View>
-        )}
-      </ScrollView>
-      <Button variant="primary">Ubah</Button>
-    </View>
+          )}
+        </ScrollView>
+        <Button variant="primary">Ubah</Button>
+      </View>
+    </LinearGradient>
   );
 };
 
 export default UserInformation;
+
+const styles = StyleSheet.create({
+  bgGradient: {
+    position: "relative",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+    gap: 24,
+  },
+});
 
 // const userinf = {
 //   _id: "646ad27973febfd1b835cb51",
