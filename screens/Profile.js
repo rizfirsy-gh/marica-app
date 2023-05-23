@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik } from "formik";
@@ -6,7 +7,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { View, Text, Dimensions, Pressable, TextInput } from "react-native";
 import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
-import { setUserInfo, setUserLogout } from "../redux/slices/user";
+import { setUserInfo, setUserLogout, setLoading } from "../redux/slices/user";
 import { deleteUserData } from "../redux/actions/user-action";
 
 function randomInteger() {
@@ -24,10 +25,24 @@ const Profile = () => {
 
   const navigation = useNavigation();
 
-  const { userInfo, anak } = useSelector((state) => state.user);
+  const { userInfo, anak, isLoading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const namaDepan = userInfo?.nama.split(" ")[0];
+
+  const logoutHandler = async (values) => {
+    dispatch(setLoading(true));
+    deleteUserData();
+
+    await axios
+      .delete("https://api.marica.id/api/v1/user/logout")
+      .then((res) => console.log("res", res))
+      .catch((err) => console.log("err", err));
+
+    navigation.navigate("Welcome");
+    dispatch(setUserLogout());
+    dispatch(setLoading(false));
+  };
 
   return (
     <LinearGradient
@@ -341,11 +356,7 @@ const Profile = () => {
                 gap: 8,
                 paddingVertical: 16,
               }}
-              onPress={() => {
-                dispatch(setUserLogout());
-                deleteUserData();
-                navigation.navigate("Welcome");
-              }}
+              onPress={logoutHandler}
             >
               <Image
                 source={require("../assets/icons/logout.png")}
@@ -361,7 +372,7 @@ const Profile = () => {
                   fontSize: 16,
                 }}
               >
-                Logout
+                {isLoading ? "Tunggu sebentar" : "Logout"}
               </Text>
             </Pressable>
           </View>
