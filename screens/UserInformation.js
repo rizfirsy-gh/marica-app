@@ -12,6 +12,7 @@ import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
 import { useSelector } from "react-redux";
 import Button from "../components/buttons/Button";
+import { useNavigation } from "@react-navigation/native";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
@@ -19,6 +20,7 @@ const blurhash =
 const UserInformation = () => {
   const [tab, setTab] = React.useState(false);
   const { userInfo } = useSelector((state) => state.user);
+  const navigation = useNavigation();
 
   const windowWidth = Dimensions.get("window").width;
 
@@ -269,7 +271,12 @@ const UserInformation = () => {
             </View>
           )}
         </ScrollView>
-        <Button variant="primary">Ubah</Button>
+        <Button
+          variant="primary"
+          onPress={() => navigation.navigate("EditUserInfo")}
+        >
+          Ubah
+        </Button>
       </View>
     </LinearGradient>
   );
