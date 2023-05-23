@@ -31,6 +31,7 @@ const UserInformation = () => {
           alignItems: "center",
           paddingHorizontal: 16,
           paddingBottom: 16,
+          gap: 16,
           position: "relative",
         }}
       >
@@ -84,16 +85,18 @@ const UserInformation = () => {
           <View style={{ flexDirection: "row" }}>
             <Pressable
               style={{
-                backgroundColor: `${tab ? Colors.cyan400 : null}`,
+                backgroundColor: `${!tab ? Colors.cyan400 : Colors.slate50}`,
                 borderTopLeftRadius: 16,
                 borderTopRightRadius: 16,
+                borderWidth: 2,
+                borderColor: Colors.cyan400,
               }}
               onPress={() => setTab(false)}
             >
               <Text
                 style={{
                   padding: 16,
-                  color: "#fff",
+                  color: `${!tab ? Colors.slate50 : Colors.cyan400}`,
                 }}
               >
                 Informasi Pengguna
@@ -101,6 +104,7 @@ const UserInformation = () => {
             </Pressable>
             <Pressable
               style={{
+                backgroundColor: `${tab ? Colors.cyan400 : Colors.slate50}`,
                 borderTopLeftRadius: 16,
                 borderTopRightRadius: 16,
                 borderWidth: 2,
@@ -111,7 +115,7 @@ const UserInformation = () => {
               <Text
                 style={{
                   padding: 16,
-                  color: Colors.cyan400,
+                  color: `${tab ? Colors.slate50 : Colors.cyan400}`,
                 }}
               >
                 Data anak
@@ -121,6 +125,7 @@ const UserInformation = () => {
           {!tab ? (
             <View
               style={{
+                minWidth: 300,
                 gap: 16,
                 backgroundColor: Colors.slate50,
                 padding: 16,
@@ -216,6 +221,7 @@ const UserInformation = () => {
           ) : (
             <View
               style={{
+                minWidth: 300,
                 minHeight: 300,
                 gap: 16,
                 backgroundColor: Colors.slate50,
