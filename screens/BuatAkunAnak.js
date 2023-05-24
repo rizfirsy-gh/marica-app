@@ -7,7 +7,7 @@ import { StyleSheet, View, Text, Dimensions } from "react-native";
 import Button from "../components/buttons/Button";
 import AgeCategories from "../components/forms/AgeCategories";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading } from "../redux/slices/user";
+import { setDataAnak, setLoading } from "../redux/slices/anak";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
@@ -19,14 +19,12 @@ const BuatAkunAnak = ({ navigation }) => {
   const [chooseAge, setChooseAge] = React.useState(false);
   function goToAgeOptions() {
     setChooseAge(true);
-    console.log(namaAnak);
   }
 
   const { isLoading, userInfo } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const chooseAgeHandler = (values) => {
-    console.log("values age: ", values);
     setUsiaAnak(values);
   };
 
@@ -48,10 +46,9 @@ const BuatAkunAnak = ({ navigation }) => {
         }
       )
       .then((res) => {
-        // storeUserData(res.data.data);
-        // dispatch(setUserInfo(res.data.data));
+        // dispatch(setDataAnak(res.data.data));
         console.log("res anak: ", res);
-        // navigation.navigate("HomeScreen");
+        navigation.navigate("HomeScreen");
       })
       .catch((err) => {
         console.log(err.response);
@@ -175,3 +172,115 @@ const styles = StyleSheet.create({
 });
 
 export default BuatAkunAnak;
+
+// const resBuatAnak = {
+//   config: {
+//     adapter: ["xhr", "http"],
+//     data: '{"nama":"AA","usia":"5-8"}',
+//     env: { Blob: [Function, Blob], FormData: [Function, FormData] },
+//     headers: [Object],
+//     maxBodyLength: -1,
+//     maxContentLength: -1,
+//     method: "post",
+//     timeout: 0,
+//     transformRequest: [[Function, transformRequest]],
+//     transformResponse: [[Function, transformResponse]],
+//     transitional: {
+//       clarifyTimeoutError: false,
+//       forcedJSONParsing: true,
+//       silentJSONParsing: true,
+//     },
+//     url: "https://api.marica.id/api/v1/user/anak",
+//     validateStatus: [Function, validateStatus],
+//     xsrfCookieName: "XSRF-TOKEN",
+//     xsrfHeaderName: "X-XSRF-TOKEN",
+//   },
+//   data: {
+//     message: "res.status is not a function",
+//     stack: "production",
+//     type: "TypeError",
+//   },
+//   headers: {
+//     "access-control-allow-origin": "*",
+//     "content-length": "82",
+//     "content-type": "application/json; charset=utf-8",
+//     date: "Wed, 24 May 2023 08:00:28 GMT",
+//     etag: 'W/"52-p7m/I7XbtPD2D2QcnLD8jg3An6I"',
+//     server: "LiteSpeed",
+//     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+//     vary: "User-Agent",
+//     "x-content-type-options": "nosniff",
+//     "x-powered-by": "Niagahoster",
+//     "x-xss-protection": "1; mode=block",
+//   },
+//   request: {
+//     DONE: 4,
+//     HEADERS_RECEIVED: 2,
+//     LOADING: 3,
+//     OPENED: 1,
+//     UNSENT: 0,
+//     _aborted: false,
+//     _cachedResponse: undefined,
+//     _hasError: false,
+//     _headers: {
+//       accept: "application/json, text/plain, */*",
+//       authorization: "Bearer undefined",
+//       "content-type": "application/json",
+//     },
+//     _incrementalEvents: false,
+//     _lowerCaseResponseHeaders: {
+//       "access-control-allow-origin": "*",
+//       "content-length": "82",
+//       "content-type": "application/json; charset=utf-8",
+//       date: "Wed, 24 May 2023 08:00:28 GMT",
+//       etag: 'W/"52-p7m/I7XbtPD2D2QcnLD8jg3An6I"',
+//       server: "LiteSpeed",
+//       "strict-transport-security":
+//         "max-age=31536000; includeSubDomains; preload",
+//       vary: "User-Agent",
+//       "x-content-type-options": "nosniff",
+//       "x-powered-by": "Niagahoster",
+//       "x-xss-protection": "1; mode=block",
+//     },
+//     _method: "POST",
+//     _perfKey: "network_XMLHttpRequest_https://api.marica.id/api/v1/user/anak",
+//     _performanceLogger: {
+//       _closed: false,
+//       _extras: [Object],
+//       _pointExtras: [Object],
+//       _points: [Object],
+//       _timespans: [Object],
+//     },
+//     _requestId: null,
+//     _response:
+//       '{"type":"TypeError","message":"res.status is not a function","stack":"production"}',
+//     _responseType: "",
+//     _sent: true,
+//     _subscriptions: [],
+//     _timedOut: false,
+//     _trackingName: "unknown",
+//     _url: "https://api.marica.id/api/v1/user/anak",
+//     readyState: 4,
+//     responseHeaders: {
+//       "access-control-allow-origin": "*",
+//       "content-length": "82",
+//       "content-type": "application/json; charset=utf-8",
+//       date: "Wed, 24 May 2023 08:00:28 GMT",
+//       etag: 'W/"52-p7m/I7XbtPD2D2QcnLD8jg3An6I"',
+//       server: "LiteSpeed",
+//       "strict-transport-security":
+//         "max-age=31536000; includeSubDomains; preload",
+//       vary: "User-Agent",
+//       "x-content-type-options": "nosniff",
+//       "x-powered-by": "Niagahoster",
+//       "x-xss-protection": "1; mode=block",
+//     },
+//     responseURL: "https://api.marica.id/api/v1/user/anak",
+//     status: 200,
+//     timeout: 0,
+//     upload: {},
+//     withCredentials: true,
+//   },
+//   status: 200,
+//   statusText: undefined,
+// };

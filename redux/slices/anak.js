@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const anakSlice = createSlice({
-  nama: "anak",
+  name: "anak",
   initialState: {
     isLoading: false,
     dataAnak: null,
