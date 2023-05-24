@@ -13,27 +13,39 @@ const EditUserInformation = () => {
   const [isEditDataSuccess, setIsEditDataSuccess] = React.useState(false);
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.user);
+  console.log("token", typeof userInfo.token);
 
   const windowWidth = Dimensions.get("window").width;
 
   const updateDataHandler = async (values) => {
-    console.log("nama: ", values.nama);
-    console.log("email: ", values.email);
     const nama = values.nama === "" ? userInfo.nama : values.nama;
     const email = values.email === "" ? userInfo.email : values.email;
 
     dispatch(setLoading(true));
     await axios
-      .put("https://api.marica.id/api/v1/user", { nama, email })
+      .put(
+        "https://api.marica.id/api/v1/user",
+        { nama: nama, email: email },
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      )
       .then((res) => {
-        // storeUserData(res.data.data);
-        // dispatch(setUserInfo(res.data.data));
-        console.log("ubah data: ", res);
-
-        setTimeout(() => setIsEditDataSuccess(true), 1000);
+        console.log("berhasil ubah data: ", res);
       })
-      .catch((err) => {
-        console.log("error ubah data: ", err.response);
+      .catch((error) => {
+        if (error.response) {
+          console.log("error data: ", error.response.data);
+          console.log("error status: ", error.response.status);
+          console.log("error header: ", error.response.headers);
+        } else if (error.request) {
+          console.log("Error request: ", error.request);
+        } else {
+          console.log("Error message: ", error.message);
+        }
+        console.log("Error config: ", error.config);
       });
 
     dispatch(setLoading(false));
@@ -94,3 +106,120 @@ const styles = StyleSheet.create({
 });
 
 export default EditUserInformation;
+
+// const errorSample = {
+//   config: {
+//     adapter: ["xhr", "http"],
+//     data: '{"nama":"Rijal","email":"rizky_firman_syah@outlook.com"}',
+//     env: { Blob: [Function, Blob], FormData: [Function, FormData] },
+//     headers: [Object],
+//     maxBodyLength: -1,
+//     maxContentLength: -1,
+//     method: "put",
+//     timeout: 0,
+//     transformRequest: [[Function, transformRequest]],
+//     transformResponse: [[Function, transformResponse]],
+//     transitional: {
+//       clarifyTimeoutError: false,
+//       forcedJSONParsing: true,
+//       silentJSONParsing: true,
+//     },
+//     url: "https://api.marica.id/api/v1/user",
+//     validateStatus: [Function, validateStatus],
+//     xsrfCookieName: "XSRF-TOKEN",
+//     xsrfHeaderName: "X-XSRF-TOKEN",
+//   },
+//   data: {
+//     message: "res.status is not a function",
+//     stack: "production",
+//     type: "TypeError",
+//   },
+//   headers: {
+//     "access-control-allow-origin": "*",
+//     "alt-svc":
+//       'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"',
+//     "content-length": "82",
+//     "content-type": "application/json; charset=utf-8",
+//     date: "Wed, 24 May 2023 01:24:38 GMT",
+//     etag: 'W/"52-p7m/I7XbtPD2D2QcnLD8jg3An6I"',
+//     server: "LiteSpeed",
+//     "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+//     vary: "User-Agent",
+//     "x-content-type-options": "nosniff",
+//     "x-powered-by": "Niagahoster",
+//     "x-xss-protection": "1; mode=block",
+//   },
+//   request: {
+//     DONE: 4,
+//     HEADERS_RECEIVED: 2,
+//     LOADING: 3,
+//     OPENED: 1,
+//     UNSENT: 0,
+//     _aborted: false,
+//     _cachedResponse: undefined,
+//     _hasError: false,
+//     _headers: {
+//       accept: "application/json, text/plain, */*",
+//       "content-type": "application/json",
+//     },
+//     _incrementalEvents: false,
+//     _lowerCaseResponseHeaders: {
+//       "access-control-allow-origin": "*",
+//       "alt-svc":
+//         'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"',
+//       "content-length": "82",
+//       "content-type": "application/json; charset=utf-8",
+//       date: "Wed, 24 May 2023 01:24:38 GMT",
+//       etag: 'W/"52-p7m/I7XbtPD2D2QcnLD8jg3An6I"',
+//       server: "LiteSpeed",
+//       "strict-transport-security":
+//         "max-age=31536000; includeSubDomains; preload",
+//       vary: "User-Agent",
+//       "x-content-type-options": "nosniff",
+//       "x-powered-by": "Niagahoster",
+//       "x-xss-protection": "1; mode=block",
+//     },
+//     _method: "PUT",
+//     _perfKey: "network_XMLHttpRequest_https://api.marica.id/api/v1/user",
+//     _performanceLogger: {
+//       _closed: false,
+//       _extras: [Object],
+//       _pointExtras: [Object],
+//       _points: [Object],
+//       _timespans: [Object],
+//     },
+//     _requestId: null,
+//     _response:
+//       '{"type":"TypeError","message":"res.status is not a function","stack":"production"}',
+//     _responseType: "",
+//     _sent: true,
+//     _subscriptions: [],
+//     _timedOut: false,
+//     _trackingName: "unknown",
+//     _url: "https://api.marica.id/api/v1/user",
+//     readyState: 4,
+//     responseHeaders: {
+//       "access-control-allow-origin": "*",
+//       "alt-svc":
+//         'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, quic=":443"; ma=2592000; v="43,46"',
+//       "content-length": "82",
+//       "content-type": "application/json; charset=utf-8",
+//       date: "Wed, 24 May 2023 01:24:38 GMT",
+//       etag: 'W/"52-p7m/I7XbtPD2D2QcnLD8jg3An6I"',
+//       server: "LiteSpeed",
+//       "strict-transport-security":
+//         "max-age=31536000; includeSubDomains; preload",
+//       vary: "User-Agent",
+//       "x-content-type-options": "nosniff",
+//       "x-powered-by": "Niagahoster",
+//       "x-xss-protection": "1; mode=block",
+//     },
+//     responseURL: "https://api.marica.id/api/v1/user",
+//     status: 401,
+//     timeout: 0,
+//     upload: {},
+//     withCredentials: true,
+//   },
+//   status: 401,
+//   statusText: undefined,
+// };
