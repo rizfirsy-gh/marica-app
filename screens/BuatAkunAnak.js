@@ -12,31 +12,54 @@ import { setLoading } from "../redux/slices/user";
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
-const Signup = ({ navigation }) => {
-  const [anak, setAnak] = React.useState({
-    nama: "",
-    usia: "",
-  });
+const BuatAkunAnak = ({ navigation }) => {
+  const [namaAnak, setNamaAnak] = React.useState("");
+  const [usiaAnak, setUsiaAnak] = React.useState("");
+
   const [chooseAge, setChooseAge] = React.useState(false);
   function goToAgeOptions() {
     setChooseAge(true);
-    console.log(anak);
+    console.log(namaAnak);
   }
 
-  const { isLoading } = useSelector((state) => state.user);
+  const { isLoading, userInfo } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  function inputAnakHandler(identifier, userInput) {
-    setAnak((prev) => {
-      return {
-        ...prev,
-        [identifier]: userInput,
-      };
-    });
-  }
+  const chooseAgeHandler = (values) => {
+    console.log("values age: ", values);
+    setUsiaAnak(values);
+  };
+
+  //TODO: save data anak and access globally
+
+  const createAnakHandler = async () => {
+    dispatch(setLoading(true));
+    await axios
+      .post(
+        "https://api.marica.id/api/v1/user/anak",
+        {
+          nama: namaAnak,
+          usia: usiaAnak,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        // storeUserData(res.data.data);
+        // dispatch(setUserInfo(res.data.data));
+        console.log("res anak: ", res);
+        // navigation.navigate("HomeScreen");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+    dispatch(setLoading(false));
+  };
 
   const windowWidth = Dimensions.get("window").width;
-  const windowHeight = Dimensions.get("window").height;
 
   return (
     <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
@@ -70,33 +93,14 @@ const Signup = ({ navigation }) => {
         </Text>
         <Text style={styles.text}>
           {chooseAge
-            ? `Silahkan pilih kategori usia agar kami dapat menyarankan konten yang relevan dengan ${anak.nama}.`
+            ? `Silahkan pilih kategori usia agar kami dapat menyarankan konten yang relevan dengan ${namaAnak}.`
             : `Untuk memulai, mari buat satu profil anak terlebih dahulu.!`}
         </Text>
       </View>
       {chooseAge ? (
         <View style={styles.form}>
-          <AgeCategories />
-          <Button
-            variant="primary"
-            onPress={async (values) => {
-              navigation.navigate("HomeScreen");
-              // dispatch(setLoading(true));
-              // await axios
-              //   .post("https://api.marica.id/api/v1/user/anak", {
-              //     nama: anak.nama,
-              //     usia: anak.usia,
-              //   })
-              //   .then((res) => {
-              //     dispatch(setAnak(res.data.data));
-              //     dispatch(setLoading(false));
-              //     navigation.navigate("HomeScreen");
-              //   })
-              //   .catch((err) => {
-              //     console.log(err.response.data.message);
-              //   });
-            }}
-          >
+          <AgeCategories chooseAge={chooseAgeHandler} />
+          <Button variant="primary" onPress={createAnakHandler}>
             {isLoading ? "Tunggu sebentar..." : "Selesai!"}
           </Button>
         </View>
@@ -105,7 +109,8 @@ const Signup = ({ navigation }) => {
           <TextInput
             style={styles.input}
             placeholder="Nama anak"
-            onChangeText={inputAnakHandler.bind(null, "nama")}
+            value={namaAnak}
+            onChangeText={(nama) => setNamaAnak(nama)}
           />
           <Button variant="secondary" onPress={goToAgeOptions}>
             Lanjut
@@ -169,4 +174,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Signup;
+export default BuatAkunAnak;

@@ -2,10 +2,11 @@ import React from "react";
 import { Colors } from "../../constant/styles";
 import { Pressable, Image, StyleSheet, Text, View } from "react-native";
 
-const AgeCategories = () => {
+const AgeCategories = ({ chooseAge }) => {
   const [age, setAge] = React.useState(false);
 
-  console.log("age", age ? "5-8" : "0-4");
+  const choosenAge = age ? "5-8" : "0-4";
+  chooseAge(choosenAge);
 
   return (
     <View style={{ gap: 8 }}>
