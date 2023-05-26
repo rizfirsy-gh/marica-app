@@ -4,10 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Image, View, ScrollView, Text, Pressable } from "react-native";
 import { Colors } from "../constant/styles";
 import { useNavigation } from "@react-navigation/core";
-import axios from "axios";
 
 export default function Home() {
   const navigation = useNavigation();
+
+  const { dataAnak } = useSelector((state) => state.anak);
 
   return (
     <View
