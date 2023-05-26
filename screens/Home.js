@@ -1,5 +1,5 @@
 import * as React from "react";
-import { videos } from "../assets/videos/videos";
+// import { videos } from "../assets/videos/videos";
 import { useSelector, useDispatch } from "react-redux";
 import { Image, View, ScrollView, Text, Pressable } from "react-native";
 import { Colors } from "../constant/styles";
@@ -7,8 +7,6 @@ import { useNavigation } from "@react-navigation/core";
 
 export default function Home() {
   const navigation = useNavigation();
-
-  const { dataAnak } = useSelector((state) => state.anak);
 
   return (
     <View
@@ -124,7 +122,7 @@ export default function Home() {
               marginTop: 8,
             }}
           >
-            {videos.map((video) => {
+            {/* {videos.map((video) => {
               return (
                 <Pressable
                   key={video.id}
@@ -147,7 +145,7 @@ export default function Home() {
                   />
                 </Pressable>
               );
-            })}
+            })} */}
           </View>
         </View>
       </ScrollView>
