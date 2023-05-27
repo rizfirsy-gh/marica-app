@@ -24,7 +24,6 @@ const Welcome = ({ navigation }) => {
   useEffect(() => {
     getUserData()
       .then((res) => {
-        console.log("res", res);
         if (res === null || res === undefined) {
           navigation.navigate("Welcome");
         } else {

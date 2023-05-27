@@ -17,10 +17,10 @@ export default function Musik({ navigation }) {
             marginBottom: 8,
           }}
         >
-          Marica punya banyak cerita seru untuk kamu.
+          Marica punya banyak musik seru untuk kamu.
         </Text>
         <TextInput
-          placeholder="Cari cerita..."
+          placeholder="Cari musik..."
           style={{
             paddingHorizontal: 24,
             paddingVertical: 16,
@@ -64,22 +64,50 @@ export default function Musik({ navigation }) {
                       })
                     }
                   >
-                    <Image
-                      source={require("../assets/images/bubu.png")}
-                      resizeMode="cover"
-                      resizeMethod="resize"
+                    <View
                       style={{
-                        width: 334 / 2,
-                        height: 334 / 2,
+                        height: 200,
+                        padding: 16,
                         borderRadius: 16,
+                        backgroundColor: Colors.cyan100,
+                        borderWidth: 2,
+                        borderColor: Colors.cyan500,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: 8,
                       }}
-                    />
+                    >
+                      <Image
+                        source={require("../assets/images/music-thumbnail.png")}
+                        resizeMode="contain"
+                        resizeMethod="resize"
+                        style={{
+                          width: 150 / 2,
+                          height: 150 / 2,
+                        }}
+                      />
+                      <Text
+                        style={{
+                          fontFamily: "Nunito-Bold",
+                          color: Colors.cyan800,
+                          textAlign: "center",
+                        }}
+                      >
+                        {list.title}
+                      </Text>
+                    </View>
                   </Pressable>
                 </View>
               ))}
             </View>
           </View>
         ))}
+        <View
+          style={{
+            height: 50,
+            width: "100%",
+          }}
+        ></View>
       </ScrollView>
     </View>
   );

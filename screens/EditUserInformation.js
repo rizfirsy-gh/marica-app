@@ -13,7 +13,6 @@ const EditUserInformation = () => {
   const [isEditDataSuccess, setIsEditDataSuccess] = React.useState(false);
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.user);
-  console.log("token", typeof userInfo.token);
 
   const windowWidth = Dimensions.get("window").width;
 

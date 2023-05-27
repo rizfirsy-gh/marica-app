@@ -1,5 +1,6 @@
 import * as React from "react";
-// import { videos } from "../assets/videos/videos";
+import { dummyCerita } from "../assets/media/cerita";
+import { dummyMusik } from "../assets/media/musik";
 import { useSelector, useDispatch } from "react-redux";
 import { Image, View, ScrollView, Text, Pressable } from "react-native";
 import { Colors } from "../constant/styles";
@@ -56,48 +57,38 @@ export default function Home() {
           <View
             style={{
               flexDirection: "row",
+              flexWrap: "wrap",
               gap: 16,
               marginTop: 8,
             }}
           >
-            <Pressable
-              onPress={() =>
-                navigation.navigate("VideoDetails", {
-                  videoId: "N_oiwAuCpVQ",
-                  videoTitle: "Demo Video",
-                })
-              }
-            >
-              <Image
-                source={require("../assets/images/bubu.png")}
-                resizeMode="cover"
-                resizeMethod="resize"
-                style={{
-                  width: 334 / 2,
-                  height: 334 / 2,
-                  borderRadius: 16,
-                }}
-              />
-            </Pressable>
-
-            <Pressable
-              onPress={() =>
-                navigation.navigate("VideoDetails", {
-                  videoId: "N_oiwAuCpVQ",
-                })
-              }
-            >
-              <Image
-                source={require("../assets/images/bubu.png")}
-                resizeMode="cover"
-                resizeMethod="resize"
-                style={{
-                  width: 334 / 2,
-                  height: 334 / 2,
-                  borderRadius: 16,
-                }}
-              />
-            </Pressable>
+            {dummyCerita.map((cerita) =>
+              cerita.episodes.map(
+                (episode) =>
+                  episode.isNew && (
+                    <Pressable
+                      key={episode.title}
+                      onPress={() =>
+                        navigation.navigate("VideoDetails", {
+                          videoId: "N_oiwAuCpVQ",
+                          videoTitle: "Demo Video",
+                        })
+                      }
+                    >
+                      <Image
+                        source={require("../assets/images/bubu.png")}
+                        resizeMode="cover"
+                        resizeMethod="resize"
+                        style={{
+                          width: 334 / 2,
+                          height: 334 / 2,
+                          borderRadius: 16,
+                        }}
+                      />
+                    </Pressable>
+                  )
+              )
+            )}
           </View>
         </View>
         <View
@@ -112,7 +103,7 @@ export default function Home() {
               color: Colors.slate700,
             }}
           >
-            Direkomendasikan
+            Musik baru
           </Text>
           <View
             style={{
@@ -122,32 +113,41 @@ export default function Home() {
               marginTop: 8,
             }}
           >
-            {/* {videos.map((video) => {
-              return (
-                <Pressable
-                  key={video.id}
-                  onPress={() =>
-                    navigation.navigate("VideoDetails", {
-                      videoId: video.id,
-                      videoTitle: video.title,
-                    })
-                  }
-                >
-                  <Image
-                    source={require(`../assets/images/thumbnail-data.jpg`)}
-                    resizeMode="cover"
-                    resizeMethod="resize"
-                    style={{
-                      width: 334 / 2,
-                      height: 334 / 2,
-                      borderRadius: 16,
-                    }}
-                  />
-                </Pressable>
-              );
-            })} */}
+            {dummyMusik.map((cerita) =>
+              cerita.playlist.map(
+                (list) =>
+                  list.isNew && (
+                    <Pressable
+                      key={list.title}
+                      onPress={() =>
+                        navigation.navigate("VideoDetails", {
+                          videoId: "N_oiwAuCpVQ",
+                          videoTitle: "Demo Video",
+                        })
+                      }
+                    >
+                      <Image
+                        source={require("../assets/images/bubu.png")}
+                        resizeMode="cover"
+                        resizeMethod="resize"
+                        style={{
+                          width: 334 / 2,
+                          height: 334 / 2,
+                          borderRadius: 16,
+                        }}
+                      />
+                    </Pressable>
+                  )
+              )
+            )}
           </View>
         </View>
+        <View
+          style={{
+            height: 50,
+            width: "100%",
+          }}
+        ></View>
       </ScrollView>
     </View>
   );

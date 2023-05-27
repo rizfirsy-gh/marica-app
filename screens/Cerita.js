@@ -64,22 +64,51 @@ export default function Cerita({ navigation }) {
                       })
                     }
                   >
-                    <Image
-                      source={require("../assets/images/bubu.png")}
-                      resizeMode="cover"
-                      resizeMethod="resize"
+                    <View
                       style={{
-                        width: 334 / 2,
-                        height: 334 / 2,
+                        maxWidth: 180,
+                        height: 200,
+                        padding: 16,
                         borderRadius: 16,
+                        backgroundColor: Colors.cyan100,
+                        borderWidth: 2,
+                        borderColor: Colors.cyan500,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        gap: 8,
                       }}
-                    />
+                    >
+                      <Image
+                        source={require("../assets/images/video-thumbnail.png")}
+                        resizeMode="contain"
+                        resizeMethod="resize"
+                        style={{
+                          width: 150 / 2,
+                          height: 150 / 2,
+                        }}
+                      />
+                      <Text
+                        style={{
+                          fontFamily: "Nunito-Bold",
+                          color: Colors.cyan800,
+                          textAlign: "center",
+                        }}
+                      >
+                        {episode.title}
+                      </Text>
+                    </View>
                   </Pressable>
                 </View>
               ))}
             </View>
           </View>
         ))}
+        <View
+          style={{
+            height: 50,
+            width: "100%",
+          }}
+        ></View>
       </ScrollView>
     </View>
   );

@@ -8,7 +8,6 @@ import { ScrollView } from "react-native";
 
 const VideoDetails = ({ route, navigation }) => {
   const { videoId, videoTitle } = route.params;
-  console.log("title", videoTitle);
 
   return (
     <View

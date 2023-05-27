@@ -13,10 +13,12 @@ export const dummyMusik = [
       {
         youtubeId: "bvcavoS1P1Q",
         title: "Jangan Menangis Raya",
+        isNew: true,
       },
       {
         youtubeId: "2yvh5ERlIVs",
         title: "Mobil Ambulan Beraksi",
+        isNew: true,
       },
       {
         youtubeId: "KCnpfyWl3Mo",
@@ -25,10 +27,12 @@ export const dummyMusik = [
       {
         youtubeId: "tAgY0JitOrI",
         title: "Es Krim Lezat",
+        isNew: true,
       },
       {
         youtubeId: "YVYgGfy0q3s",
         title: "Berkemah Bersama",
+        isNew: true,
       },
       {
         youtubeId: "RIM_DWvWTqE",

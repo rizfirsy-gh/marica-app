@@ -31,6 +31,7 @@ export const dummyCerita = [
         youtubeId: "i8IhDEvnKGI",
         title:
           "Buat Rumah Hello Kitty Untuk Rena! - Toca Boca Eps 01 GoDuplo TV",
+        isNew: true,
       },
       {
         youtubeId: "Y2z-5NJvMCM",
@@ -43,6 +44,7 @@ export const dummyCerita = [
       {
         youtubeId: "2_6UZptOvIM",
         title: "Drama Hilang di Taman Hiburan - Toca Boca Eps 03 GoDuplo TV",
+        isNew: true,
       },
       {
         youtubeId: "YtiIqTU9iz4",

@@ -6,7 +6,10 @@ import { useNavigation } from "@react-navigation/core";
 
 const HeaderProfile = () => {
   const { isLoading, userInfo } = useSelector((state) => state.user);
+  const { dataAnak } = useSelector((state) => state.anak);
   const navigation = useNavigation();
+
+  console.log("dataAnak: ", dataAnak);
 
   return (
     <View

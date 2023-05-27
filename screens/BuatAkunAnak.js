@@ -24,8 +24,6 @@ const BuatAkunAnak = ({ navigation }) => {
   const { isLoading, userInfo } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  console.log("token: ", userInfo.token);
-  console.log("userInfo", userInfo);
 
   const chooseAgeHandler = (values) => {
     setUsiaAnak(values);
@@ -49,9 +47,8 @@ const BuatAkunAnak = ({ navigation }) => {
         }
       )
       .then((res) => {
-        // dispatch(setDataAnak(res.data.data));
-        console.log("data anak: ", res.data);
-        // navigation.navigate("HomeScreen");
+        dispatch(setDataAnak(res.data.data));
+        navigation.navigate("HomeScreen");
       })
       .catch((err) => {
         console.log(err.response);
