@@ -30,7 +30,6 @@ const UserInformation = () => {
         style={{
           flex: 1,
           justifyContent: "flex-start",
-          alignItems: "center",
           paddingHorizontal: 16,
           paddingBottom: 16,
           gap: 16,
@@ -79,11 +78,7 @@ const UserInformation = () => {
             {userInfo?.nama}
           </Text>
         </View>
-        <ScrollView
-          style={{
-            width: "100%",
-          }}
-        >
+        <ScrollView>
           <View style={{ flexDirection: "row" }}>
             <Pressable
               style={{
@@ -127,16 +122,8 @@ const UserInformation = () => {
           {!tab ? (
             <View
               style={{
-                minWidth: 300,
                 gap: 16,
-                backgroundColor: Colors.slate50,
-                padding: 16,
-                borderWidth: 2,
-                borderColor: Colors.cyan400,
-                borderTopRightRadius: 16,
-                borderBottomRightRadius: 16,
-                borderBottomLeftRadius: 16,
-                flex: 1,
+                paddingVertical: 16,
               }}
             >
               <View>
@@ -223,45 +210,21 @@ const UserInformation = () => {
           ) : (
             <View
               style={{
-                minWidth: 300,
-                minHeight: 300,
                 gap: 16,
-                backgroundColor: Colors.slate50,
-                padding: 16,
-                borderWidth: 2,
-                borderColor: Colors.cyan400,
-                borderTopRightRadius: 16,
-                borderBottomRightRadius: 16,
-                borderBottomLeftRadius: 16,
-                flex: 1,
+                paddingVertical: 16,
               }}
             >
               <View>
                 {userInfo.essentials.kidsAnalytics.length <= 0 ? (
-                  <View
-                    style={{
-                      flex: 1,
-                      justifyContent: "center",
-                      alignItems: "center",
-                      backgroundColor: "#fff",
-                      gap: 16,
-                    }}
-                  >
-                    <Image
-                      source={require("../assets/images/empty.png")}
-                      style={{
-                        width: 140,
-                        height: 210,
-                      }}
-                    />
+                  <View>
                     <Text
                       style={{
-                        fontFamily: "Nunito-Bold",
+                        fontFamily: "Nunito-Medium",
                         fontSize: 20,
                         color: Colors.slate500,
                       }}
                     >
-                      Belum ada cerita {":("}
+                      Belum ada data
                     </Text>
                   </View>
                 ) : (

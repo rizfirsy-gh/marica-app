@@ -9,7 +9,7 @@ const HeaderProfile = () => {
   const { dataAnak } = useSelector((state) => state.anak);
   const navigation = useNavigation();
 
-  console.log("dataAnak: ", dataAnak);
+  console.log("dataAnak: ", dataAnak.nama);
 
   return (
     <View
@@ -42,7 +42,7 @@ const HeaderProfile = () => {
             color: Colors.slate700,
           }}
         >
-          {userInfo ? userInfo.essentials.username : "Teman Rica"}
+          {dataAnak.nama}
         </Text>
       </Pressable>
     </View>

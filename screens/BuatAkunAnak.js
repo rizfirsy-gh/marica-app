@@ -8,6 +8,7 @@ import Button from "../components/buttons/Button";
 import AgeCategories from "../components/forms/AgeCategories";
 import { useDispatch, useSelector } from "react-redux";
 import { setDataAnak, setLoading } from "../redux/slices/anak";
+import { storeAnakData } from "../redux/actions/user-action";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
@@ -23,7 +24,6 @@ const BuatAkunAnak = ({ navigation }) => {
 
   const { isLoading, userInfo } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
 
   const chooseAgeHandler = (values) => {
     setUsiaAnak(values);
@@ -48,6 +48,7 @@ const BuatAkunAnak = ({ navigation }) => {
       )
       .then((res) => {
         dispatch(setDataAnak(res.data.data));
+        storeAnakData(res.data.data);
         navigation.navigate("HomeScreen");
       })
       .catch((err) => {

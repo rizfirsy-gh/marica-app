@@ -25,3 +25,12 @@ export const deleteUserData = async () => {
     console.log("error:", error);
   }
 };
+
+export const storeAnakData = async (value) => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem("anak_info", jsonValue);
+  } catch (e) {
+    console.log("asyncStorage: ", e);
+  }
+};
