@@ -219,7 +219,7 @@ const UserInformation = () => {
                   <View>
                     <Text
                       style={{
-                        fontFamily: "Nunito-Medium",
+                        fontFamily: "Nunito-Bold",
                         fontSize: 20,
                         color: Colors.slate500,
                       }}

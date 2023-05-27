@@ -21,6 +21,7 @@ const result = number1 * number2;
 const Profile = () => {
   const [userResult, setUserResult] = React.useState(0);
   const [validate, setValidate] = React.useState(false);
+
   const windowWidth = Dimensions.get("window").width;
 
   const navigation = useNavigation();
