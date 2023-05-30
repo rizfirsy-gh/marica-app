@@ -142,7 +142,7 @@ export default function App() {
               component={VideoDetails}
               options={({ route, navigation }) => {
                 return {
-                  title: "kembali",
+                  title: "Kembali",
                 };
               }}
             />
@@ -151,7 +151,7 @@ export default function App() {
               component={Transaksi}
               options={({ route, navigation }) => {
                 return {
-                  title: "kembali",
+                  title: "Kembali",
                 };
               }}
             />
@@ -160,7 +160,7 @@ export default function App() {
               component={TentangKami}
               options={({ route, navigation }) => {
                 return {
-                  title: "kembali",
+                  title: "Kembali",
                 };
               }}
             />
@@ -169,7 +169,7 @@ export default function App() {
               component={Feedback}
               options={({ route, navigation }) => {
                 return {
-                  title: "kembali",
+                  title: "Kembali",
                 };
               }}
             />

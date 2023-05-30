@@ -321,7 +321,7 @@ const Profile = () => {
                   fontSize: 16,
                 }}
               >
-                Tentang kami
+                Tentang Kami
               </Text>
             </Pressable>
             <Pressable
@@ -347,7 +347,7 @@ const Profile = () => {
                   fontSize: 16,
                 }}
               >
-                Beri kami masukan
+                Beri Kami Masukan
               </Text>
             </Pressable>
             <Pressable
