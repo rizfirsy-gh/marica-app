@@ -1,7 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { setAuth, setLoading, setUserInfo } from "../redux/slices/user";
+import {
+  setAuth,
+  setLoading,
+  setToken,
+  setUserInfo,
+} from "../redux/slices/user";
 import SignupForm from "../components/forms/SignupForm";
 import { Colors } from "../constant/styles";
 import { Image } from "react-native";
@@ -48,6 +53,7 @@ const Signup = ({ navigation }) => {
       .then((res) => {
         storeUserData(res.data.data);
         dispatch(setUserInfo(res.data.data));
+        dispatch(setToken(res.data.data.token));
         navigation.navigate("TermCondition");
       })
       .catch((err) => {

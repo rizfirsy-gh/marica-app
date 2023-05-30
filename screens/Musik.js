@@ -5,6 +5,9 @@ import { Colors } from "../constant/styles";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 
 export default function Musik({ navigation }) {
+  const [searchPhrase, setSearchPhrase] = useState("");
+
+  console.log("search: ", searchPhrase);
   return (
     <View style={{ flex: 1, paddingHorizontal: 16, backgroundColor: "#fff" }}>
       <View style={{ marginBottom: 16 }}>
@@ -28,6 +31,8 @@ export default function Musik({ navigation }) {
             borderColor: Colors.slate400,
             borderRadius: 16,
           }}
+          value={searchPhrase}
+          onChangeText={(phrase) => setSearchPhrase(phrase)}
         />
       </View>
       <ScrollView>
