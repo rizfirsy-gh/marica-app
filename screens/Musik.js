@@ -43,30 +43,27 @@ export default function Musik({ navigation }) {
                 fontSize: 20,
                 fontFamily: "Nunito-SemiBold",
                 color: Colors.slate700,
+                marginBottom: 8,
               }}
             >
               {musik.title}
             </Text>
-            <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 16 }}>
+            <View style={{ gap: 16 }}>
               {musik.playlist.map((list) => (
-                <View
-                  key={list.title}
-                  style={{
-                    flexDirection: "row",
-                    gap: 16,
-                    marginTop: 8,
-                  }}
-                >
+                <View key={list.title}>
                   <Pressable
                     onPress={() =>
                       navigation.navigate("VideoDetails", {
                         videoId: list.youtubeId,
                       })
                     }
+                    style={{ flexDirection: "row", gap: 8 }}
                   >
                     <View
                       style={{
-                        height: 200,
+                        flexDirection: "row",
+                        height: 60,
+                        width: 60,
                         padding: 16,
                         borderRadius: 16,
                         backgroundColor: Colors.cyan100,
@@ -82,20 +79,19 @@ export default function Musik({ navigation }) {
                         resizeMode="contain"
                         resizeMethod="resize"
                         style={{
-                          width: 150 / 2,
-                          height: 150 / 2,
+                          width: 60 / 2,
+                          height: 60 / 2,
                         }}
                       />
-                      <Text
-                        style={{
-                          fontFamily: "Nunito-Bold",
-                          color: Colors.cyan800,
-                          textAlign: "center",
-                        }}
-                      >
-                        {list.title}
-                      </Text>
                     </View>
+                    <Text
+                      style={{
+                        fontFamily: "Nunito-Bold",
+                        color: Colors.cyan800,
+                      }}
+                    >
+                      {list.title}
+                    </Text>
                   </Pressable>
                 </View>
               ))}
