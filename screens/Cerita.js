@@ -5,6 +5,8 @@ import { Colors } from "../constant/styles";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 
 export default function Cerita({ navigation }) {
+  const [searchPhrase, setSearchPhrase] = React.useState("");
+
   return (
     <View style={{ flex: 1, paddingHorizontal: 16, backgroundColor: "#fff" }}>
       <View style={{ marginBottom: 16 }}>
@@ -28,81 +30,98 @@ export default function Cerita({ navigation }) {
             borderColor: Colors.slate400,
             borderRadius: 16,
           }}
+          value={searchPhrase}
+          onChangeText={(phrase) => setSearchPhrase(phrase)}
         />
       </View>
       <ScrollView>
-        {dummyCerita.map((cerita) => (
-          <View
-            key={cerita.title}
-            style={{
-              paddingTop: 24,
-            }}
-          >
-            <Text
+        {searchPhrase === "" || searchPhrase === " " ? (
+          dummyCerita.map((cerita) => (
+            <View
+              key={cerita.title}
               style={{
-                fontSize: 20,
-                fontFamily: "Nunito-SemiBold",
-                color: Colors.slate700,
+                paddingTop: 24,
               }}
             >
-              {cerita.title}
-            </Text>
-            <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 16 }}>
-              {cerita.episodes.map((episode) => (
-                <View
-                  key={episode.title}
-                  style={{
-                    flexDirection: "row",
-                    gap: 16,
-                    marginTop: 8,
-                  }}
-                >
-                  <Pressable
-                    onPress={() =>
-                      navigation.navigate("VideoDetails", {
-                        videoId: episode.youtubeId,
-                      })
-                    }
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontFamily: "Nunito-SemiBold",
+                  color: Colors.slate700,
+                }}
+              >
+                {cerita.title}
+              </Text>
+              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 16 }}>
+                {cerita.episodes.map((episode) => (
+                  <View
+                    key={episode.title}
+                    style={{
+                      flexDirection: "row",
+                      gap: 16,
+                      marginTop: 8,
+                    }}
                   >
-                    <View
-                      style={{
-                        maxWidth: 180,
-                        height: 200,
-                        padding: 16,
-                        borderRadius: 16,
-                        backgroundColor: Colors.cyan100,
-                        borderWidth: 2,
-                        borderColor: Colors.cyan500,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        gap: 8,
-                      }}
+                    <Pressable
+                      onPress={() =>
+                        navigation.navigate("VideoDetails", {
+                          videoId: episode.youtubeId,
+                        })
+                      }
                     >
-                      <Image
-                        source={require("../assets/images/video-thumbnail.png")}
-                        resizeMode="contain"
-                        resizeMethod="resize"
+                      <View
                         style={{
-                          width: 150 / 2,
-                          height: 150 / 2,
-                        }}
-                      />
-                      <Text
-                        style={{
-                          fontFamily: "Nunito-Bold",
-                          color: Colors.cyan800,
-                          textAlign: "center",
+                          maxWidth: 180,
+                          height: 200,
+                          padding: 16,
+                          borderRadius: 16,
+                          backgroundColor: Colors.cyan100,
+                          borderWidth: 2,
+                          borderColor: Colors.cyan500,
+                          justifyContent: "center",
+                          alignItems: "center",
+                          gap: 8,
                         }}
                       >
-                        {episode.title}
-                      </Text>
-                    </View>
-                  </Pressable>
-                </View>
-              ))}
+                        <Image
+                          source={require("../assets/images/video-thumbnail.png")}
+                          resizeMode="contain"
+                          resizeMethod="resize"
+                          style={{
+                            width: 150 / 2,
+                            height: 150 / 2,
+                          }}
+                        />
+                        <Text
+                          style={{
+                            fontFamily: "Nunito-Bold",
+                            color: Colors.cyan800,
+                            textAlign: "center",
+                          }}
+                        >
+                          {episode.title}
+                        </Text>
+                      </View>
+                    </Pressable>
+                  </View>
+                ))}
+              </View>
             </View>
-          </View>
-        ))}
+          ))
+        ) : (
+          <Text
+            style={{
+              fontFamily: "Nunito-Bold",
+              color: Colors.slate600,
+              textAlign: "center",
+              padding: 16,
+              backgroundColor: Colors.slate100,
+              borderRadius: 1000,
+            }}
+          >
+            Tidak ditemukan
+          </Text>
+        )}
         <View
           style={{
             height: 50,

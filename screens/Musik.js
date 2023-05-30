@@ -1,13 +1,12 @@
 import * as React from "react";
 import { dummyMusik } from "../assets/media/musik";
-import { Button, Text, View, Image, Pressable } from "react-native";
+import { Button, Text, View, Image, Pressable, FlatList } from "react-native";
 import { Colors } from "../constant/styles";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 
 export default function Musik({ navigation }) {
-  const [searchPhrase, setSearchPhrase] = useState("");
+  const [searchPhrase, setSearchPhrase] = React.useState("");
 
-  console.log("search: ", searchPhrase);
   return (
     <View style={{ flex: 1, paddingHorizontal: 16, backgroundColor: "#fff" }}>
       <View style={{ marginBottom: 16 }}>
@@ -36,73 +35,94 @@ export default function Musik({ navigation }) {
         />
       </View>
       <ScrollView>
-        {dummyMusik.map((musik) => (
-          <View
-            key={musik.title}
-            style={{
-              paddingTop: 24,
-            }}
-          >
-            <Text
+        {searchPhrase === "" || searchPhrase === " " ? (
+          dummyMusik.map((musik) => (
+            <View
+              key={musik.title}
               style={{
-                fontSize: 20,
-                fontFamily: "Nunito-SemiBold",
-                color: Colors.slate700,
-                marginBottom: 8,
+                paddingTop: 24,
               }}
             >
-              {musik.title}
-            </Text>
-            <View style={{ gap: 16 }}>
-              {musik.playlist.map((list) => (
-                <View key={list.title}>
-                  <Pressable
-                    onPress={() =>
-                      navigation.navigate("VideoDetails", {
-                        videoId: list.youtubeId,
-                      })
-                    }
-                    style={{ flexDirection: "row", gap: 8 }}
-                  >
-                    <View
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontFamily: "Nunito-SemiBold",
+                  color: Colors.slate700,
+                  marginBottom: 8,
+                }}
+              >
+                {musik.title}
+              </Text>
+              <View style={{ gap: 8 }}>
+                {musik.playlist.map((list) => (
+                  <View key={list.title}>
+                    <Pressable
+                      onPress={() =>
+                        navigation.navigate("VideoDetails", {
+                          videoId: list.youtubeId,
+                        })
+                      }
                       style={{
                         flexDirection: "row",
-                        height: 60,
-                        width: 60,
-                        padding: 16,
-                        borderRadius: 16,
-                        backgroundColor: Colors.cyan100,
-                        borderWidth: 2,
-                        borderColor: Colors.cyan500,
-                        justifyContent: "center",
-                        alignItems: "center",
                         gap: 8,
+                        backgroundColor: Colors.slate100,
+                        padding: 8,
+                        borderRadius: 16,
                       }}
                     >
-                      <Image
-                        source={require("../assets/images/music-thumbnail.png")}
-                        resizeMode="contain"
-                        resizeMethod="resize"
+                      <View
                         style={{
-                          width: 60 / 2,
-                          height: 60 / 2,
+                          flexDirection: "row",
+                          height: 60,
+                          width: 60,
+                          padding: 16,
+                          borderRadius: 16,
+                          backgroundColor: Colors.cyan100,
+                          borderWidth: 2,
+                          borderColor: Colors.cyan500,
+                          justifyContent: "center",
+                          alignItems: "center",
+                          gap: 8,
                         }}
-                      />
-                    </View>
-                    <Text
-                      style={{
-                        fontFamily: "Nunito-Bold",
-                        color: Colors.cyan800,
-                      }}
-                    >
-                      {list.title}
-                    </Text>
-                  </Pressable>
-                </View>
-              ))}
+                      >
+                        <Image
+                          source={require("../assets/images/music-thumbnail.png")}
+                          resizeMode="contain"
+                          resizeMethod="resize"
+                          style={{
+                            width: 60 / 2,
+                            height: 60 / 2,
+                          }}
+                        />
+                      </View>
+                      <Text
+                        style={{
+                          fontFamily: "Nunito-Bold",
+                          color: Colors.cyan800,
+                        }}
+                      >
+                        {list.title}
+                      </Text>
+                    </Pressable>
+                  </View>
+                ))}
+              </View>
             </View>
-          </View>
-        ))}
+          ))
+        ) : (
+          <Text
+            style={{
+              fontFamily: "Nunito-Bold",
+              color: Colors.slate600,
+              textAlign: "center",
+              padding: 16,
+              backgroundColor: Colors.slate100,
+              borderRadius: 1000,
+            }}
+          >
+            Tidak ditemukan
+          </Text>
+        )}
         <View
           style={{
             height: 50,
