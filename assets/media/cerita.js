@@ -1,6 +1,7 @@
 export const dummyCerita = [
   {
     title: "Literasi Marica",
+    thumbnail: require("../images/marica-thumbnail.png"),
     episodes: [
       {
         youtubeId: "mG8gR13blEE",
@@ -26,6 +27,7 @@ export const dummyCerita = [
   },
   {
     title: "Short Literasi Marica",
+    thumbnail: require("../images/marica-thumbnail.png"),
     episodes: [
       {
         youtubeId: "xM_0EnIKI8I",
@@ -56,6 +58,7 @@ export const dummyCerita = [
   },
   {
     title: "Main Toca Boca",
+    thumbnail: require("../images/goduplo-thumbnail.png"),
     episodes: [
       {
         youtubeId: "i8IhDEvnKGI",
@@ -100,6 +103,7 @@ export const dummyCerita = [
   },
   {
     title: "Cerita Rakyat Jawa dan DKI Jakarta",
+    thumbnail: require("../images/cia-thumbnail.png"),
     episodes: [
       {
         youtubeId: "2tOyG9sxTWc",
@@ -143,6 +147,7 @@ export const dummyCerita = [
   },
   {
     title: "BeaBeo Story",
+    thumbnail: require("../images/beabeo-thumbnail.png"),
     episodes: [
       {
         youtubeId: "4bPylWTEPzs",

@@ -72,35 +72,43 @@ export default function Cerita({ navigation }) {
                       <View
                         style={{
                           maxWidth: 180,
-                          height: 200,
+                          height: 160,
                           padding: 16,
                           borderRadius: 16,
                           backgroundColor: Colors.cyan100,
-                          borderWidth: 2,
-                          borderColor: Colors.cyan500,
                           justifyContent: "center",
                           alignItems: "center",
                           gap: 8,
+                          overflow: "hidden",
                         }}
                       >
-                        <Image
-                          source={require("../assets/images/video-thumbnail.png")}
-                          resizeMode="contain"
-                          resizeMethod="resize"
-                          style={{
-                            width: 150 / 2,
-                            height: 150 / 2,
-                          }}
-                        />
                         <Text
                           style={{
                             fontFamily: "Nunito-Bold",
                             color: Colors.cyan800,
                             textAlign: "center",
+                            position: "absolute",
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            zIndex: 1000,
+                            backgroundColor: Colors.slate100,
+                            padding: 4,
+                            height: 68,
+                            borderRadius: 16,
                           }}
                         >
                           {episode.title}
                         </Text>
+                        <Image
+                          source={cerita.thumbnail}
+                          resizeMode="contain"
+                          resizeMethod="resize"
+                          style={{
+                            width: 480,
+                            height: 160,
+                          }}
+                        />
                       </View>
                     </Pressable>
                   </View>
