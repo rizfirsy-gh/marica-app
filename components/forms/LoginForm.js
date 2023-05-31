@@ -14,7 +14,10 @@ const LoginSchema = yup.object().shape({
     .required("Email perlu dimasukkan"),
   password: yup
     .string()
-    .min(6, "Panjang password minimal 6 karakter")
+    .min(
+      8,
+      "Password harus terdiri minimal 8 karakter huruf kombinasi antara: huruf besar, hurus kecil, angka, and simbol"
+    )
     .required("Password perlu dibuat."),
 });
 
