@@ -95,14 +95,36 @@ export default function Musik({ navigation }) {
                           }}
                         />
                       </View>
-                      <Text
-                        style={{
-                          fontFamily: "Nunito-Bold",
-                          color: Colors.cyan800,
-                        }}
-                      >
-                        {list.title}
-                      </Text>
+                      <View>
+                        <Text
+                          style={{
+                            fontFamily: "Nunito-Bold",
+                            color: Colors.cyan800,
+                            fontSize: 16,
+                          }}
+                        >
+                          {list.title.length > 30
+                            ? list.title.slice(0, 30) + "..."
+                            : list.title}
+                        </Text>
+                        <Text
+                          style={{
+                            fontFamily: "Nunito-Medium",
+                            color: Colors.slate400,
+                            fontSize: 12,
+                          }}
+                        >
+                          03:00
+                        </Text>
+                        <Text
+                          style={{
+                            fontFamily: "Nunito-Medium",
+                            color: Colors.slate400,
+                          }}
+                        >
+                          ▶️ Play Now
+                        </Text>
+                      </View>
                     </Pressable>
                   </View>
                 ))}
