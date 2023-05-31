@@ -46,13 +46,26 @@ export default function Cerita({ navigation }) {
               <Text
                 style={{
                   fontSize: 20,
-                  fontFamily: "Nunito-SemiBold",
-                  color: Colors.slate700,
+                  fontFamily: "Nunito-Bold",
+                  color: Colors.slate50,
+                  padding: 6,
+                  borderRadius: 6,
+                  backgroundColor: Colors.cyan600,
+                  marginBottom: 16,
+                  marginTop: 24,
+                  textAlign: "center",
                 }}
               >
                 {cerita.title}
               </Text>
-              <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 16 }}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  flexWrap: "wrap",
+                  gap: 16,
+                  justifyContent: "center",
+                }}
+              >
                 {cerita.episodes.map((episode) => (
                   <View
                     key={episode.title}
@@ -71,7 +84,7 @@ export default function Cerita({ navigation }) {
                     >
                       <View
                         style={{
-                          maxWidth: 180,
+                          maxWidth: 170,
                           height: 160,
                           padding: 16,
                           borderRadius: 16,
@@ -84,7 +97,7 @@ export default function Cerita({ navigation }) {
                       >
                         <Text
                           style={{
-                            fontFamily: "Nunito-Bold",
+                            fontFamily: "Nunito-Medium",
                             color: Colors.cyan800,
                             textAlign: "center",
                             position: "absolute",
@@ -93,12 +106,14 @@ export default function Cerita({ navigation }) {
                             bottom: 0,
                             zIndex: 1000,
                             backgroundColor: Colors.slate100,
-                            padding: 4,
-                            height: 68,
+                            padding: 8,
+                            height: 60,
                             borderRadius: 16,
                           }}
                         >
-                          {episode.title}
+                          {episode.title.length > 35
+                            ? episode.title.slice(0, 35) + "..."
+                            : episode.title}
                         </Text>
                         <Image
                           source={cerita.thumbnail}
