@@ -26,7 +26,7 @@ const Profile = () => {
 
   const navigation = useNavigation();
 
-  const { userInfo, anak, isLoading } = useSelector((state) => state.user);
+  const { userInfo, isLoading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const namaDepan = userInfo?.nama.split(" ")[0];

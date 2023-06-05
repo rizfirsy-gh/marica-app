@@ -200,22 +200,3 @@ export default function App() {
     </>
   );
 }
-
-//contoh response
-const userInfoData = {
-  _id: "646ad27973febfd1b835cb51",
-  email: "rizky_firman_syah@outlook.com",
-  essentials: {
-    dataBilling: [],
-    kidsAnalytics: [],
-    password: "$2a$05$LCjJYd7MAv./lszzXlhxje/nK8tjijvGrhMPzyQHCFTq4SEY4PXWa",
-    username: "rizkyfirmansyah75",
-  },
-  imageID: "profile.png",
-  nama: "Rizky F",
-  provider: "local",
-  token:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmFkMjc5NzNmZWJmZDFiODM1Y2I1MSIsImlhdCI6MTY4NDgyNTU5MCwiZXhwIjoxNjg0OTk4MzkwfQ.2UxDCzpcerE6wnGsh4uWC6GYDFb45jL598od49nezsY",
-  userType: "orangtua",
-  validated: false,
-};

@@ -13,13 +13,18 @@ import { Colors } from "../constant/styles";
 import { useSelector } from "react-redux";
 import Button from "../components/buttons/Button";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import { getAnakData } from "../redux/actions/user-action";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const UserInformation = () => {
   const [tab, setTab] = React.useState(false);
-  const { userInfo } = useSelector((state) => state.user);
+
+  const { userInfo, token } = useSelector((state) => state.user);
+  const { dataAnak } = useSelector((state) => state.anak);
+
   const navigation = useNavigation();
 
   const windowWidth = Dimensions.get("window").width;
@@ -215,20 +220,56 @@ const UserInformation = () => {
               }}
             >
               <View>
-                {userInfo.essentials.kidsAnalytics.length <= 0 ? (
+                {!dataAnak && (
                   <View>
+                    <Text
+                      style={{
+                        fontFamily: "Nunito-Medium",
+                        fontSize: 16,
+                        color: "#ef4444",
+                        backgroundColor: "#fecaca",
+                        padding: 16,
+                        borderRadius: 16,
+                      }}
+                    >
+                      Gagal mengambil data atau mungkin data tidak ada.
+                    </Text>
+                  </View>
+                )}
+                {dataAnak && (
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      padding: 16,
+                      backgroundColor: Colors.cyan100,
+                      borderRadius: 16,
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
                     <Text
                       style={{
                         fontFamily: "Nunito-Bold",
                         fontSize: 20,
-                        color: Colors.slate500,
+                        fontFamily: "Nunito-Bold",
+                        color: Colors.cyan700,
                       }}
                     >
-                      Belum ada data
+                      {dataAnak.nama}
                     </Text>
+                    <View>
+                      <Text
+                        style={{
+                          fontFamily: "Nunito-Bold",
+                          fontSize: 14,
+                          fontFamily: "Nunito-Medium",
+                          color: Colors.cyan700,
+                        }}
+                      >
+                        {dataAnak.poin}
+                      </Text>
+                    </View>
                   </View>
-                ) : (
-                  userInfo.essentials.kidsAnalytics
                 )}
               </View>
             </View>
@@ -258,20 +299,18 @@ const styles = StyleSheet.create({
   },
 });
 
-// const userinf = {
-//   _id: "646ad27973febfd1b835cb51",
-//   email: "rizky_firman_syah@outlook.com",
-//   essentials: {
-//     dataBilling: [],
-//     kidsAnalytics: [],
-//     password: "$2a$05$LCjJYd7MAv./lszzXlhxje/nK8tjijvGrhMPzyQHCFTq4SEY4PXWa",
-//     username: "rizkyfirmansyah75",
-//   },
-//   imageID: "profile.png",
-//   nama: "Rizky F",
-//   provider: "local",
-//   token:
-//     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmFkMjc5NzNmZWJmZDFiODM1Y2I1MSIsImlhdCI6MTY4NDcyNTYwOCwiZXhwIjoxNjg0ODk4NDA4fQ.DUMJxMwN_Ig3iwcPnW9p86jdm8yd4lVD_fLKubOO0iY",
-//   userType: "orangtua",
-//   validated: false,
-// };
+const contohDataAnak = {
+  character: {
+    aksesorisKepala: [],
+    aksesorisMuka: [],
+    aksesorisTangan: [],
+    baju: [],
+    celana: [],
+    gender: "male",
+  },
+  imageID: "",
+  likes: [],
+  nama: "dian",
+  poin: 0,
+  rentangUsia: "0-4",
+};

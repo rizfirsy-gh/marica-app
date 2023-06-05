@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Image, View, ScrollView, Text, Pressable } from "react-native";
 import { Colors } from "../constant/styles";
 import { useNavigation } from "@react-navigation/core";
+import { getAnakDataFromServer } from "../redux/actions/user-action";
 
 export default function Home() {
   const navigation = useNavigation();
