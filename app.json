@@ -11,7 +11,9 @@
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "buildNumber": "1.0.0",
       "supportsTablet": true
@@ -21,10 +23,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.sebangku.literasimarica"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "1262dbe4-a109-405b-8dc0-8ba62562e4e2"
+      }
     }
   }
 }

@@ -168,3 +168,13 @@ export const dummyCerita = [
     ],
   },
 ];
+
+//store all titles key
+const allTitles = [];
+dummyCerita.forEach((item) => {
+  allTitles.push(item.title);
+
+  item.episodes.map((eps) => allTitles.push(eps.title));
+});
+
+console.log("allTitles", allTitles);
