@@ -11,12 +11,18 @@ import { getAnakDataFromServer } from "../redux/actions/user-action";
 export default function Home() {
   const navigation = useNavigation();
   const ceritaBaru = [];
+  const musikBaru = [];
 
   const windowWidth = Dimensions.get("window").width;
 
   dummyCerita.map((cerita) =>
     cerita.episodes.filter((episode) =>
       episode.hasOwnProperty("isNew") ? ceritaBaru.push(episode) : null
+    )
+  );
+  dummyMusik.map((musik) =>
+    musik.playlist.filter((list) =>
+      list.hasOwnProperty("isNew") ? musikBaru.push(list) : null
     )
   );
 
@@ -139,6 +145,101 @@ export default function Home() {
                         height: 160,
                       }}
                     />
+                  </View>
+                </Pressable>
+              </View>
+            ))}
+          </View>
+          <Text
+            style={{
+              fontSize: 20,
+              fontFamily: "Nunito-Bold",
+              color: Colors.slate500,
+              marginTop: 24,
+            }}
+          >
+            Musik Baru
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              flexWrap: "wrap",
+              gap: 16,
+              padding: 16,
+            }}
+          >
+            {musikBaru.map((musikKu) => (
+              <View key={musikKu.title} style={{ width: "100%" }}>
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate("VideoDetails", {
+                      videoId: musikKu.youtubeId,
+                    })
+                  }
+                  style={{
+                    flexDirection: "row",
+                    gap: 8,
+                    backgroundColor: "#fff",
+                    padding: 8,
+                    borderRadius: 16,
+                    borderWidth: 2,
+                    borderColor: Colors.cyan400,
+                  }}
+                >
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      height: 60,
+                      width: 60,
+                      padding: 16,
+                      borderRadius: 16,
+                      backgroundColor: Colors.cyan100,
+                      borderWidth: 2,
+                      borderColor: Colors.cyan500,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      gap: 8,
+                    }}
+                  >
+                    <Image
+                      source={require("../assets/images/music-thumbnail.png")}
+                      resizeMode="contain"
+                      resizeMethod="resize"
+                      style={{
+                        width: 60 / 2,
+                        height: 60 / 2,
+                      }}
+                    />
+                  </View>
+                  <View>
+                    <Text
+                      style={{
+                        fontFamily: "Nunito-Bold",
+                        color: Colors.cyan800,
+                        fontSize: 16,
+                      }}
+                    >
+                      {musikKu.title.length > 30
+                        ? musikKu.title.slice(0, 30) + "..."
+                        : musikKu.title}
+                    </Text>
+                    <Text
+                      style={{
+                        fontFamily: "Nunito-Medium",
+                        color: Colors.slate400,
+                        fontSize: 12,
+                      }}
+                    >
+                      03:00
+                    </Text>
+                    <Text
+                      style={{
+                        fontFamily: "Nunito-Medium",
+                        color: Colors.slate400,
+                      }}
+                    >
+                      ▶️ Play Now
+                    </Text>
                   </View>
                 </Pressable>
               </View>
