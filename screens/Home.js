@@ -14,8 +14,6 @@ export default function Home() {
 
   const windowWidth = Dimensions.get("window").width;
 
-  console.log("windowWidth", windowWidth / 2);
-
   dummyCerita.map((cerita) =>
     cerita.episodes.filter((episode) =>
       episode.hasOwnProperty("isNew") ? ceritaBaru.push(episode) : null
@@ -106,6 +104,8 @@ export default function Home() {
                       alignItems: "center",
                       gap: 8,
                       overflow: "hidden",
+                      borderWidth: 2,
+                      borderColor: Colors.cyan400,
                     }}
                   >
                     <Text
@@ -118,10 +118,12 @@ export default function Home() {
                         right: 0,
                         bottom: 0,
                         zIndex: 1000,
-                        backgroundColor: Colors.slate100,
+                        backgroundColor: Colors.slate50,
                         padding: 8,
                         height: 60,
                         borderRadius: 16,
+                        borderBottomLeftRadius: 0,
+                        borderBottomRightRadius: 0,
                       }}
                     >
                       {ceritaKu.title.length > 35
