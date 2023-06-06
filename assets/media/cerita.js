@@ -65,6 +65,7 @@ export const dummyCerita = [
         title:
           "Buat Rumah Hello Kitty Untuk Rena! - Toca Boca Eps 01 GoDuplo TV",
         isNew: true,
+        thumbnail: require("../images/goduplo-thumbnail.png"),
       },
       {
         youtubeId: "Y2z-5NJvMCM",
@@ -78,6 +79,7 @@ export const dummyCerita = [
         youtubeId: "2_6UZptOvIM",
         title: "Drama Hilang di Taman Hiburan - Toca Boca Eps 03 GoDuplo TV",
         isNew: true,
+        thumbnail: require("../images/goduplo-thumbnail.png"),
       },
       {
         youtubeId: "YtiIqTU9iz4",
@@ -110,18 +112,21 @@ export const dummyCerita = [
         title:
           "Kisah Timun Mas dari Jawa Timur - Animasi Cerita Indonesia (ACI)",
         isNew: true,
+        thumbnail: require("../images/cia-thumbnail.png"),
       },
       {
         youtubeId: "s1VyUOxoqM",
         title:
           "Kisah Cindelaras dari Jawa Timur - Animasi Cerita Indonesia (ACI)",
         isNew: true,
+        thumbnail: require("../images/cia-thumbnail.png"),
       },
       {
         youtubeId: "i4A9I3V9vtA",
         title:
           "Kisah Si Pitung dari DKI Jakarta - Animasi Cerita Indonesia (ACI)",
         isNew: true,
+        thumbnail: require("../images/cia-thumbnail.png"),
       },
       {
         youtubeId: "5J8uGALWSTU",
