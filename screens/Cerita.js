@@ -17,7 +17,7 @@ export default function Cerita({ navigation }) {
         height: "100%",
       }}
     >
-      <View style={{ flex: 1, paddingHorizontal: 16, backgroundColor: "#fff" }}>
+      <View style={{ flex: 1, paddingHorizontal: 16 }}>
         <View style={{ marginBottom: 16 }}>
           <Text
             style={{
