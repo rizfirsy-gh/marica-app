@@ -11,6 +11,14 @@ export const storeUserData = async (value) => {
     console.log("asyncStorage: ", e);
   }
 };
+export const storeUserToken = async (value) => {
+  try {
+    const jsonValue = JSON.stringify(value);
+    await AsyncStorage.setItem("token", jsonValue);
+  } catch (e) {
+    console.log("asyncStorage: ", e);
+  }
+};
 
 export const getUserData = async () => {
   try {

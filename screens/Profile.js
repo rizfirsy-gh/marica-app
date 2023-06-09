@@ -12,7 +12,9 @@ import {
   deleteUserData,
   getAnakData,
   getAnakDataFromServer,
+  getUserData,
 } from "../redux/actions/user-action";
+import { setDataAnak } from "../redux/slices/anak";
 
 function randomInteger() {
   return Math.floor(Math.random() * 10);
@@ -25,6 +27,7 @@ const result = number1 * number2;
 const Profile = () => {
   const [userResult, setUserResult] = React.useState(0);
   const [validate, setValidate] = React.useState(false);
+  const [allAnak, setAllAnak] = React.useState("");
 
   const windowWidth = Dimensions.get("window").width;
 
@@ -34,6 +37,24 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const namaDepan = userInfo?.nama.split(" ")[0];
+
+  React.useEffect(async function () {
+    await axios
+      .get("https://api.marica.id/api/v1/user/all-anak", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        setAllAnak(res.data.data);
+        dispatch(setDataAnak(res.data.data));
+      })
+      .catch((err) => {
+        console.log("get all anak err: ", err.response);
+      });
+
+    return () => {};
+  }, []);
 
   const logoutHandler = async (values) => {
     dispatch(setLoading(true));

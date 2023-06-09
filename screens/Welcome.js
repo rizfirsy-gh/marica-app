@@ -12,7 +12,7 @@ import {
 import Button from "../components/buttons/Button";
 import { getUserData } from "../redux/actions/user-action";
 import { useDispatch } from "react-redux";
-import { setUserInfo } from "../redux/slices/user";
+import { setToken, setUserInfo } from "../redux/slices/user";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
@@ -28,6 +28,7 @@ const Welcome = ({ navigation }) => {
           navigation.navigate("Welcome");
         } else {
           dispatch(setUserInfo(res));
+          dispatch(setToken(res.token));
           navigation.navigate("HomeScreen");
         }
       })

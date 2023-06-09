@@ -182,4 +182,3 @@ dummyCerita.forEach((item) => {
   item.episodes.map((eps) => allTitles.push(eps.title));
 });
 
-console.log("allTitles", allTitles);
