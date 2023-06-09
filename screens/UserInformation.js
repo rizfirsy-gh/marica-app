@@ -13,7 +13,6 @@ import { Colors } from "../constant/styles";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/buttons/Button";
 import { useNavigation } from "@react-navigation/native";
-import axios from "axios";
 import { getAnakData } from "../redux/actions/user-action";
 import { setDataAnak } from "../redux/slices/anak";
 
@@ -236,24 +235,26 @@ const UserInformation = () => {
               }}
             >
               <View>
-                {!dataAnak && (
-                  <View>
-                    <Text
-                      style={{
-                        fontFamily: "Nunito-Medium",
-                        fontSize: 16,
-                        color: "#ef4444",
-                        backgroundColor: "#fecaca",
-                        padding: 16,
-                        borderRadius: 16,
-                      }}
-                    >
-                      Gagal mengambil data atau mungkin data tidak ada.
-                    </Text>
-                  </View>
-                )}
-                {anak && (
+                {!dataAnak ||
+                  (dataAnak.length === 0 && (
+                    <View>
+                      <Text
+                        style={{
+                          fontFamily: "Nunito-Medium",
+                          fontSize: 16,
+                          color: "#ef4444",
+                          backgroundColor: "#fecaca",
+                          padding: 16,
+                          borderRadius: 16,
+                        }}
+                      >
+                        Gagal mengambil data atau mungkin data tidak ada.
+                      </Text>
+                    </View>
+                  ))}
+                {dataAnak.map((anak) => (
                   <View
+                    key={anak._id}
                     style={{
                       flexDirection: "row",
                       padding: 16,
@@ -286,7 +287,7 @@ const UserInformation = () => {
                       </Text>
                     </View>
                   </View>
-                )}
+                ))}
               </View>
             </View>
           )}
