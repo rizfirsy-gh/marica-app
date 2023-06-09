@@ -15,19 +15,17 @@ import {
   getUserData,
 } from "../redux/actions/user-action";
 import { setDataAnak } from "../redux/slices/anak";
-
-function randomInteger() {
-  return Math.floor(Math.random() * 10);
+function randomInteger(min, max) {
+  return Math.floor(Math.random()) * (max - min) + min;
 }
 
-const number1 = randomInteger();
-const number2 = randomInteger();
+const number1 = randomInteger(13, 50);
+const number2 = randomInteger(16, 70);
 const result = number1 * number2;
 
 const Profile = () => {
   const [userResult, setUserResult] = React.useState(0);
   const [validate, setValidate] = React.useState(false);
-  const [allAnak, setAllAnak] = React.useState("");
 
   const windowWidth = Dimensions.get("window").width;
 
@@ -39,6 +37,9 @@ const Profile = () => {
   const namaDepan = userInfo?.nama.split(" ")[0];
 
   React.useEffect(async function () {
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
+
     await axios
       .get("https://api.marica.id/api/v1/user/all-anak", {
         headers: {
@@ -46,14 +47,11 @@ const Profile = () => {
         },
       })
       .then((res) => {
-        setAllAnak(res.data.data);
         dispatch(setDataAnak(res.data.data));
       })
       .catch((err) => {
         console.log("get all anak err: ", err.response);
       });
-
-    return () => {};
   }, []);
 
   const logoutHandler = async (values) => {
