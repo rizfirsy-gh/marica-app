@@ -10,20 +10,36 @@ import {
 } from "react-native";
 import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../components/buttons/Button";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { getAnakData } from "../redux/actions/user-action";
+import { setDataAnak } from "../redux/slices/anak";
 
 const blurhash =
   "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
 const UserInformation = () => {
   const [tab, setTab] = React.useState(false);
+  const [anak, setAnak] = React.useState("");
 
   const { userInfo, token } = useSelector((state) => state.user);
   const { dataAnak } = useSelector((state) => state.anak);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    getAnakData()
+      .then((res) => {
+        if (res === null || res === undefined) {
+          console.log("res", res);
+        } else {
+          dispatch(setDataAnak(res));
+          setAnak(res);
+        }
+      })
+      .catch((err) => console.log("err", err));
+  });
 
   const navigation = useNavigation();
 
@@ -236,7 +252,7 @@ const UserInformation = () => {
                     </Text>
                   </View>
                 )}
-                {dataAnak && (
+                {anak && (
                   <View
                     style={{
                       flexDirection: "row",
@@ -255,7 +271,7 @@ const UserInformation = () => {
                         color: Colors.cyan700,
                       }}
                     >
-                      {dataAnak.nama}
+                      {anak.nama}
                     </Text>
                     <View>
                       <Text
@@ -266,7 +282,7 @@ const UserInformation = () => {
                           color: Colors.cyan700,
                         }}
                       >
-                        {dataAnak.poin}
+                        {anak.poin}
                       </Text>
                     </View>
                   </View>

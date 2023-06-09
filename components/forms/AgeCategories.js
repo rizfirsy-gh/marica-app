@@ -5,8 +5,13 @@ import { Pressable, Image, StyleSheet, Text, View } from "react-native";
 const AgeCategories = ({ chooseAge }) => {
   const [age, setAge] = React.useState(false);
 
-  const choosenAge = age ? "5-8" : "0-4";
-  chooseAge(choosenAge);
+  React.useEffect(() => {
+    //check which category is selected
+    const choosenAge = age ? "5-8" : "0-4";
+
+    //pass the choosen age to parent compt
+    chooseAge(choosenAge);
+  });
 
   return (
     <View style={{ gap: 8 }}>

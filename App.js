@@ -108,7 +108,6 @@ export default function App() {
       <Provider store={store}>
         <NavigationContainer>
           <Stack.Navigator>
-            {/* //TODO: do custom headers for each screen */}
             <Stack.Screen
               name="Welcome"
               component={Welcome}

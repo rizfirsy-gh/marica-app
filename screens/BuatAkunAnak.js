@@ -17,21 +17,12 @@ const BuatAkunAnak = ({ navigation }) => {
   const [namaAnak, setNamaAnak] = React.useState("");
   const [usiaAnak, setUsiaAnak] = React.useState("");
 
-  const [chooseAge, setChooseAge] = React.useState(false);
-  function goToAgeOptions() {
-    setChooseAge(true);
-  }
-
   const { isLoading, userInfo, token } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
-  console.log("token", token);
 
   const chooseAgeHandler = (values) => {
     setUsiaAnak(values);
   };
-
-  //TODO: save data anak and access globally
 
   const createAnakHandler = async () => {
     dispatch(setLoading(true));
@@ -51,6 +42,7 @@ const BuatAkunAnak = ({ navigation }) => {
       .then((res) => {
         dispatch(setDataAnak(res.data.data));
         storeAnakData(res.data.data);
+        console.log("res.data.data", res.data.data);
         navigation.navigate("HomeScreen");
       })
       .catch((err) => {
@@ -88,35 +80,49 @@ const BuatAkunAnak = ({ navigation }) => {
             height: 76,
           }}
         />
-        <Text style={styles.heading}>
+        {/* <Text style={styles.heading}>
           {chooseAge ? "Pilih rentang usia" : "Tambahkan profil anak!"}
         </Text>
         <Text style={styles.text}>
           {chooseAge
             ? `Silahkan pilih kategori usia agar kami dapat menyarankan konten yang relevan dengan ${namaAnak}.`
             : `Untuk memulai, mari buat satu profil anak terlebih dahulu.!`}
+        </Text> */}
+        <Text style={styles.text}>
+          Untuk memulai, mari buat satu profil anak terlebih dahulu.!
         </Text>
       </View>
-      {chooseAge ? (
-        <View style={styles.form}>
+      <View style={styles.form}>
+        <TextInput
+          style={styles.input}
+          placeholder="Nama anak"
+          value={namaAnak}
+          onChangeText={(nama) => setNamaAnak(nama)}
+        />
+        <View
+          style={{
+            padding: 16,
+            borderRadius: 16,
+            borderWidth: 2,
+            borderColor: Colors.cyan400,
+          }}
+        >
+          <Text
+            style={{
+              paddingBottom: 16,
+              fontFamily: "Nunito-Bold",
+              color: Colors.cyan600,
+              fontSize: 20,
+            }}
+          >
+            Pilih rentang usia anak
+          </Text>
           <AgeCategories chooseAge={chooseAgeHandler} />
-          <Button variant="primary" onPress={createAnakHandler}>
-            {isLoading ? "Tunggu sebentar..." : "Selesai!"}
-          </Button>
         </View>
-      ) : (
-        <View style={styles.form}>
-          <TextInput
-            style={styles.input}
-            placeholder="Nama anak"
-            value={namaAnak}
-            onChangeText={(nama) => setNamaAnak(nama)}
-          />
-          <Button variant="secondary" onPress={goToAgeOptions}>
-            Lanjut
-          </Button>
-        </View>
-      )}
+        <Button variant="primary" onPress={createAnakHandler}>
+          "Selesai!"
+        </Button>
+      </View>
     </LinearGradient>
   );
 };

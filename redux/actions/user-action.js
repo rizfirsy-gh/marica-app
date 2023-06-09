@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch } from "react-redux";
 import { setDataAnak } from "../slices/anak";
+import axios from "axios";
 
 export const storeUserData = async (value) => {
   try {
@@ -48,19 +49,18 @@ export const getAnakData = async () => {
   }
 };
 
-export const getAnakDataFromServer = async () => {
-  try {
-    await axios
-      .get("https://api.marica.id/api/v1/user/anak", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        console.log("getAnakDataFromServer res: ", res);
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-  } catch (error) {}
+export const getAnakDataFromServer = async (token) => {
+  let updatedDataAnak;
+  await axios
+    .get("https://api.marica.id/api/v1/user/anak", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => (updatedDataAnak = res))
+    .catch((err) => {
+      console.log(err.response);
+    });
+
+  return updatedDataAnak ? updatedDataAnak : "Can't get data anak";
 };
