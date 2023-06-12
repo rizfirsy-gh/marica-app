@@ -179,7 +179,7 @@ export default function App() {
               name="UserInformation"
               component={UserInformation}
               options={{
-                title: "User Information",
+                header: () => null,
               }}
             />
             <Stack.Screen

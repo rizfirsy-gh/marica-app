@@ -45,38 +45,41 @@ const UserInformation = () => {
   const windowWidth = Dimensions.get("window").width;
 
   return (
-    <LinearGradient colors={["#FFFFFF", "#DAFAFF"]} style={styles.bgGradient}>
+    <LinearGradient
+      colors={["#FFFFFF", "#DAFAFF"]}
+      style={{
+        height: "100%",
+      }}
+    >
       <View
         style={{
-          flex: 1,
-          justifyContent: "flex-start",
-          paddingHorizontal: 16,
-          paddingBottom: 16,
+          position: "absolute",
+          bottom: -24,
+        }}
+      >
+        <Image
+          source={require("../assets/images/background.png")}
+          contentFit="cover"
+          style={{
+            width: windowWidth,
+            height: windowWidth / 1.5,
+          }}
+        />
+      </View>
+      <View
+        style={{
+          padding: 16,
           gap: 16,
-          position: "relative",
+          height: "100%",
+          justifyContent: "center",
         }}
       >
         <View
           style={{
-            position: "absolute",
-            bottom: -24,
-            flex: 1,
-          }}
-        >
-          <Image
-            source={require("../assets/images/background.png")}
-            contentFit="cover"
-            style={{
-              width: windowWidth,
-              height: windowWidth / 1.5,
-            }}
-          />
-        </View>
-        <View
-          style={{
             gap: 16,
-            justifyContent: "flex-start",
+            justifyContent: "center",
             alignItems: "center",
+            flex: 1,
           }}
         >
           <Image
@@ -98,222 +101,223 @@ const UserInformation = () => {
             {userInfo?.nama}
           </Text>
         </View>
-        <ScrollView>
-          <View style={{ flexDirection: "row" }}>
-            <Pressable
-              style={{
-                backgroundColor: `${!tab ? Colors.cyan400 : Colors.slate50}`,
-                borderTopLeftRadius: 16,
-                borderTopRightRadius: 16,
-                borderWidth: 2,
-                borderColor: Colors.cyan400,
-              }}
-              onPress={() => setTab(false)}
-            >
-              <Text
+        <View style={{ flex: 1.3 }}>
+          <ScrollView>
+            <View style={{ flexDirection: "row" }}>
+              <Pressable
                 style={{
-                  padding: 16,
-                  color: `${!tab ? Colors.slate50 : Colors.cyan400}`,
+                  backgroundColor: `${!tab ? Colors.cyan400 : Colors.slate50}`,
+                  borderTopLeftRadius: 16,
+                  borderTopRightRadius: 16,
+                  borderWidth: 2,
+                  borderColor: Colors.cyan400,
                 }}
+                onPress={() => setTab(false)}
               >
-                Informasi Pengguna
-              </Text>
-            </Pressable>
-            <Pressable
-              style={{
-                backgroundColor: `${tab ? Colors.cyan400 : Colors.slate50}`,
-                borderTopLeftRadius: 16,
-                borderTopRightRadius: 16,
-                borderWidth: 2,
-                borderColor: Colors.cyan400,
-              }}
-              onPress={() => setTab(true)}
-            >
-              <Text
+                <Text
+                  style={{
+                    padding: 16,
+                    color: `${!tab ? Colors.slate50 : Colors.cyan400}`,
+                  }}
+                >
+                  Informasi Pengguna
+                </Text>
+              </Pressable>
+              <Pressable
                 style={{
-                  padding: 16,
-                  color: `${tab ? Colors.slate50 : Colors.cyan400}`,
+                  backgroundColor: `${tab ? Colors.cyan400 : Colors.slate50}`,
+                  borderTopLeftRadius: 16,
+                  borderTopRightRadius: 16,
+                  borderWidth: 2,
+                  borderColor: Colors.cyan400,
                 }}
+                onPress={() => setTab(true)}
               >
-                Data anak
-              </Text>
-            </Pressable>
-          </View>
-          {!tab ? (
-            <View
-              style={{
-                gap: 16,
-                paddingVertical: 16,
-                padding: 16,
-                borderRadius: 16,
-                borderTopLeftRadius: 0,
-                borderWidth: 2,
-                borderColor: Colors.cyan400,
-                transform: [
-                  {
-                    translateY: -2,
-                  },
-                ],
-                backgroundColor: "#fff",
-              }}
-            >
-              <View>
                 <Text
                   style={{
-                    fontFamily: "Nunito-Bold",
-                    fontSize: 16,
-                    color: Colors.slate700,
+                    padding: 16,
+                    color: `${tab ? Colors.slate50 : Colors.cyan400}`,
                   }}
                 >
-                  Kode Unik
+                  Data anak
                 </Text>
-                <Text
-                  style={{
-                    fontFamily: "Nunito-Medium",
-                    fontSize: 16,
-                    color: Colors.slate400,
-                  }}
-                >
-                  {userInfo._id}
-                </Text>
-              </View>
-              <View>
-                <Text
-                  style={{
-                    fontFamily: "Nunito-Bold",
-                    fontSize: 16,
-                    color: Colors.slate700,
-                  }}
-                >
-                  Username
-                </Text>
-                <Text
-                  style={{
-                    fontFamily: "Nunito-Medium",
-                    fontSize: 16,
-                    color: Colors.slate400,
-                  }}
-                >
-                  {userInfo.essentials.username}
-                </Text>
-              </View>
-              <View>
-                <Text
-                  style={{
-                    fontFamily: "Nunito-Bold",
-                    fontSize: 16,
-                    color: Colors.slate700,
-                  }}
-                >
-                  Nama
-                </Text>
-                <Text
-                  style={{
-                    fontFamily: "Nunito-Medium",
-                    fontSize: 16,
-                    color: Colors.slate400,
-                  }}
-                >
-                  {userInfo.nama}
-                </Text>
-              </View>
-              <View>
-                <Text
-                  style={{
-                    fontFamily: "Nunito-Bold",
-                    fontSize: 16,
-                    color: Colors.slate700,
-                  }}
-                >
-                  Email
-                </Text>
-                <Text
-                  style={{
-                    fontFamily: "Nunito-Medium",
-                    fontSize: 16,
-                    color: Colors.slate400,
-                  }}
-                >
-                  {userInfo.email}
-                </Text>
-              </View>
+              </Pressable>
             </View>
-          ) : (
-            <View
-              style={{
-                gap: 16,
-                paddingVertical: 16,
-                padding: 16,
-                borderRadius: 16,
-                borderTopLeftRadius: 0,
-                borderWidth: 2,
-                borderColor: Colors.cyan400,
-                transform: [
-                  {
-                    translateY: -2,
-                  },
-                ],
-                backgroundColor: "#fff",
-              }}
-            >
-              <View>
-                {!dataAnak ||
-                  (dataAnak.length === 0 && (
-                    <View>
-                      <Text
-                        style={{
-                          fontFamily: "Nunito-Medium",
-                          fontSize: 16,
-                          color: "#ef4444",
-                          backgroundColor: "#fecaca",
-                          padding: 16,
-                          borderRadius: 16,
-                        }}
-                      >
-                        Gagal mengambil data atau mungkin data tidak ada.
-                      </Text>
-                    </View>
-                  ))}
-                {dataAnak.map((anak) => (
-                  <View
-                    key={anak._id}
+            {!tab ? (
+              <View
+                style={{
+                  gap: 16,
+                  paddingVertical: 16,
+                  padding: 16,
+                  borderRadius: 16,
+                  borderTopLeftRadius: 0,
+                  borderWidth: 2,
+                  borderColor: Colors.cyan400,
+                  transform: [
+                    {
+                      translateY: -2,
+                    },
+                  ],
+                  backgroundColor: "#fff",
+                }}
+              >
+                <View>
+                  <Text
                     style={{
-                      flexDirection: "row",
-                      padding: 16,
-                      backgroundColor: Colors.cyan100,
-                      borderRadius: 16,
-                      justifyContent: "space-between",
-                      alignItems: "center",
+                      fontFamily: "Nunito-Bold",
+                      fontSize: 16,
+                      color: Colors.slate700,
                     }}
                   >
-                    <Text
+                    Kode Unik
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "Nunito-Medium",
+                      fontSize: 16,
+                      color: Colors.slate400,
+                    }}
+                  >
+                    {userInfo._id}
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    style={{
+                      fontFamily: "Nunito-Bold",
+                      fontSize: 16,
+                      color: Colors.slate700,
+                    }}
+                  >
+                    Username
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "Nunito-Medium",
+                      fontSize: 16,
+                      color: Colors.slate400,
+                    }}
+                  >
+                    {userInfo.essentials.username}
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    style={{
+                      fontFamily: "Nunito-Bold",
+                      fontSize: 16,
+                      color: Colors.slate700,
+                    }}
+                  >
+                    Nama
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "Nunito-Medium",
+                      fontSize: 16,
+                      color: Colors.slate400,
+                    }}
+                  >
+                    {userInfo.nama}
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    style={{
+                      fontFamily: "Nunito-Bold",
+                      fontSize: 16,
+                      color: Colors.slate700,
+                    }}
+                  >
+                    Email
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "Nunito-Medium",
+                      fontSize: 16,
+                      color: Colors.slate400,
+                    }}
+                  >
+                    {userInfo.email}
+                  </Text>
+                </View>
+              </View>
+            ) : (
+              <View
+                style={{
+                  gap: 16,
+                  paddingVertical: 16,
+                  padding: 16,
+                  borderRadius: 16,
+                  borderTopLeftRadius: 0,
+                  borderWidth: 2,
+                  borderColor: Colors.cyan400,
+                  transform: [
+                    {
+                      translateY: -2,
+                    },
+                  ],
+                  backgroundColor: "#fff",
+                }}
+              >
+                <View>
+                  {!dataAnak ||
+                    (dataAnak.length === 0 && (
+                      <View>
+                        <Text
+                          style={{
+                            fontFamily: "Nunito-Medium",
+                            fontSize: 16,
+                            color: "#ef4444",
+                            backgroundColor: "#fecaca",
+                            padding: 16,
+                            borderRadius: 16,
+                          }}
+                        >
+                          Gagal mengambil data atau mungkin data tidak ada.
+                        </Text>
+                      </View>
+                    ))}
+                  {dataAnak.map((anak) => (
+                    <View
+                      key={anak._id}
                       style={{
-                        fontFamily: "Nunito-Bold",
-                        fontSize: 20,
-                        fontFamily: "Nunito-Bold",
-                        color: Colors.cyan700,
+                        flexDirection: "row",
+                        padding: 16,
+                        backgroundColor: Colors.cyan100,
+                        borderRadius: 16,
+                        alignItems: "center",
                       }}
                     >
-                      {anak.nama}
-                    </Text>
-                    <View>
                       <Text
                         style={{
                           fontFamily: "Nunito-Bold",
-                          fontSize: 14,
-                          fontFamily: "Nunito-Medium",
+                          fontSize: 20,
+                          fontFamily: "Nunito-Bold",
                           color: Colors.cyan700,
                         }}
                       >
-                        {anak.poin}
+                        {anak.nama}
                       </Text>
+                      <View>
+                        <Text
+                          style={{
+                            fontFamily: "Nunito-Bold",
+                            fontSize: 14,
+                            fontFamily: "Nunito-Medium",
+                            color: Colors.cyan700,
+                          }}
+                        >
+                          {anak.poin}
+                        </Text>
+                      </View>
                     </View>
-                  </View>
-                ))}
+                  ))}
+                </View>
               </View>
-            </View>
-          )}
-        </ScrollView>
+            )}
+          </ScrollView>
+        </View>
         <Button
           variant="primary"
           onPress={() => navigation.navigate("EditUserInfo")}
@@ -326,30 +330,3 @@ const UserInformation = () => {
 };
 
 export default UserInformation;
-
-const styles = StyleSheet.create({
-  bgGradient: {
-    position: "relative",
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: "100%",
-    gap: 24,
-  },
-});
-
-const contohDataAnak = {
-  character: {
-    aksesorisKepala: [],
-    aksesorisMuka: [],
-    aksesorisTangan: [],
-    baju: [],
-    celana: [],
-    gender: "male",
-  },
-  imageID: "",
-  likes: [],
-  nama: "dian",
-  poin: 0,
-  rentangUsia: "0-4",
-};
