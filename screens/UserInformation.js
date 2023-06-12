@@ -144,6 +144,17 @@ const UserInformation = () => {
               style={{
                 gap: 16,
                 paddingVertical: 16,
+                padding: 16,
+                borderRadius: 16,
+                borderTopLeftRadius: 0,
+                borderWidth: 2,
+                borderColor: Colors.cyan400,
+                transform: [
+                  {
+                    translateY: -2,
+                  },
+                ],
+                backgroundColor: "#fff",
               }}
             >
               <View>
@@ -232,6 +243,17 @@ const UserInformation = () => {
               style={{
                 gap: 16,
                 paddingVertical: 16,
+                padding: 16,
+                borderRadius: 16,
+                borderTopLeftRadius: 0,
+                borderWidth: 2,
+                borderColor: Colors.cyan400,
+                transform: [
+                  {
+                    translateY: -2,
+                  },
+                ],
+                backgroundColor: "#fff",
               }}
             >
               <View>

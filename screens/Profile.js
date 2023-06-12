@@ -36,23 +36,18 @@ const Profile = () => {
 
   const namaDepan = userInfo?.nama.split(" ")[0];
 
-  React.useEffect(async function () {
-    const CancelToken = axios.CancelToken;
-    const source = CancelToken.source();
-
-    await axios
-      .get("https://api.marica.id/api/v1/user/all-anak", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        dispatch(setDataAnak(res.data.data));
-      })
-      .catch((err) => {
-        console.log("get all anak err: ", err.response);
-      });
-  }, []);
+  axios
+    .get("https://api.marica.id/api/v1/user/all-anak", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      dispatch(setDataAnak(res.data.data));
+    })
+    .catch((err) => {
+      console.log("get all anak err: ", err.response);
+    });
 
   const logoutHandler = async (values) => {
     dispatch(setLoading(true));
