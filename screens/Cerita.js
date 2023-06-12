@@ -83,6 +83,8 @@ export default function Cerita({ navigation }) {
                         onPress={() =>
                           navigation.navigate("VideoDetails", {
                             videoId: episode.youtubeId,
+                            videoTitle: episode.title,
+                            videoDescription: episode.description,
                           })
                         }
                       >

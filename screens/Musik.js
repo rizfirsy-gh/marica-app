@@ -67,6 +67,8 @@ export default function Musik({ navigation }) {
                         onPress={() =>
                           navigation.navigate("VideoDetails", {
                             videoId: list.youtubeId,
+                            videoTitle: list.title,
+                            videoDescription: list.description,
                           })
                         }
                         style={{

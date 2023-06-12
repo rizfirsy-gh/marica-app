@@ -83,9 +83,7 @@ const VideoDetails = ({ route, navigation }) => {
               fontSize: 16,
             }}
           >
-            {videoDescription
-              ? videoDescription
-              : "Judul video tidak ditemukan"}
+            {videoDescription ? videoDescription : "Deskripsi video kosong."}
           </Text>
         </View>
         <View style={{ paddingHorizontal: 16 }}>
