@@ -30,7 +30,7 @@ const VideoDetails = ({ route, navigation }) => {
       style={{
         backgroundColor: "#fff",
         flex: 1,
-        paddingTop: 18,
+        paddingTop: 32,
       }}
     >
       <View
@@ -40,6 +40,8 @@ const VideoDetails = ({ route, navigation }) => {
           borderRadius: 16,
           overflow: "hidden",
           margin: 16,
+          borderWidth: 2,
+          borderColor: Colors.cyan500,
         }}
       >
         <Text

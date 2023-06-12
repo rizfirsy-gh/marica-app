@@ -51,7 +51,8 @@ export default function Home() {
           <Pressable
             onPress={() =>
               navigation.navigate("VideoDetails", {
-                videoId: "N_oiwAuCpVQ",
+                videoId: "t10bSj2cN7A",
+                videoTitle: "Video Tutorial Marica",
               })
             }
           >
@@ -63,6 +64,9 @@ export default function Home() {
                 width: windowWidth - 32,
                 height: 200,
                 borderRadius: 16,
+                borderBottomWidth: 8,
+                borderWidth: 4,
+                borderColor: Colors.cyan500,
               }}
             />
           </Pressable>
@@ -72,6 +76,9 @@ export default function Home() {
               fontFamily: "Nunito-Bold",
               color: Colors.slate500,
               marginTop: 24,
+              textAlign: "left",
+              width: "100%",
+              paddingLeft: 16,
             }}
           >
             Cerita Baru
@@ -158,6 +165,9 @@ export default function Home() {
               fontFamily: "Nunito-Bold",
               color: Colors.slate500,
               marginTop: 24,
+              textAlign: "left",
+              width: "100%",
+              paddingLeft: 16,
             }}
           >
             Musik Baru
