@@ -96,6 +96,9 @@ export default function Home() {
                   onPress={() =>
                     navigation.navigate("VideoDetails", {
                       videoId: ceritaKu.youtubeId,
+                      videoTitle: ceritaKu.title,
+                      videoDescription:
+                        "Lorem ipsum dolor sit amet consectetur. Morbi pharetra adipiscing at metus pretium sagittis semper eu. Praesent auctor tellus velit risus proin convallis. Tincidunt amet...",
                     })
                   }
                 >

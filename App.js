@@ -139,11 +139,7 @@ export default function App() {
             <Stack.Screen
               name="VideoDetails"
               component={VideoDetails}
-              options={({ route, navigation }) => {
-                return {
-                  title: "Kembali",
-                };
-              }}
+              options={{ header: () => null }}
             />
             <Stack.Screen
               name="Transaksi"
