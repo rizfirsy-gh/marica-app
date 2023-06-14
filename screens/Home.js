@@ -62,7 +62,7 @@ export default function Home() {
               resizeMethod="resize"
               style={{
                 width: windowWidth - 32,
-                height: 200,
+                height: 300,
                 borderRadius: 16,
                 borderBottomWidth: 8,
                 borderWidth: 4,

@@ -72,6 +72,7 @@ const UserInformation = () => {
           gap: 16,
           height: "100%",
           justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <View
@@ -101,7 +102,7 @@ const UserInformation = () => {
             {userInfo?.nama}
           </Text>
         </View>
-        <View style={{ flex: 1.3 }}>
+        <View style={{ flex: 1.3, alignItems: "center" }}>
           <ScrollView>
             <View style={{ flexDirection: "row" }}>
               <Pressable
@@ -159,6 +160,8 @@ const UserInformation = () => {
                     },
                   ],
                   backgroundColor: "#fff",
+                  width: 400,
+                  maxWidth: "100%",
                 }}
               >
                 <View>
@@ -258,6 +261,8 @@ const UserInformation = () => {
                     },
                   ],
                   backgroundColor: "#fff",
+                  width: 400,
+                  maxWidth: "100%",
                 }}
               >
                 <View>
@@ -286,15 +291,17 @@ const UserInformation = () => {
                         padding: 16,
                         backgroundColor: Colors.cyan100,
                         borderRadius: 16,
+                        justifyContent: "space-between",
                         alignItems: "center",
                       }}
                     >
                       <Text
                         style={{
                           fontFamily: "Nunito-Bold",
-                          fontSize: 20,
+                          fontSize: 16,
                           fontFamily: "Nunito-Bold",
                           color: Colors.cyan700,
+                          letterSpacing: 4,
                         }}
                       >
                         {anak.nama}
@@ -303,12 +310,12 @@ const UserInformation = () => {
                         <Text
                           style={{
                             fontFamily: "Nunito-Bold",
-                            fontSize: 14,
+                            fontSize: 20,
                             fontFamily: "Nunito-Medium",
                             color: Colors.cyan700,
                           }}
                         >
-                          {anak.poin}
+                          {anak.poin} points
                         </Text>
                       </View>
                     </View>

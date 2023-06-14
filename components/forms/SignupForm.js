@@ -41,6 +41,7 @@ const SignupForm = ({ signupHandler, switchForm }) => {
           style={{
             flex: 1,
             gap: 8,
+            alignItems: "center",
           }}
         >
           <TextInput
@@ -108,6 +109,8 @@ const styles = {
     paddingHorizontal: 24,
     backgroundColor: "#fff",
     borderRadius: 16,
+    width: 400,
+    maxWidth: "100%",
   },
   loginButton: {
     flexDirection: "row",

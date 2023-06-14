@@ -15,6 +15,7 @@ import {
   getUserData,
 } from "../redux/actions/user-action";
 import { setDataAnak } from "../redux/slices/anak";
+
 function randomInteger(min, max) {
   return Math.floor(Math.random()) * (max - min) + min;
 }
@@ -101,6 +102,8 @@ const Profile = () => {
             style={{
               fontFamily: "Nunito-Medium",
               color: Colors.slate500,
+              width: 400,
+              maxWidth: "100%",
             }}
           >
             Profil adalah zona khusus orang tua. Berapakah hasil perkalian
@@ -110,7 +113,7 @@ const Profile = () => {
             style={{
               flexDirection: "row",
               gap: 8,
-              justifyContent: "space-between",
+              justifyContent: "flex-start",
               alignItems: "flex-start",
               marginVertical: 16,
             }}
