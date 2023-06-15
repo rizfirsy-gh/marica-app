@@ -60,7 +60,7 @@ export const getAnakData = async () => {
 export const getAnakDataFromServer = async (token) => {
   let updatedDataAnak;
   await axios
-    .get("https://api.marica.id/api/v1/user/anak", {
+    .get("https://api.marica.id/api/v1/user/all-anak", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

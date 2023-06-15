@@ -21,24 +21,9 @@ const blurhash =
 
 const UserInformation = () => {
   const [tab, setTab] = React.useState(false);
-  const [anak, setAnak] = React.useState("");
 
   const { userInfo, token } = useSelector((state) => state.user);
   const { dataAnak } = useSelector((state) => state.anak);
-  const dispatch = useDispatch();
-
-  React.useEffect(() => {
-    getAnakData()
-      .then((res) => {
-        if (res === null || res === undefined) {
-          console.log("res", res);
-        } else {
-          dispatch(setDataAnak(res));
-          setAnak(res);
-        }
-      })
-      .catch((err) => console.log("err", err));
-  });
 
   const navigation = useNavigation();
 
@@ -283,7 +268,7 @@ const UserInformation = () => {
                         </Text>
                       </View>
                     ))}
-                  {dataAnak.map((anak) => (
+                  {dataAnak?.map((anak) => (
                     <View
                       key={anak._id}
                       style={{

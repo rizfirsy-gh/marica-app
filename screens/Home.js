@@ -1,4 +1,5 @@
 import * as React from "react";
+import { getAnakData } from "../redux/actions/user-action";
 import { dummyCerita } from "../assets/media/cerita";
 import { dummyMusik } from "../assets/media/musik";
 import { LinearGradient } from "expo-linear-gradient";
@@ -6,7 +7,7 @@ import { View, ScrollView, Text, Pressable, Dimensions } from "react-native";
 import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
 import { useNavigation } from "@react-navigation/core";
-import { getAnakDataFromServer } from "../redux/actions/user-action";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const navigation = useNavigation();
@@ -14,6 +15,19 @@ export default function Home() {
   const musikBaru = [];
 
   const windowWidth = Dimensions.get("window").width;
+  const { userInfo, token } = useSelector((state) => state.user);
+
+  React.useEffect(() => {
+    getAnakData()
+      .then((res) => {
+        if (res === null || res === undefined) {
+          console.log("res", res);
+        } else {
+          dispatch(setDataAnak(res));
+        }
+      })
+      .catch((err) => console.log("err", err));
+  });
 
   dummyCerita.map((cerita) =>
     cerita.episodes.filter((episode) =>
