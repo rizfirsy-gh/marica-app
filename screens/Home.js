@@ -7,7 +7,7 @@ import { View, ScrollView, Text, Pressable, Dimensions } from "react-native";
 import { Image } from "expo-image";
 import { Colors } from "../constant/styles";
 import { useNavigation } from "@react-navigation/core";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Home() {
   const navigation = useNavigation();
@@ -16,6 +16,7 @@ export default function Home() {
 
   const windowWidth = Dimensions.get("window").width;
   const { userInfo, token } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     getAnakData()
