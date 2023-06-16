@@ -26,7 +26,14 @@ const Button = ({ variant, onPress, children }) => {
   }
   if (variant === "tertiary") {
     return (
-      <Pressable onPress={onPress}>
+      <Pressable
+        onPress={onPress}
+        style={{
+          paddingHorizontal: 16,
+          width: "100%",
+          paddingVertical: 8,
+        }}
+      >
         <Text style={styles.tertiaryButton}>{children}</Text>
       </Pressable>
     );
