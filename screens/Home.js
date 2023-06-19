@@ -66,7 +66,6 @@ export default function Home() {
           <Pressable
             onPress={() =>
               navigation.navigate("VideoDetails", {
-                videoId: "t10bSj2cN7A",
                 videoTitle: "Video Tutorial Marica",
               })
             }
