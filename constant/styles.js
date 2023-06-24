@@ -23,4 +23,7 @@ export const Colors = {
   slate800: "#1E293B",
   slate900: "#0F172A",
   slate950: "#083344",
+  //amber
+  amber50: "#FFFBEB",
+  amber600: "#d97706",
 };

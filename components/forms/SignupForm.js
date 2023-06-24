@@ -16,7 +16,7 @@ const SignupSchema = yup.object().shape({
     .string()
     .min(
       8,
-      "Password harus terdiri minimal 8 karakter huruf kombinasi antara: huruf besar, hurus kecil, angka, and simbol"
+      "⚠️ Password harus terdiri minimal 8 karakter huruf kombinasi antara: huruf besar, hurus kecil, angka, and simbol."
     )
     .required("Password perlu dibuat."),
 });
@@ -118,7 +118,13 @@ const styles = {
     justifyContent: "center",
   },
   error: {
-    color: "red",
+    color: Colors.amber600,
+    padding: 12,
+    borderRadius: 12,
+    backgroundColor: Colors.amber50,
+    borderWidth: 2,
+    borderColor: Colors.amber600,
+    width: "100%",
   },
 };
 
