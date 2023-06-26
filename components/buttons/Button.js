@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
     maxWidth: "100%",
     borderWidth: 2,
     borderColor: "#22D3EE",
+    backgroundColor: Colors.cyan50,
   },
   buttonText: {
     fontFamily: "Nunito-Medium",
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     color: "#fff",
     textAlign: "center",
+    fontSize: 16,
   },
   secondaryButtonText: {
     fontFamily: "Nunito-Medium",
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     color: "#22D3EE",
     textAlign: "center",
+    fontSize: 16,
   },
   tertiaryButton: {
     fontFamily: "Nunito-Medium",

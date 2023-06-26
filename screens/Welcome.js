@@ -78,16 +78,10 @@ const Welcome = ({ navigation }) => {
       />
       <View style={styles.bottom}>
         <Button
-          variant={"primary"}
+          variant="secondary"
           onPress={() => navigation.navigate("Signup")}
         >
-          Buat akun baru
-        </Button>
-        <Button
-          variant={"secondary"}
-          onPress={() => navigation.navigate("Signup")}
-        >
-          Sudah punya akun, masuk
+          Buat akun atau Masuk
         </Button>
       </View>
     </LinearGradient>
